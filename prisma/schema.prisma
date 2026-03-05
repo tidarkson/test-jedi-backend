@@ -1,0 +1,584 @@
+// Prisma Schema - Test-Jedi Core Database Design
+// Generated: 2026-03-05
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ===============================
+// ENUMS - Status, Priority, Type Fields
+// ===============================
+
+enum UserRole {
+  ADMIN
+  MANAGER
+  TESTER
+  VIEWER
+}
+
+enum OrganizationPlan {
+  FREE
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+enum SuiteStatus {
+  ACTIVE
+  DRAFT
+  ARCHIVED
+  DEPRECATED
+}
+
+enum TestCaseType {
+  FUNCTIONAL
+  REGRESSION
+  SMOKE
+  INTEGRATION
+  E2E
+  PERFORMANCE
+  SECURITY
+  USABILITY
+}
+
+enum TestCasePriority {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum TestCaseSeverity {
+  BLOCKER
+  CRITICAL
+  MAJOR
+  MINOR
+  TRIVIAL
+}
+
+enum AutomationStatus {
+  MANUAL
+  AUTOMATED
+  PARTIALLY_AUTOMATED
+  PENDING_AUTOMATION
+}
+
+enum RiskLevel {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+  NONE
+}
+
+enum TestRunStatus {
+  SCHEDULED
+  IN_PROGRESS
+  PAUSED
+  COMPLETED
+  CANCELLED
+  FAILED
+}
+
+enum TestRunType {
+  MANUAL
+  AUTOMATED
+  HYBRID
+}
+
+enum RunCaseStatus {
+  IDLE
+  IN_PROGRESS
+  PASSED
+  FAILED
+  BLOCKED
+  SKIPPED
+  NOT_RUN
+}
+
+enum ExecutionType {
+  MANUAL
+  AUTOMATED
+  EXPLORATORY
+}
+
+enum StepResultStatus {
+  PASSED
+  FAILED
+  SKIPPED
+  BLOCKED
+  INCOMPLETE
+}
+
+enum DefectStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+  CLOSED
+  REOPENED
+  DUPLICATE
+}
+
+enum TestPlanStatus {
+  DRAFT
+  ACTIVE
+  COMPLETED
+  ARCHIVED
+}
+
+enum MilestoneStatus {
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  ON_HOLD
+}
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  DELETE
+  RESTORE
+  EXECUTE
+  ASSIGN
+  COMMENT
+}
+
+// ===============================
+// 1. USER
+// ===============================
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  role      UserRole @default(TESTER)
+  avatarUrl String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  organizationMembers OrganizationMember[]
+  projectMembers      ProjectMember[]
+  suiteOwned          Suite[]              @relation("SuiteOwner")
+  suiteReviewing      Suite[]              @relation("SuiteReviewer")
+  testCasesAuthored   TestCase[]           @relation("TestCaseAuthor")
+  testCasesReviewing  TestCase[]           @relation("TestCaseReviewer")
+  testRunsCreated     TestRun[]            @relation("TestRunCreator")
+  runCasesAssigned    RunCase[]            @relation("RunCaseAssignee")
+  auditLogs           AuditLog[]           @relation("AuditUser")
+
+  @@index([email])
+}
+
+// ===============================
+// 2. ORGANIZATION
+// ===============================
+
+model Organization {
+  id       String              @id @default(uuid())
+  name     String
+  slug     String              @unique
+  plan     OrganizationPlan    @default(FREE)
+  settings Json?               // JSONB for flexible org settings
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  members  OrganizationMember[]
+  projects Project[]
+  auditLogs AuditLog[] @relation("OrgAudit")
+
+  @@index([slug])
+}
+
+// ===============================
+// 3. ORGANIZATION MEMBER
+// ===============================
+
+model OrganizationMember {
+  id             String   @id @default(uuid())
+  organizationId String
+  userId         String
+  role           UserRole @default(TESTER)
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([organizationId, userId])
+  @@index([organizationId])
+  @@index([userId])
+}
+
+// ===============================
+// 4. PROJECT
+// ===============================
+
+model Project {
+  id            String   @id @default(uuid())
+  organizationId String
+  name          String
+  slug          String
+  description   String?
+  settings      Json?    // JSONB for project settings
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  organization  Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  suites        Suite[]
+  testRuns      TestRun[]
+  testPlans     TestPlan[]
+  milestones    Milestone[]
+  tags          Tag[]
+  members       ProjectMember[]
+  auditLogs     AuditLog[]     @relation("ProjectAudit")
+
+  @@unique([organizationId, slug])
+  @@index([organizationId])
+  @@index([slug])
+}
+
+// ===============================
+// 5. PROJECT MEMBER
+// ===============================
+
+model ProjectMember {
+  id        String   @id @default(uuid())
+  projectId String
+  userId    String
+  role      UserRole @default(TESTER)
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([projectId, userId])
+  @@index([projectId])
+  @@index([userId])
+}
+
+// ===============================
+// 6. SUITE (Test Suite)
+// ===============================
+
+model Suite {
+  id            String        @id @default(uuid())
+  projectId     String
+  parentSuiteId String?
+  name          String
+  description   String?
+  ownerId       String
+  reviewerId    String?
+  status        SuiteStatus   @default(ACTIVE)
+  isLocked      Boolean       @default(false)
+  deletedAt     DateTime?     // Soft delete
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  project       Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  owner         User      @relation("SuiteOwner", fields: [ownerId], references: [id])
+  reviewer      User?     @relation("SuiteReviewer", fields: [reviewerId], references: [id])
+  parentSuite   Suite?    @relation("SuiteHierarchy", fields: [parentSuiteId], references: [id], onDelete: SetNull)
+  childSuites   Suite[]   @relation("SuiteHierarchy")
+  testCases     TestCase[]
+
+  @@index([projectId])
+  @@index([parentSuiteId])
+  @@index([ownerId])
+  @@index([reviewerId])
+  @@index([status])
+  @@index([deletedAt])
+}
+
+// ===============================
+// 7. TEST CASE
+// ===============================
+
+model TestCase {
+  id                 String             @id @default(uuid())
+  suiteId            String
+  externalId         String?            // For external system tracking
+  title              String
+  description        String?
+  preconditions      String?
+  postconditions     String?
+  priority           TestCasePriority   @default(MEDIUM)
+  severity           TestCaseSeverity   @default(MAJOR)
+  type               TestCaseType       @default(FUNCTIONAL)
+  riskLevel          RiskLevel          @default(MEDIUM)
+  automationStatus   AutomationStatus   @default(MANUAL)
+  estimatedTime      Int?               // In minutes
+  status             SuiteStatus        @default(ACTIVE)
+  authorId           String
+  reviewerId         String?
+  approvalStatus     String             @default("PENDING") // PENDING, APPROVED, REJECTED
+  tags               Json?              // JSONB array of tag IDs
+  customFields       Json?              // JSONB for flexible custom fields
+
+  deletedAt DateTime?                    // Soft delete
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  suite              Suite      @relation(fields: [suiteId], references: [id], onDelete: Cascade)
+  author             User       @relation("TestCaseAuthor", fields: [authorId], references: [id])
+  reviewer           User?      @relation("TestCaseReviewer", fields: [reviewerId], references: [id])
+  steps              TestStep[]
+  runCases           RunCase[]
+
+  @@index([suiteId])
+  @@index([authorId])
+  @@index([reviewerId])
+  @@index([priority])
+  @@index([status])
+  @@index([deletedAt])
+  @@index([externalId])
+}
+
+// ===============================
+// 8. TEST STEP
+// ===============================
+
+model TestStep {
+  id              String   @id @default(uuid())
+  testCaseId      String
+  order           Int
+  action          String
+  expectedResult  String
+  testData        Json?    // JSONB for test data
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  testCase        TestCase @relation(fields: [testCaseId], references: [id], onDelete: Cascade)
+  stepResults     StepResult[]
+
+  @@index([testCaseId])
+  @@index([order])
+}
+
+// ===============================
+// 9. TEST RUN
+// ===============================
+
+model TestRun {
+  id                String        @id @default(uuid())
+  projectId         String
+  title             String
+  type              TestRunType   @default(MANUAL)
+  environment       String
+  milestoneId       String?
+  buildNumber       String?
+  branch            String?
+  status            TestRunStatus @default(SCHEDULED)
+  plannedStart      DateTime?
+  dueDate           DateTime?
+  defaultAssigneeId String?
+  riskThreshold     RiskLevel     @default(HIGH)
+
+  deletedAt DateTime?           // Soft delete
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  project           Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  milestone         Milestone? @relation(fields: [milestoneId], references: [id], onDelete: SetNull)
+  defaultAssignee   User?     @relation("TestRunCreator", fields: [defaultAssigneeId], references: [id])
+  runCases          RunCase[]
+
+  @@index([projectId])
+  @@index([milestoneId])
+  @@index([status])
+  @@index([deletedAt])
+}
+
+// ===============================
+// 10. RUN CASE
+// ===============================
+
+model RunCase {
+  id             String          @id @default(uuid())
+  runId          String
+  caseId         String
+  assigneeId     String?
+  status         RunCaseStatus   @default(NOT_RUN)
+  executionType  ExecutionType   @default(MANUAL)
+  startedAt      DateTime?
+  completedAt    DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  run            TestRun     @relation(fields: [runId], references: [id], onDelete: Cascade)
+  testCase       TestCase    @relation(fields: [caseId], references: [id], onDelete: Cascade)
+  assignee       User?       @relation("RunCaseAssignee", fields: [assigneeId], references: [id])
+  stepResults    StepResult[]
+  defects        Defect[]
+
+  @@index([runId])
+  @@index([caseId])
+  @@index([assigneeId])
+  @@index([status])
+}
+
+// ===============================
+// 11. STEP RESULT
+// ===============================
+
+model StepResult {
+  id             String             @id @default(uuid())
+  runCaseId      String
+  stepId         String
+  status         StepResultStatus   @default(INCOMPLETE)
+  comment        String?
+  attachments    Json?              // JSONB array of attachment URLs/metadata
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  runCase        RunCase   @relation(fields: [runCaseId], references: [id], onDelete: Cascade)
+  step           TestStep  @relation(fields: [stepId], references: [id], onDelete: Cascade)
+
+  @@index([runCaseId])
+  @@index([stepId])
+  @@index([status])
+}
+
+// ===============================
+// 12. DEFECT
+// ===============================
+
+model Defect {
+  id           String        @id @default(uuid())
+  runCaseId    String
+  externalId   String?       // For Jira/external system tracking
+  title        String
+  url          String?       // Link to issue tracker
+  status       DefectStatus  @default(OPEN)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  runCase      RunCase @relation(fields: [runCaseId], references: [id], onDelete: Cascade)
+
+  @@index([runCaseId])
+  @@index([status])
+  @@index([externalId])
+}
+
+// ===============================
+// 13. TEST PLAN
+// ===============================
+
+model TestPlan {
+  id          String         @id @default(uuid())
+  projectId   String
+  title       String
+  version     String
+  status      TestPlanStatus @default(DRAFT)
+  milestoneId String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  project     Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  milestone   Milestone? @relation(fields: [milestoneId], references: [id], onDelete: SetNull)
+
+  @@index([projectId])
+  @@index([milestoneId])
+  @@index([status])
+}
+
+// ===============================
+// 14. MILESTONE
+// ===============================
+
+model Milestone {
+  id        String           @id @default(uuid())
+  projectId String
+  name      String
+  dueDate   DateTime
+  status    MilestoneStatus  @default(PLANNED)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  project    Project[]
+  testRuns   TestRun[]
+  testPlans  TestPlan[]
+
+  @@index([projectId])
+  @@index([status])
+  @@index([dueDate])
+}
+
+// ===============================
+// 15. AUDIT LOG
+// ===============================
+
+model AuditLog {
+  id            String      @id @default(uuid())
+  organizationId String?
+  projectId     String?
+  userId        String
+  entityType    String      // e.g., "TestCase", "TestRun", "Suite"
+  entityId      String
+  action        AuditAction
+  diff          Json?       // JSONB storing before/after changes
+
+  createdAt DateTime @default(now())
+
+  // Relations
+  organization  Organization? @relation("OrgAudit", fields: [organizationId], references: [id], onDelete: SetNull)
+  project       Project?      @relation("ProjectAudit", fields: [projectId], references: [id], onDelete: SetNull)
+  user          User          @relation("AuditUser", fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([organizationId])
+  @@index([projectId])
+  @@index([entityType])
+  @@index([entityId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// ===============================
+// 16. TAG
+// ===============================
+
+model Tag {
+  id        String   @id @default(uuid())
+  projectId String
+  name      String
+  color     String   @default("#000000")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, name])
+  @@index([projectId])
+  @@index([name])
+}
