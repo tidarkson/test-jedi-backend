@@ -1,0 +1,1356 @@
+2026-03-09 13:01:41:141 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:01:41:141 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:01:41:141 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:01:41:141 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:02:10:210 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:02:10:210 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:02:10:210 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:02:10:210 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:02:12:212 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:03:47:347 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:03:47:347 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:03:47:347 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:03:47:347 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:03:48:348 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mLogin error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:97:41[39m
+
+[31m  94   password: string,[39m
+[31m  95 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  96   // Find user[39m
+[31m→ 97   const user = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mLogin error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:97:41[39m
+
+[31m  94   password: string,[39m
+[31m  95 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  96   // Find user[39m
+[31m→ 97   const user = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mLogin error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:97:41[39m
+
+[31m  94   password: string,[39m
+[31m  95 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  96   // Find user[39m
+[31m→ 97   const user = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:03:50:350 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:50:350 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:50:350 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:50:350 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:04:41:441 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:04:41:441 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:04:41:441 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:04:41:441 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:04:41:441 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:04:42:442 [32minfo[39m: [32mUser registered: user-1773057882038 (newuser@example.com)[39m
+2026-03-09 13:04:42:442 [32minfo[39m: [32mUser registered: user-1773057882069 (login@example.com)[39m
+2026-03-09 13:04:42:442 [32minfo[39m: [32mUser logged in: user-1773057882069 (login@example.com)[39m
+2026-03-09 13:04:42:442 [32minfo[39m: [32mUser registered: user-1773057882087 (wrongpass@example.com)[39m
+2026-03-09 13:04:42:442 [32minfo[39m: [32mUser registered: user-1773057882100 (refresh@example.com)[39m
+2026-03-09 13:04:42:442 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:04:42:442 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:04:42:442 [32minfo[39m: [32mUser registered: user-1773057882140 (profile@example.com)[39m
+2026-03-09 13:04:42:442 [32minfo[39m: [32mUser registered: user-1773057882161 (logout@example.com)[39m
+2026-03-09 13:04:42:442 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:04:42:442 [32minfo[39m: [32mUser registered: user-1773057882170 (changepw@example.com)[39m
+2026-03-09 13:04:42:442 [32minfo[39m: [32mUser registered: user-1773057882176 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:04:58:458 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:04:58:458 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:04:58:458 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:04:58:458 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:04:59:459 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:04:59:459 [32minfo[39m: [32mUser registered: user-1773057899282 (newuser@example.com)[39m
+2026-03-09 13:04:59:459 [32minfo[39m: [32mUser registered: user-1773057899320 (login@example.com)[39m
+2026-03-09 13:04:59:459 [32minfo[39m: [32mUser logged in: user-1773057899320 (login@example.com)[39m
+2026-03-09 13:04:59:459 [32minfo[39m: [32mUser registered: user-1773057899340 (wrongpass@example.com)[39m
+2026-03-09 13:04:59:459 [32minfo[39m: [32mUser registered: user-1773057899351 (refresh@example.com)[39m
+2026-03-09 13:04:59:459 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:04:59:459 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:04:59:459 [32minfo[39m: [32mUser registered: user-1773057899385 (profile@example.com)[39m
+2026-03-09 13:04:59:459 [32minfo[39m: [32mUser registered: user-1773057899409 (logout@example.com)[39m
+2026-03-09 13:04:59:459 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:04:59:459 [32minfo[39m: [32mUser registered: user-1773057899421 (changepw@example.com)[39m
+2026-03-09 13:04:59:459 [32minfo[39m: [32mUser registered: user-1773057899434 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:05:14:514 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:05:14:514 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:05:14:514 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:05:14:514 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:05:14:514 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:05:14:514 [32minfo[39m: [32mUser registered: user-1773057914891 (newuser@example.com)[39m
+2026-03-09 13:05:14:514 [32minfo[39m: [32mUser registered: user-1773057914929 (login@example.com)[39m
+2026-03-09 13:05:14:514 [32minfo[39m: [32mUser logged in: user-1773057914929 (login@example.com)[39m
+2026-03-09 13:05:14:514 [32minfo[39m: [32mUser registered: user-1773057914951 (wrongpass@example.com)[39m
+2026-03-09 13:05:14:514 [32minfo[39m: [32mUser registered: user-1773057914967 (refresh@example.com)[39m
+2026-03-09 13:05:14:514 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:05:14:514 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:05:15:515 [32minfo[39m: [32mUser registered: user-1773057915001 (profile@example.com)[39m
+2026-03-09 13:05:15:515 [32minfo[39m: [32mUser registered: user-1773057915027 (logout@example.com)[39m
+2026-03-09 13:05:15:515 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:05:15:515 [32minfo[39m: [32mUser registered: user-1773057915045 (changepw@example.com)[39m
+2026-03-09 13:05:15:515 [32minfo[39m: [32mUser registered: user-1773057915059 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:06:23:623 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:06:23:623 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:06:23:623 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:06:23:623 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:06:23:623 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984058 (newuser@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984085 (duplicate@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984094 (checkpass@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984099 (login@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser logged in: user-1773057984099 (login@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984115 (wrongpass@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984122 (refresh@example.com)[39m
+2026-03-09 13:06:24:624 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:06:24:624 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984163 (profile@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984181 (logout@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984189 (changepw@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984199 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984207 (expiredtoken@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984221 (revokedtoken@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:06:24:624 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984242 (nopass@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser logged in: user-1773057984242 (nopass@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984258 (qalead@example.com)[39m
+2026-03-09 13:06:24:624 [32minfo[39m: [32mUser registered: user-1773057984264 (viewer@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025827 (newuser@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025858 (duplicate@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025868 (checkpass@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025873 (login@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser logged in: user-1773058025873 (login@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025892 (wrongpass@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025899 (refresh@example.com)[39m
+2026-03-09 13:07:05:75 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:07:05:75 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025935 (profile@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025950 (logout@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025957 (changepw@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025964 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025970 (expiredtoken@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025980 (revokedtoken@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:07:05:75 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser registered: user-1773058025991 (nopass@example.com)[39m
+2026-03-09 13:07:05:75 [32minfo[39m: [32mUser logged in: user-1773058025991 (nopass@example.com)[39m
+2026-03-09 13:07:06:76 [32minfo[39m: [32mUser registered: user-1773058026003 (qalead@example.com)[39m
+2026-03-09 13:07:06:76 [32minfo[39m: [32mUser registered: user-1773058026008 (viewer@example.com)[39m
+2026-03-09 13:11:28:1128 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:11:28:1128 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:11:28:1128 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:11:28:1128 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:11:28:1128 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289041 (newuser@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289071 (duplicate@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289083 (checkpass@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289087 (login@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser logged in: user-1773058289087 (login@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289104 (wrongpass@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289119 (refresh@example.com)[39m
+2026-03-09 13:11:29:1129 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:29:1129 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289159 (profile@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289175 (logout@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289184 (changepw@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289195 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289204 (expiredtoken@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289210 (revokedtoken@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:11:29:1129 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289222 (nopass@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser logged in: user-1773058289222 (nopass@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289235 (qalead@example.com)[39m
+2026-03-09 13:11:29:1129 [32minfo[39m: [32mUser registered: user-1773058289238 (viewer@example.com)[39m
+2026-03-09 13:11:56:1156 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:11:57:1157 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:11:57:1157 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:11:57:1157 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318746 (newuser@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318776 (duplicate@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318785 (checkpass@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318792 (login@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser logged in: user-1773058318792 (login@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318812 (wrongpass@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318821 (refresh@example.com)[39m
+2026-03-09 13:11:58:1158 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:58:1158 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318870 (profile@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318894 (logout@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318906 (changepw@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318920 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318932 (expiredtoken@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318951 (revokedtoken@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:11:58:1158 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318970 (nopass@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser logged in: user-1773058318970 (nopass@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318987 (qalead@example.com)[39m
+2026-03-09 13:11:58:1158 [32minfo[39m: [32mUser registered: user-1773058318995 (viewer@example.com)[39m
+2026-03-09 13:12:42:1242 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:12:42:1242 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:12:42:1242 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:12:42:1242 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:12:43:1243 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364034 (newuser@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364052 (duplicate@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364062 (checkpass@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364067 (login@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser logged in: user-1773058364067 (login@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364085 (wrongpass@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364093 (refresh@example.com)[39m
+2026-03-09 13:12:44:1244 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:12:44:1244 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364134 (profile@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364152 (logout@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364159 (changepw@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364168 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364175 (expiredtoken@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364182 (revokedtoken@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:12:44:1244 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364193 (nopass@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser logged in: user-1773058364193 (nopass@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364205 (qalead@example.com)[39m
+2026-03-09 13:12:44:1244 [32minfo[39m: [32mUser registered: user-1773058364210 (viewer@example.com)[39m
+2026-03-09 13:13:07:137 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:13:07:137 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:13:07:137 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:13:07:137 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:13:07:137 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388035 (newuser@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388063 (duplicate@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388073 (checkpass@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388082 (login@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser logged in: user-1773058388082 (login@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388099 (wrongpass@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388126 (refresh@example.com)[39m
+2026-03-09 13:13:08:138 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:08:138 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388168 (profile@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388184 (logout@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388190 (changepw@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388199 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388214 (expiredtoken@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388222 (revokedtoken@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:13:08:138 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388235 (nopass@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser logged in: user-1773058388235 (nopass@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388246 (qalead@example.com)[39m
+2026-03-09 13:13:08:138 [32minfo[39m: [32mUser registered: user-1773058388249 (viewer@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401513 (newuser@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401534 (duplicate@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401547 (checkpass@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401553 (login@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser logged in: user-1773058401553 (login@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401569 (wrongpass@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401577 (refresh@example.com)[39m
+2026-03-09 13:13:21:1321 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:21:1321 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401615 (profile@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401630 (logout@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401637 (changepw@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401644 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401652 (expiredtoken@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401662 (revokedtoken@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:13:21:1321 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401674 (nopass@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser logged in: user-1773058401674 (nopass@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401684 (qalead@example.com)[39m
+2026-03-09 13:13:21:1321 [32minfo[39m: [32mUser registered: user-1773058401687 (viewer@example.com)[39m
+2026-03-09 13:13:33:1333 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:13:33:1333 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:13:33:1333 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:13:33:1333 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414288 (newuser@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414325 (duplicate@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414341 (checkpass@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414355 (login@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser logged in: user-1773058414355 (login@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414378 (wrongpass@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414391 (refresh@example.com)[39m
+2026-03-09 13:13:34:1334 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:34:1334 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414449 (profile@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414475 (logout@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414485 (changepw@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414495 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414504 (expiredtoken@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414517 (revokedtoken@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:13:34:1334 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414538 (nopass@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser logged in: user-1773058414538 (nopass@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414554 (qalead@example.com)[39m
+2026-03-09 13:13:34:1334 [32minfo[39m: [32mUser registered: user-1773058414560 (viewer@example.com)[39m
+2026-03-09 13:14:02:142 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:14:02:142 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:14:02:142 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:14:02:142 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443190 (newuser@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443225 (duplicate@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443252 (checkpass@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443258 (login@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser logged in: user-1773058443258 (login@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443279 (wrongpass@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443287 (refresh@example.com)[39m
+2026-03-09 13:14:03:143 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:03:143 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443317 (profile@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443333 (logout@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443342 (changepw@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443349 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443357 (expiredtoken@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443364 (revokedtoken@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:14:03:143 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443379 (nopass@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser logged in: user-1773058443379 (nopass@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443388 (qalead@example.com)[39m
+2026-03-09 13:14:03:143 [32minfo[39m: [32mUser registered: user-1773058443391 (viewer@example.com)[39m
+2026-03-09 13:14:23:1423 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:14:23:1423 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:14:23:1423 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:14:23:1423 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:14:23:1423 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:14:23:1423 [32minfo[39m: [32mUser registered: user-1773058463941 (newuser@example.com)[39m
+2026-03-09 13:14:23:1423 [32minfo[39m: [32mUser registered: user-1773058463967 (duplicate@example.com)[39m
+2026-03-09 13:14:23:1423 [32minfo[39m: [32mUser registered: user-1773058463978 (checkpass@example.com)[39m
+2026-03-09 13:14:23:1423 [32minfo[39m: [32mUser registered: user-1773058463984 (login@example.com)[39m
+2026-03-09 13:14:23:1423 [32minfo[39m: [32mUser logged in: user-1773058463984 (login@example.com)[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser registered: user-1773058464007 (wrongpass@example.com)[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser registered: user-1773058464015 (refresh@example.com)[39m
+2026-03-09 13:14:24:1424 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:24:1424 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser registered: user-1773058464056 (profile@example.com)[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser registered: user-1773058464077 (logout@example.com)[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser registered: user-1773058464088 (changepw@example.com)[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser registered: user-1773058464095 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser registered: user-1773058464102 (expiredtoken@example.com)[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser registered: user-1773058464109 (revokedtoken@example.com)[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:14:24:1424 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser registered: user-1773058464125 (nopass@example.com)[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser logged in: user-1773058464125 (nopass@example.com)[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser registered: user-1773058464139 (qalead@example.com)[39m
+2026-03-09 13:14:24:1424 [32minfo[39m: [32mUser registered: user-1773058464143 (viewer@example.com)[39m
+2026-03-09 13:15:17:1517 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:15:17:1517 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:15:17:1517 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:15:17:1517 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518521 (newuser@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518559 (duplicate@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518568 (checkpass@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518573 (login@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser logged in: user-1773058518573 (login@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518589 (wrongpass@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518596 (refresh@example.com)[39m
+2026-03-09 13:15:18:1518 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:18:1518 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518635 (profile@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518651 (logout@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser logged out: user-1773058518651[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518659 (changepw@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mPassword changed for user: user-1773058518659[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518667 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518676 (expiredtoken@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518683 (revokedtoken@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser logged out: user-1773058518683[39m
+2026-03-09 13:15:18:1518 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518695 (nopass@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser logged in: user-1773058518695 (nopass@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518704 (qalead@example.com)[39m
+2026-03-09 13:15:18:1518 [32minfo[39m: [32mUser registered: user-1773058518707 (viewer@example.com)[39m
+2026-03-09 13:15:37:1537 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:15:37:1537 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:15:37:1537 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:15:37:1537 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538585 (newuser@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538630 (duplicate@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538641 (checkpass@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538648 (login@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser logged in: user-1773058538648 (login@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538664 (wrongpass@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538671 (refresh@example.com)[39m
+2026-03-09 13:15:38:1538 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:38:1538 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538700 (profile@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538720 (logout@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser logged out: user-1773058538720[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538727 (changepw@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mPassword changed for user: user-1773058538727[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538734 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538740 (expiredtoken@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538749 (revokedtoken@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser logged out: user-1773058538749[39m
+2026-03-09 13:15:38:1538 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538764 (nopass@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser logged in: user-1773058538764 (nopass@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538775 (qalead@example.com)[39m
+2026-03-09 13:15:38:1538 [32minfo[39m: [32mUser registered: user-1773058538779 (viewer@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565710 (newuser@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565733 (duplicate@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565742 (checkpass@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565747 (login@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser logged in: user-1773058565747 (login@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565763 (wrongpass@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565772 (refresh@example.com)[39m
+2026-03-09 13:16:05:165 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:16:05:165 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565817 (profile@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565838 (logout@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser logged out: user-1773058565838[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565848 (changepw@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mPassword changed for user: user-1773058565848[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565857 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565865 (expiredtoken@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565870 (revokedtoken@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser logged out: user-1773058565870[39m
+2026-03-09 13:16:05:165 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565887 (nopass@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser logged in: user-1773058565887 (nopass@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565900 (qalead@example.com)[39m
+2026-03-09 13:16:05:165 [32minfo[39m: [32mUser registered: user-1773058565905 (viewer@example.com)[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mUser registered: user-1773059009877 (newuser@example.com)[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mUser registered: user-1773059009898 (duplicate@example.com)[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mUser registered: user-1773059009907 (checkpass@example.com)[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mUser registered: user-1773059009912 (login@example.com)[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mUser logged in: user-1773059009912 (login@example.com)[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mUser registered: user-1773059009935 (wrongpass@example.com)[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mUser registered: user-1773059009944 (refresh@example.com)[39m
+2026-03-09 13:23:29:2329 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:23:29:2329 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:23:29:2329 [32minfo[39m: [32mUser registered: user-1773059009986 (profile@example.com)[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mUser registered: user-1773059010014 (logout@example.com)[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mUser logged out: user-1773059010014[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mUser registered: user-1773059010027 (changepw@example.com)[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mPassword changed for user: user-1773059010027[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mUser registered: user-1773059010044 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mUser registered: user-1773059010054 (expiredtoken@example.com)[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mUser registered: user-1773059010066 (revokedtoken@example.com)[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mUser logged out: user-1773059010066[39m
+2026-03-09 13:23:30:2330 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mUser registered: user-1773059010081 (nopass@example.com)[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mUser logged in: user-1773059010081 (nopass@example.com)[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mUser registered: user-1773059010101 (qalead@example.com)[39m
+2026-03-09 13:23:30:2330 [32minfo[39m: [32mUser registered: user-1773059010107 (viewer@example.com)[39m
+2026-03-09 13:26:31:2631 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:26:31:2631 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:26:31:2631 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:26:31:2631 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:27:06:276 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:27:07:277 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:27:07:277 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:27:07:277 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:27:08:278 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229087 (newuser@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229109 (duplicate@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229121 (checkpass@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229128 (login@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser logged in: user-1773059229128 (login@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229151 (wrongpass@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229162 (refresh@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229197 (profile@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229215 (logout@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser logged out: user-1773059229215[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229222 (changepw@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mPassword changed for user: user-1773059229222[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229233 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229243 (expiredtoken@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229252 (revokedtoken@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser logged out: user-1773059229252[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229265 (nopass@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser logged in: user-1773059229265 (nopass@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229277 (qalead@example.com)[39m
+2026-03-09 13:27:09:279 [32minfo[39m: [32mUser registered: user-1773059229280 (viewer@example.com)[39m
+2026-03-09 13:27:39:2739 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:27:39:2739 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:27:39:2739 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:27:39:2739 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser registered: user-1773059261801 (newuser@example.com)[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser registered: user-1773059261827 (duplicate@example.com)[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser registered: user-1773059261837 (checkpass@example.com)[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser registered: user-1773059261844 (login@example.com)[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser logged in: user-1773059261844 (login@example.com)[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser registered: user-1773059261879 (wrongpass@example.com)[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser registered: user-1773059261899 (refresh@example.com)[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser registered: user-1773059261945 (profile@example.com)[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser registered: user-1773059261973 (logout@example.com)[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser logged out: user-1773059261973[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser registered: user-1773059261982 (changepw@example.com)[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mPassword changed for user: user-1773059261982[39m
+2026-03-09 13:27:41:2741 [32minfo[39m: [32mUser registered: user-1773059261993 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:27:42:2742 [32minfo[39m: [32mUser registered: user-1773059262003 (expiredtoken@example.com)[39m
+2026-03-09 13:27:42:2742 [32minfo[39m: [32mUser registered: user-1773059262013 (revokedtoken@example.com)[39m
+2026-03-09 13:27:42:2742 [32minfo[39m: [32mUser logged out: user-1773059262013[39m
+2026-03-09 13:27:42:2742 [32minfo[39m: [32mUser registered: user-1773059262024 (nopass@example.com)[39m
+2026-03-09 13:27:42:2742 [32minfo[39m: [32mUser logged in: user-1773059262024 (nopass@example.com)[39m
+2026-03-09 13:27:42:2742 [32minfo[39m: [32mUser registered: user-1773059262047 (qalead@example.com)[39m
+2026-03-09 13:27:42:2742 [32minfo[39m: [32mUser registered: user-1773059262052 (viewer@example.com)[39m
+2026-03-09 13:37:22:3722 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:37:22:3722 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:37:22:3722 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:37:22:3722 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844586 (newuser@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844610 (duplicate@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844620 (checkpass@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844626 (login@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser logged in: user-1773059844626 (login@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844650 (wrongpass@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844660 (refresh@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mDEBUG refresh header: refreshToken=signed_eyJ1c2VySWQiOiJ1c2VyLTE3NzMwNTk4NDQ2NjAiLCJ0b2tlblZlcnNpb24iOjEsImlhdCI6MTc3MzA1OTg0NCwiZXhwIjoxNzczNjY0NjQ0fQ%3D%3D; Max-Age=604800; Path=/; Expires=Mon, 16 Mar 2026 12:37:24 GMT; HttpOnly; SameSite=Strict[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844704 (profile@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844728 (logout@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser logged out: user-1773059844728[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844744 (changepw@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mPassword changed for user: user-1773059844744[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844752 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844761 (expiredtoken@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844767 (revokedtoken@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser logged out: user-1773059844767[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844778 (nopass@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser logged in: user-1773059844778 (nopass@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844788 (qalead@example.com)[39m
+2026-03-09 13:37:24:3724 [32minfo[39m: [32mUser registered: user-1773059844795 (viewer@example.com)[39m
+2026-03-09 13:40:52:4052 [32minfo[39m: [32mUser registered: user-1 (test@example.com)[39m
+2026-03-09 13:40:52:4052 [32minfo[39m: [32mUser logged in: user-1 (test@example.com)[39m
+2026-03-09 13:40:52:4052 [32minfo[39m: [32mUser logged out: user-1[39m
+2026-03-09 13:40:52:4052 [32minfo[39m: [32mPassword changed for user: user-1[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054505 (newuser@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054527 (duplicate@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054536 (checkpass@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054545 (login@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser logged in: user-1773060054545 (login@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054570 (wrongpass@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054579 (refresh@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mAccess token refreshed for user: user-1773060054579[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054594 (profile@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054617 (logout@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser logged out: user-1773060054617[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054630 (changepw@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mPassword changed for user: user-1773060054630[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054642 (wrongcurrentpw@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054651 (expiredtoken@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054665 (revokedtoken@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser logged out: user-1773060054665[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054682 (nopass@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser logged in: user-1773060054682 (nopass@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054708 (qalead@example.com)[39m
+2026-03-09 13:40:54:4054 [32minfo[39m: [32mUser registered: user-1773060054712 (viewer@example.com)[39m
+2026-03-09 16:51:10:5110 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635869 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating suite: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635925 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635928 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635945 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError toggling suite lock: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating suite: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError toggling suite lock: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635962 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635966 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635968 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635968 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635969 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635970 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError updating suite: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635976 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError toggling suite lock: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating suite: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635990 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [32minfo[39m: [32mSuite created: suite-1773071635991 (Project: proj-1773071635867)[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686622 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686625 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686625 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686626 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686656 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686656 (Suite: suite-1773071686656)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686657 (Suite: suite-1773071686656)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686657 (Suite: suite-1773071686656)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686658 (Suite: suite-1773071686656)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686658 (Suite: suite-1773071686656)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686658 (Suite: suite-1773071686656)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686658 (Suite: suite-1773071686656)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686659 (Suite: suite-1773071686656)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686659 (Suite: suite-1773071686656)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686659 (Suite: suite-1773071686656)[39m
+2026-03-09 16:54:46:5446 [31merror[39m: [31mError cloning suite: TypeError: suite.testCases is not iterable[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686675 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686675 (Suite: suite-1773071686675)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686676 (Suite: suite-1773071686675)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686676 (Suite: suite-1773071686675)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686676 (Suite: suite-1773071686675)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686676 (Suite: suite-1773071686675)[39m
+2026-03-09 16:54:46:5446 [31merror[39m: [31mError getting test cases: TypeError: where.tags.includes is not a function[39m
+2026-03-09 16:54:46:5446 [31merror[39m: [31mError getting test cases: TypeError: where.tags.includes is not a function[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686679 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite UNLOCKed: suite-1773071686679[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite LOCKed: suite-1773071686679[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686682 (Suite: suite-1773071686679)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686683 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686684 (Suite: suite-1773071686683)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686685 (Suite: suite-1773071686683)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686686 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686686 (Suite: suite-1773071686686)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686687 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686687 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686687 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686687 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686688 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686688 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686688 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686688 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686688 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686688 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686688 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686688 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686689 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686689 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686689 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686689 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686689 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686689 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686689 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686689 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686689 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686690 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686690 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686690 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686690 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686690 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686690 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686690 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686690 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686691 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686691 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686691 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686691 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686691 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686691 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686692 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686692 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686692 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686692 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686692 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686692 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686692 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686693 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686693 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686693 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686693 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686693 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686693 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686693 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686693 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686693 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686694 (Suite: suite-1773071686687)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mBulk operations completed: 50 successful, 0 failed[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686701 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686702 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite updated: suite-1773071686701[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686703 (Suite: suite-1773071686701)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686704 (Suite: suite-1773071686701)[39m
+2026-03-09 16:54:46:5446 [31merror[39m: [31mError updating test case: TypeError: Cannot read properties of undefined (reading 'isLocked')[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686705 (Suite: suite-1773071686701)[39m
+2026-03-09 16:54:46:5446 [31merror[39m: [31mError deleting test case: TypeError: Cannot read properties of undefined (reading 'isLocked')[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686706 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite UNLOCKed: suite-1773071686706[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686708 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mSuite created: suite-1773071686709 (Project: proj-1773071686620)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686709 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686709 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686709 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686710 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686710 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686710 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686710 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686710 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686711 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686711 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686711 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686711 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686711 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686711 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686711 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686711 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686711 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686712 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686712 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686712 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686712 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686712 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686712 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686712 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686712 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686712 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686713 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686713 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686713 (Suite: suite-1773071686709)[39m
+2026-03-09 16:54:46:5446 [32minfo[39m: [32mTest case created: case-1773071686713 (Suite: suite-1773071686709)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809259 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809264 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809264 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809265 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809291 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809292 (Suite: suite-1773071809291)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809292 (Suite: suite-1773071809291)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809293 (Suite: suite-1773071809291)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809293 (Suite: suite-1773071809291)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809294 (Suite: suite-1773071809291)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809294 (Suite: suite-1773071809291)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809294 (Suite: suite-1773071809291)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809294 (Suite: suite-1773071809291)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809294 (Suite: suite-1773071809291)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809295 (Suite: suite-1773071809291)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite cloned: suite-1773071809291 -> suite-1773071809296 (4 cases)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809298 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809298 (Suite: suite-1773071809298)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809298 (Suite: suite-1773071809298)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809299 (Suite: suite-1773071809298)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809299 (Suite: suite-1773071809298)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809299 (Suite: suite-1773071809298)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809301 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite LOCKed: suite-1773071809301[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite UNLOCKed: suite-1773071809301[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809305 (Suite: suite-1773071809301)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809305 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809306 (Suite: suite-1773071809305)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809306 (Suite: suite-1773071809305)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809308 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809308 (Suite: suite-1773071809308)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809309 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809309 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809309 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809309 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809310 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809310 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809310 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809310 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809310 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809310 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809310 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809310 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809310 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809311 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809311 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809311 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809311 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809311 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809311 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809311 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809311 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809311 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809311 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809312 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809312 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809312 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809312 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809312 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809312 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809312 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809312 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809312 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809313 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809313 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809313 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809313 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809313 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809313 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809313 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809314 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809314 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809314 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809314 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809314 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809314 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809314 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809315 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809315 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809315 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809315 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809315 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809315 (Suite: suite-1773071809309)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mBulk operations completed: 50 successful, 0 failed[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809318 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809318 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite updated: suite-1773071809318[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809320 (Suite: suite-1773071809318)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809320 (Suite: suite-1773071809318)[39m
+2026-03-09 16:56:49:5649 [31merror[39m: [31mError updating test case: TypeError: Cannot read properties of undefined (reading 'isLocked')[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809336 (Suite: suite-1773071809318)[39m
+2026-03-09 16:56:49:5649 [31merror[39m: [31mError deleting test case: TypeError: Cannot read properties of undefined (reading 'isLocked')[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809337 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite LOCKed: suite-1773071809337[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809340 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mSuite created: suite-1773071809340 (Project: proj-1773071809256)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809340 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809341 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809341 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809341 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809341 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809341 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809342 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809342 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809342 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809342 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809342 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809343 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809343 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809343 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809343 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809343 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809343 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809343 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809344 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809344 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809344 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809344 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809344 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809344 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809344 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809344 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809345 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809345 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809345 (Suite: suite-1773071809340)[39m
+2026-03-09 16:56:49:5649 [32minfo[39m: [32mTest case created: case-1773071809345 (Suite: suite-1773071809340)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943731 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943734 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943734 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943735 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943762 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943764-1 (Suite: suite-1773071943762)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943764-2 (Suite: suite-1773071943762)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943765-3 (Suite: suite-1773071943762)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943765-4 (Suite: suite-1773071943762)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943766-5 (Suite: suite-1773071943762)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943766-6 (Suite: suite-1773071943762)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943766-7 (Suite: suite-1773071943762)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943766-8 (Suite: suite-1773071943762)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943766-9 (Suite: suite-1773071943762)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943766-10 (Suite: suite-1773071943762)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite cloned: suite-1773071943762 -> suite-1773071943768 (10 cases)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943775 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943775-21 (Suite: suite-1773071943775)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943775-22 (Suite: suite-1773071943775)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943776-23 (Suite: suite-1773071943775)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943776-24 (Suite: suite-1773071943775)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943776-25 (Suite: suite-1773071943775)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943778 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite LOCKed: suite-1773071943778[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite UNLOCKed: suite-1773071943778[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943781-26 (Suite: suite-1773071943778)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943782 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943782-27 (Suite: suite-1773071943782)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943783 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943784-28 (Suite: suite-1773071943783)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943785 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943785 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943785-29 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943785-30 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943785-31 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943786-32 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943786-33 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943786-34 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943786-35 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943786-36 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943786-37 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943786-38 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943786-39 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943786-40 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943786-41 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-42 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-43 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-44 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-45 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-46 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-47 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-48 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-49 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-50 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-51 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-52 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943787-53 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943788-54 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943788-55 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943788-56 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943788-57 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943788-58 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943788-59 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943789-60 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943789-61 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943789-62 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943789-63 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943789-64 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943789-65 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943789-66 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943790-67 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943790-68 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943790-69 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943790-70 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943790-71 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943790-72 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943790-73 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943790-74 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943790-75 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943790-76 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943790-77 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943791-78 (Suite: suite-1773071943785)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mBulk operations completed: 50 successful, 0 failed[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943796 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943796 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite updated: suite-1773071943796[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943798-79 (Suite: suite-1773071943796)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943799-80 (Suite: suite-1773071943796)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case updated: case-1773071943799-80[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943801-81 (Suite: suite-1773071943796)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case soft deleted: case-1773071943801-81[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943802 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite LOCKed: suite-1773071943802[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943805 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mSuite created: suite-1773071943806 (Project: proj-1773071943730)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943806-82 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943807-83 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943807-84 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943807-85 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943807-86 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943807-87 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943807-88 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943808-89 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943808-90 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943808-91 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943809-92 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943809-93 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943809-94 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943812-95 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943812-96 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943816-97 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943816-98 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943816-99 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943816-100 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943817-101 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943817-102 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943817-103 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943818-104 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943818-105 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943818-106 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943818-107 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943819-108 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943819-109 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943819-110 (Suite: suite-1773071943806)[39m
+2026-03-09 16:59:03:593 [32minfo[39m: [32mTest case created: case-1773071943819-111 (Suite: suite-1773071943806)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056337 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056339 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056340 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056340 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056360 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056360-1 (Suite: suite-1773072056360)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056361-2 (Suite: suite-1773072056360)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056361-3 (Suite: suite-1773072056360)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056362-4 (Suite: suite-1773072056360)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056362-5 (Suite: suite-1773072056360)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056362-6 (Suite: suite-1773072056360)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056362-7 (Suite: suite-1773072056360)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056362-8 (Suite: suite-1773072056360)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056362-9 (Suite: suite-1773072056360)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056363-10 (Suite: suite-1773072056360)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite cloned: suite-1773072056360 -> suite-1773072056363 (10 cases)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056366 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056366-21 (Suite: suite-1773072056366)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056366-22 (Suite: suite-1773072056366)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056366-23 (Suite: suite-1773072056366)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056366-24 (Suite: suite-1773072056366)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056367-25 (Suite: suite-1773072056366)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056369 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite LOCKed: suite-1773072056369[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite UNLOCKed: suite-1773072056369[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056372-26 (Suite: suite-1773072056369)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056373 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056373-27 (Suite: suite-1773072056373)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056374 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056375-28 (Suite: suite-1773072056374)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056375 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056375 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056376-29 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056376-30 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056376-31 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056376-32 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056376-33 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056376-34 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056376-35 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056376-36 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056377-37 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056377-38 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056377-39 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056377-40 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056377-41 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056377-42 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056377-43 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056378-44 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056378-45 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056378-46 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056378-47 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056378-48 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056378-49 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056378-50 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056379-51 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056379-52 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056379-53 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056379-54 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056379-55 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056379-56 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056379-57 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056380-58 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056380-59 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056380-60 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056380-61 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056380-62 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056380-63 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056380-64 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056381-65 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056381-66 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056381-67 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056381-68 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056381-69 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056381-70 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056381-71 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056381-72 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056382-73 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056382-74 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056382-75 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056382-76 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056382-77 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056382-78 (Suite: suite-1773072056375)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mBulk operations completed: 50 successful, 0 failed[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056391 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056391 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite updated: suite-1773072056391[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056393-79 (Suite: suite-1773072056391)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056393-80 (Suite: suite-1773072056391)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case updated: case-1773072056393-80[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056394-81 (Suite: suite-1773072056391)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case soft deleted: case-1773072056394-81[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056395 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite LOCKed: suite-1773072056395[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056397 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mSuite created: suite-1773072056398 (Project: proj-1773072056335)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056398-82 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056398-83 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056398-84 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056398-85 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056398-86 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056399-87 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056399-88 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056399-89 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056399-90 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056399-91 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056399-92 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056400-93 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056400-94 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056400-95 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056401-96 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056401-97 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056401-98 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056401-99 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056401-100 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056401-101 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056401-102 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056401-103 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056401-104 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056402-105 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056402-106 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056402-107 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056402-108 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056402-109 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056402-110 (Suite: suite-1773072056398)[39m
+2026-03-09 17:00:56:056 [32minfo[39m: [32mTest case created: case-1773072056402-111 (Suite: suite-1773072056398)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120411-1 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120415-2 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120416-3 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120417-4 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120420-5 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120421-1 (Suite: suite-1773072120420-5)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120421-2 (Suite: suite-1773072120420-5)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120422-3 (Suite: suite-1773072120420-5)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120422-4 (Suite: suite-1773072120420-5)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120423-5 (Suite: suite-1773072120420-5)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120423-6 (Suite: suite-1773072120420-5)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120423-7 (Suite: suite-1773072120420-5)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120423-8 (Suite: suite-1773072120420-5)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120423-9 (Suite: suite-1773072120420-5)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120424-10 (Suite: suite-1773072120420-5)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite cloned: suite-1773072120420-5 -> suite-1773072120425-6 (10 cases)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120427-7 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120427-21 (Suite: suite-1773072120427-7)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120427-22 (Suite: suite-1773072120427-7)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120428-23 (Suite: suite-1773072120427-7)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120428-24 (Suite: suite-1773072120427-7)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120428-25 (Suite: suite-1773072120427-7)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120430-8 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite LOCKed: suite-1773072120430-8[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite UNLOCKed: suite-1773072120430-8[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120433-26 (Suite: suite-1773072120430-8)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120434-9 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120435-27 (Suite: suite-1773072120434-9)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120435-10 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120436-28 (Suite: suite-1773072120435-10)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120436-11 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120437-12 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120437-29 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120437-30 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120437-31 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120437-32 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120437-33 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120438-34 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120438-35 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120438-36 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120438-37 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120438-38 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120438-39 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120438-40 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120438-41 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120439-42 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120439-43 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120439-44 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120439-45 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120440-46 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120440-47 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120440-48 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120440-49 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120440-50 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120440-51 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120440-52 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120441-53 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120441-54 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120441-55 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120441-56 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120441-57 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120441-58 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120442-59 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120442-60 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120442-61 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120442-62 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120442-63 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120443-64 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120443-65 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120443-66 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120444-67 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120444-68 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120444-69 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120444-70 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120445-71 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120445-72 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120445-73 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120447-74 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120447-75 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120448-76 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120448-77 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120448-78 (Suite: suite-1773072120436-11)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mBulk operations completed: 50 successful, 0 failed[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120457-13 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120458-14 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite updated: suite-1773072120457-13[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120460-79 (Suite: suite-1773072120457-13)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120460-80 (Suite: suite-1773072120457-13)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case updated: case-1773072120460-80[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120462-81 (Suite: suite-1773072120457-13)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case soft deleted: case-1773072120462-81[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120463-15 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite LOCKed: suite-1773072120463-15[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120465-16 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mSuite created: suite-1773072120466-17 (Project: proj-1773072120409)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120466-82 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120467-83 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120467-84 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120467-85 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120467-86 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120467-87 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120467-88 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120468-89 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120468-90 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120468-91 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120468-92 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120468-93 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120469-94 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120469-95 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120469-96 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120469-97 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120469-98 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120469-99 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120470-100 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120470-101 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120470-102 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120470-103 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120470-104 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120471-105 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120471-106 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120471-107 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120472-108 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120472-109 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120472-110 (Suite: suite-1773072120466-17)[39m
+2026-03-09 17:02:00:20 [32minfo[39m: [32mTest case created: case-1773072120473-111 (Suite: suite-1773072120466-17)[39m

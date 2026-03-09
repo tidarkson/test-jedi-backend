@@ -1,0 +1,208 @@
+2026-03-09 13:03:49:349 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mLogin error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:97:41[39m
+
+[31m  94   password: string,[39m
+[31m  95 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  96   // Find user[39m
+[31m→ 97   const user = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mLogin error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:97:41[39m
+
+[31m  94   password: string,[39m
+[31m  95 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  96   // Find user[39m
+[31m→ 97   const user = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mLogin error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:97:41[39m
+
+[31m  94   password: string,[39m
+[31m  95 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  96   // Find user[39m
+[31m→ 97   const user = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:49:349 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:03:50:350 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:50:350 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:50:350 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:03:50:350 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:30:49[39m
+
+[31m  27   organizationName: string,[39m
+[31m  28 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  29   // Check if user already exists[39m
+[31m→ 30   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-09 13:04:42:442 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:04:42:442 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:04:59:459 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:04:59:459 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:05:14:514 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:05:14:514 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:06:24:624 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:06:24:624 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:06:24:624 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:07:05:75 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:07:05:75 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:07:05:75 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:29:1129 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:29:1129 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:29:1129 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:58:1158 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:58:1158 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:11:58:1158 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:12:44:1244 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:12:44:1244 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:12:44:1244 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:08:138 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:08:138 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:08:138 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:21:1321 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:21:1321 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:21:1321 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:34:1334 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:34:1334 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:13:34:1334 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:03:143 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:03:143 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:03:143 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:24:1424 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:24:1424 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:14:24:1424 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:18:1518 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:18:1518 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:18:1518 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:38:1538 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:38:1538 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:15:38:1538 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:16:05:165 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:16:05:165 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:16:05:165 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:23:29:2329 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:23:29:2329 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 13:23:30:2330 [31merror[39m: [31mRefresh error: Cannot read properties of undefined (reading 'refreshToken')[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:51:10:5110 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:52:35:5235 [31merror[39m: [31mError creating suite: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating suite: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError toggling suite lock: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating suite: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError toggling suite lock: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError updating suite: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError toggling suite lock: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating suite: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:53:55:5355 [31merror[39m: [31mError creating test case: TypeError: this.prisma.suite.findFirst is not a function[39m
+2026-03-09 16:54:46:5446 [31merror[39m: [31mError cloning suite: TypeError: suite.testCases is not iterable[39m
+2026-03-09 16:54:46:5446 [31merror[39m: [31mError getting test cases: TypeError: where.tags.includes is not a function[39m
+2026-03-09 16:54:46:5446 [31merror[39m: [31mError getting test cases: TypeError: where.tags.includes is not a function[39m
+2026-03-09 16:54:46:5446 [31merror[39m: [31mError updating test case: TypeError: Cannot read properties of undefined (reading 'isLocked')[39m
+2026-03-09 16:54:46:5446 [31merror[39m: [31mError deleting test case: TypeError: Cannot read properties of undefined (reading 'isLocked')[39m
+2026-03-09 16:56:49:5649 [31merror[39m: [31mError updating test case: TypeError: Cannot read properties of undefined (reading 'isLocked')[39m
+2026-03-09 16:56:49:5649 [31merror[39m: [31mError deleting test case: TypeError: Cannot read properties of undefined (reading 'isLocked')[39m

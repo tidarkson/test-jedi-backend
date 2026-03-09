@@ -15,8 +15,12 @@ datasource db {
 // ===============================
 
 enum UserRole {
+  OWNER
   ADMIN
   MANAGER
+  QA_LEAD
+  QA_ENGINEER
+  DEVELOPER
   TESTER
   VIEWER
 }
@@ -153,13 +157,15 @@ enum AuditAction {
 // ===============================
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String
-  role      UserRole @default(TESTER)
-  avatarUrl String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id            String    @id @default(uuid())
+  email         String    @unique
+  name          String
+  passwordHash  String
+  role          UserRole  @default(ADMIN)
+  avatarUrl     String?
+  lastLoginAt   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
   // Relations
   organizationMembers OrganizationMember[]
@@ -205,7 +211,7 @@ model OrganizationMember {
   id             String   @id @default(uuid())
   organizationId String
   userId         String
-  role           UserRole @default(TESTER)
+  role           UserRole @default(ADMIN)
 
   organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -256,7 +262,7 @@ model ProjectMember {
   id        String   @id @default(uuid())
   projectId String
   userId    String
-  role      UserRole @default(TESTER)
+  role      UserRole @default(ADMIN)
 
   project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)

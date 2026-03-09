@@ -1,12 +1,30 @@
-# Test-Jedi Backend - Documentation Overview
+# Test-Jedi Backend
 
-## What You Have
+A comprehensive test management system backend built with TypeScript, Express.js, Prisma, PostgreSQL, and Redis.
 
-You now have a comprehensive blueprint for developing the Test-Jedi backend. This analysis combines:
+## 🎯 Features
 
-1. **Frontend Requirements** (from test-jedi-software)
-2. **Proven Backend Patterns** (from BlackPot Backend)
-3. **Database Schema & API Design** (from BACKEND_CONTEXT.md)
+### ✅ Authentication System (COMPLETED)
+- **JWT-based authentication** with access tokens (15-minute expiry) and refresh tokens (7-day expiry)
+- **Bcrypt password hashing** for secure credential storage
+- **Role-Based Access Control (RBAC)** with 6 role levels
+- **Project-level permissions** for fine-grained access control
+- **Redis-backed token revocation** for secure logout
+- **HttpOnly cookies** for refresh token storage
+
+**See:** [AUTH_IMPLEMENTATION.md](./AUTH_IMPLEMENTATION.md) | [Quick Start](./AUTH_QUICKSTART.md)
+
+### 🗺️ Planned Features
+- Test repository management (suites, cases, steps)
+- Test runs and execution tracking
+- Real-time test execution updates (WebSocket)
+- Analytics and reporting
+- Defect tracking
+- Custom fields
+- Admin features
+- Integrations (Jira, GitHub, Slack)
+
+## 💻 Tech Stack
 
 ---
 
