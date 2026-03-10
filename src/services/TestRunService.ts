@@ -19,12 +19,10 @@ import {
   TesterPerformance,
 } from '../types/testRun';
 import {
-  TestRun,
-  RunCase,
-  TestCase,
   AuditAction,
-  RunCaseStatus,
+  TestRun,
 } from '@prisma/client';
+import { broadcastRunMetrics } from '../utils/runWebsocket';
 
 export class TestRunService {
   private prisma = getPrisma();
@@ -276,6 +274,14 @@ export class TestRunService {
 
       // Log audit
       await this.logAudit(projectId, userId, 'TestRun', testRun.id, AuditAction.CREATE);
+
+      // Broadcast initial metrics (empty/initial)
+      try {
+        const metrics = await this.calculateRunMetrics(testRun.id);
+        broadcastRunMetrics(testRun.id, metrics);
+      } catch (e) {
+        logger.warn(`Failed to broadcast metrics after run creation: ${e}`);
+      }
 
       return this.mapTestRunToDTO(testRun);
     } catch (error) {
@@ -686,7 +692,8 @@ export class TestRunService {
       }
 
       // Update run case status
-      const updated = await this.prisma.runCase.update({
+      const oldStatus = runCase.status;
+      await this.prisma.runCase.update({
         where: { id: runCaseId },
         data: {
           status: input.status,
@@ -697,56 +704,57 @@ export class TestRunService {
             ? new Date()
             : null,
         },
-        include: {
-          testCase: {
-            select: {
-              id: true,
-              title: true,
-              estimatedTime: true,
-            },
-          },
-          assignee: {
-            select: {
-              id: true,
-              name: true,
-              email: true,
-            },
-          },
-        },
       });
 
       // Update step results if provided
       if (input.stepResults && input.stepResults.length > 0) {
         for (const stepResult of input.stepResults) {
-          await this.prisma.stepResult.upsert({
+          // Find existing step result
+          const existing = await this.prisma.stepResult.findFirst({
             where: {
-              runCaseId_stepId: {
-                runCaseId,
-                stepId: stepResult.stepId,
-              },
-            },
-            update: {
-              status: stepResult.status,
-              comment: stepResult.comment ?? undefined,
-              attachments: stepResult.attachments ?? undefined,
-            },
-            create: {
               runCaseId,
               stepId: stepResult.stepId,
-              status: stepResult.status,
-              comment: stepResult.comment ?? null,
-              attachments: stepResult.attachments ?? null,
             },
           });
+
+          if (existing) {
+            // Update existing
+            await this.prisma.stepResult.update({
+              where: { id: existing.id },
+              data: {
+                status: stepResult.status,
+                comment: stepResult.comment ?? undefined,
+                attachments: stepResult.attachments ?? undefined,
+              },
+            });
+          } else {
+            // Create new
+            await this.prisma.stepResult.create({
+              data: {
+                runCaseId,
+                stepId: stepResult.stepId,
+                status: stepResult.status,
+                comment: stepResult.comment ?? null,
+                attachments: stepResult.attachments ?? null,
+              },
+            });
+          }
         }
       }
 
-      // Log audit
+      // Log audit with status change information
       const run = await this.prisma.testRun.findUnique({
         where: { id: runId },
       });
       if (run) {
-        await this.logAudit(run.projectId, userId, 'RunCase', runCaseId, AuditAction.UPDATE);
+        const diff =
+          oldStatus !== input.status
+            ? {
+                status: input.status,
+                previousStatus: oldStatus,
+              }
+            : undefined;
+        await this.logAudit(run.projectId, userId, 'RunCase', runCaseId, AuditAction.UPDATE, diff);
       }
 
       // Fetch full updated case
@@ -781,6 +789,14 @@ export class TestRunService {
           },
         },
       });
+
+      // Broadcast updated metrics for this run
+      try {
+        const metrics = await this.calculateRunMetrics(runId);
+        broadcastRunMetrics(runId, metrics);
+      } catch (e) {
+        logger.warn(`Failed to broadcast metrics after update: ${e}`);
+      }
 
       return {
         id: fullUpdated!.id,
@@ -861,26 +877,36 @@ export class TestRunService {
             // Update step results if provided
             if (update.stepResults && update.stepResults.length > 0) {
               for (const stepResult of update.stepResults) {
-                await this.prisma.stepResult.upsert({
+                // Find existing step result
+                const existing = await this.prisma.stepResult.findFirst({
                   where: {
-                    runCaseId_stepId: {
-                      runCaseId: update.runCaseId,
-                      stepId: stepResult.stepId,
-                    },
-                  },
-                  update: {
-                    status: stepResult.status,
-                    comment: stepResult.comment ?? undefined,
-                    attachments: stepResult.attachments ?? undefined,
-                  },
-                  create: {
                     runCaseId: update.runCaseId,
                     stepId: stepResult.stepId,
-                    status: stepResult.status,
-                    comment: stepResult.comment ?? null,
-                    attachments: stepResult.attachments ?? null,
                   },
                 });
+
+                if (existing) {
+                  // Update existing
+                  await this.prisma.stepResult.update({
+                    where: { id: existing.id },
+                    data: {
+                      status: stepResult.status,
+                      comment: stepResult.comment ?? undefined,
+                      attachments: stepResult.attachments ?? undefined,
+                    },
+                  });
+                } else {
+                  // Create new
+                  await this.prisma.stepResult.create({
+                    data: {
+                      runCaseId: update.runCaseId,
+                      stepId: stepResult.stepId,
+                      status: stepResult.status,
+                      comment: stepResult.comment ?? null,
+                      attachments: stepResult.attachments ?? null,
+                    },
+                  });
+                }
               }
             }
 
@@ -899,6 +925,14 @@ export class TestRunService {
       // Log audit only if all successful
       if (errors.length === 0) {
         await this.logAudit(run.projectId, userId, 'TestRun', runId, AuditAction.UPDATE);
+      }
+
+      // Broadcast metrics after bulk update
+      try {
+        const metrics = await this.calculateRunMetrics(runId);
+        broadcastRunMetrics(runId, metrics);
+      } catch (e) {
+        logger.warn(`Failed to broadcast metrics after bulk update: ${e}`);
       }
 
       return {
@@ -943,6 +977,40 @@ export class TestRunService {
         return this.emptyMetrics();
       }
 
+      // Detect flaky tests by checking audit logs for status changes from FAILED to PASSED
+      const failedThenPassedCases = new Set<string>();
+      for (const rc of runCases) {
+        if (rc.status === 'PASSED') {
+          // Check if this case was ever FAILED by querying audit logs
+          const auditLogs = await this.prisma.auditLog.findMany({
+            where: {
+              entityType: 'RunCase',
+              entityId: rc.id,
+            },
+            orderBy: {
+              createdAt: 'asc',
+            },
+          });
+
+          // Look for a transition from FAILED to PASSED
+          let hasBeenFailed = false;
+          for (const log of auditLogs) {
+            if (log.diff && typeof log.diff === 'object') {
+              const diff = log.diff as any;
+              // Check if this update changed status to FAILED
+              if (diff.status === 'FAILED') {
+                hasBeenFailed = true;
+              }
+              // Check if this update changed status to PASSED while it was previously failed
+              else if (diff.status === 'PASSED' && hasBeenFailed) {
+                failedThenPassedCases.add(rc.caseId);
+                break;
+              }
+            }
+          }
+        }
+      }
+
       // Count statuses
       const statusCounts = {
         passed: 0,
@@ -956,21 +1024,15 @@ export class TestRunService {
       const testerStats = new Map<string, any>();
       let estimatedTime = 0;
       let actualTime = 0;
-      const failedThenPassedCases = new Set<string>();
-      const failedCases = new Map<string, boolean>();
 
       for (const rc of runCases) {
         // Count status
         switch (rc.status) {
           case 'PASSED':
             statusCounts.passed++;
-            if (failedCases.has(rc.caseId)) {
-              failedThenPassedCases.add(rc.caseId);
-            }
             break;
           case 'FAILED':
             statusCounts.failed++;
-            failedCases.set(rc.caseId, true);
             break;
           case 'BLOCKED':
             statusCounts.blocked++;
@@ -1139,19 +1201,31 @@ export class TestRunService {
     entityType: string,
     entityId: string,
     action: AuditAction,
+    diff?: Record<string, any>,
   ): Promise<void> {
     try {
+      const data: any = {
+        projectId,
+        userId,
+        entityType,
+        entityId,
+        action,
+      };
+      if (diff) {
+        data.diff = diff;
+      }
       await this.prisma.auditLog.create({
-        data: {
-          projectId,
-          userId,
-          entityType,
-          entityId,
-          action,
-        },
+        data,
       });
     } catch (error) {
       logger.warn(`Failed to log audit: ${error}`);
     }
+  }
+
+  /**
+   * Public wrapper to list run cases
+   */
+  async listRunCases(runId: string): Promise<RunCaseDTO[]> {
+    return this.getRunCases(runId);
   }
 }

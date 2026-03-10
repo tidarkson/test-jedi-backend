@@ -27,7 +27,10 @@ export class TestRunController {
    * POST /api/v1/projects/:projectId/runs/preview
    * Preview case selection before creation
    */
-  async previewCaseSelection(req: AuthenticatedRequest, res: Response): Promise<void> {
+  async previewCaseSelection(
+    req: AuthenticatedRequest,
+    res: Response,
+  ): Promise<void> {
     try {
       const { projectId } = req.params;
       const { error, value } = caseSelectionSchema.validate(req.body);
@@ -58,7 +61,7 @@ export class TestRunController {
         res.status(error.statusCode).json({
           status: 'error',
           code: error.statusCode,
-          error: error.errorCode,
+          error: error.code,
           message: error.message,
         });
         return;
@@ -81,7 +84,7 @@ export class TestRunController {
   async createRun(req: AuthenticatedRequest, res: Response): Promise<void> {
     try {
       const { projectId } = req.params;
-      const userId = req.user?.id;
+      const userId = req.user?.userId;
 
       if (!userId) {
         res.status(401).json({
@@ -105,11 +108,7 @@ export class TestRunController {
         return;
       }
 
-      const run = await this.testRunService.createRun(
-        projectId,
-        userId,
-        value,
-      );
+      const run = await this.testRunService.createRun(projectId, userId, value);
 
       res.status(201).json({
         status: 'success',
@@ -122,7 +121,7 @@ export class TestRunController {
         res.status(error.statusCode).json({
           status: 'error',
           code: error.statusCode,
-          error: error.errorCode,
+          error: error.code,
           message: error.message,
         });
         return;
@@ -175,7 +174,7 @@ export class TestRunController {
         res.status(error.statusCode).json({
           status: 'error',
           code: error.statusCode,
-          error: error.errorCode,
+          error: error.code,
           message: error.message,
         });
         return;
@@ -212,7 +211,7 @@ export class TestRunController {
         res.status(error.statusCode).json({
           status: 'error',
           code: error.statusCode,
-          error: error.errorCode,
+          error: error.code,
           message: error.message,
         });
         return;
@@ -229,13 +228,50 @@ export class TestRunController {
   }
 
   /**
+   * GET /api/v1/runs/:runId/cases
+   * List cases in run with current status
+   */
+  async listRunCases(req: AuthenticatedRequest, res: Response): Promise<void> {
+    try {
+      const { runId } = req.params;
+
+      const cases = await this.testRunService.listRunCases(runId);
+
+      res.status(200).json({
+        status: 'success',
+        code: 200,
+        data: cases,
+        message: 'Run cases retrieved successfully',
+      });
+    } catch (error) {
+      if (error instanceof AppError) {
+        res.status(error.statusCode).json({
+          status: 'error',
+          code: error.statusCode,
+          error: error.code,
+          message: error.message,
+        });
+        return;
+      }
+
+      logger.error(`Error in listRunCases: ${error}`);
+      res.status(500).json({
+        status: 'error',
+        code: 500,
+        error: ErrorCodes.INTERNAL_SERVER_ERROR,
+        message: 'Failed to list run cases',
+      });
+    }
+  }
+
+  /**
    * PUT /api/v1/projects/:projectId/runs/:id
    * Update run metadata
    */
   async updateRun(req: AuthenticatedRequest, res: Response): Promise<void> {
     try {
       const { projectId, id } = req.params;
-      const userId = req.user?.id;
+      const userId = req.user?.userId;
 
       if (!userId) {
         res.status(401).json({
@@ -277,7 +313,7 @@ export class TestRunController {
         res.status(error.statusCode).json({
           status: 'error',
           code: error.statusCode,
-          error: error.errorCode,
+          error: error.code,
           message: error.message,
         });
         return;
@@ -300,7 +336,7 @@ export class TestRunController {
   async deleteRun(req: AuthenticatedRequest, res: Response): Promise<void> {
     try {
       const { projectId, id } = req.params;
-      const userId = req.user?.id;
+      const userId = req.user?.userId;
 
       if (!userId) {
         res.status(401).json({
@@ -324,7 +360,7 @@ export class TestRunController {
         res.status(error.statusCode).json({
           status: 'error',
           code: error.statusCode,
-          error: error.errorCode,
+          error: error.code,
           message: error.message,
         });
         return;
@@ -347,8 +383,8 @@ export class TestRunController {
   async closeRun(req: AuthenticatedRequest, res: Response): Promise<void> {
     try {
       const { projectId, id } = req.params;
-      const userId = req.user?.id;
-      const userRole = req.user?.role;
+      const userId = req.user?.userId;
+      const userRole = req.user?.roles[0];
 
       if (!userId) {
         res.status(401).json({
@@ -378,7 +414,7 @@ export class TestRunController {
         res.status(error.statusCode).json({
           status: 'error',
           code: error.statusCode,
-          error: error.errorCode,
+          error: error.code,
           message: error.message,
         });
         return;
@@ -401,7 +437,7 @@ export class TestRunController {
   async cloneRun(req: AuthenticatedRequest, res: Response): Promise<void> {
     try {
       const { projectId, id } = req.params;
-      const userId = req.user?.id;
+      const userId = req.user?.userId;
 
       if (!userId) {
         res.status(401).json({
@@ -443,7 +479,7 @@ export class TestRunController {
         res.status(error.statusCode).json({
           status: 'error',
           code: error.statusCode,
-          error: error.errorCode,
+          error: error.code,
           message: error.message,
         });
         return;
@@ -473,7 +509,7 @@ export class TestRunController {
   ): Promise<void> {
     try {
       const { runId, runCaseId } = req.params;
-      const userId = req.user?.id;
+      const userId = req.user?.userId;
 
       if (!userId) {
         res.status(401).json({
@@ -515,7 +551,7 @@ export class TestRunController {
         res.status(error.statusCode).json({
           status: 'error',
           code: error.statusCode,
-          error: error.errorCode,
+          error: error.code,
           message: error.message,
         });
         return;
@@ -541,7 +577,7 @@ export class TestRunController {
   ): Promise<void> {
     try {
       const { runId } = req.params;
-      const userId = req.user?.id;
+      const userId = req.user?.userId;
 
       if (!userId) {
         res.status(401).json({
@@ -582,7 +618,7 @@ export class TestRunController {
         res.status(error.statusCode).json({
           status: 'error',
           code: error.statusCode,
-          error: error.errorCode,
+          error: error.code,
           message: error.message,
         });
         return;
@@ -623,7 +659,7 @@ export class TestRunController {
         res.status(error.statusCode).json({
           status: 'error',
           code: error.statusCode,
-          error: error.errorCode,
+          error: error.code,
           message: error.message,
         });
         return;

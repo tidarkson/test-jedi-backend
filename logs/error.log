@@ -206,3 +206,57 @@
 2026-03-09 16:54:46:5446 [31merror[39m: [31mError deleting test case: TypeError: Cannot read properties of undefined (reading 'isLocked')[39m
 2026-03-09 16:56:49:5649 [31merror[39m: [31mError updating test case: TypeError: Cannot read properties of undefined (reading 'isLocked')[39m
 2026-03-09 16:56:49:5649 [31merror[39m: [31mError deleting test case: TypeError: Cannot read properties of undefined (reading 'isLocked')[39m
+2026-03-09 23:02:31:231 [31merror[39m: [31mError listing runs: TypeError: Cannot read properties of undefined (reading 'count')[39m
+2026-03-09 23:02:31:231 [31merror[39m: [31mError updating run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:02:31:231 [31merror[39m: [31mError deleting run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:03:26:326 [31merror[39m: [31mError listing runs: TypeError: Cannot read properties of undefined (reading 'count')[39m
+2026-03-09 23:03:26:326 [31merror[39m: [31mError updating run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:03:26:326 [31merror[39m: [31mError deleting run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:05:25:525 [31merror[39m: [31mError listing runs: TypeError: Cannot read properties of undefined (reading 'count')[39m
+2026-03-09 23:05:25:525 [31merror[39m: [31mError updating run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:05:25:525 [31merror[39m: [31mError deleting run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:12:22:1222 [31merror[39m: [31mError listing runs: TypeError: Cannot read properties of undefined (reading 'count')[39m
+2026-03-09 23:12:22:1222 [31merror[39m: [31mError updating run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:12:22:1222 [31merror[39m: [31mError deleting run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:13:02:132 [31merror[39m: [31mError listing runs: TypeError: Cannot read properties of undefined (reading 'count')[39m
+2026-03-09 23:13:02:132 [31merror[39m: [31mError updating run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:13:02:132 [31merror[39m: [31mError deleting run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:15:36:1536 [31merror[39m: [31mError listing runs: TypeError: Cannot read properties of undefined (reading 'count')[39m
+2026-03-09 23:15:36:1536 [31merror[39m: [31mError updating run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:15:36:1536 [31merror[39m: [31mError deleting run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:19:41:1941 [31merror[39m: [31mError listing runs: TypeError: Cannot read properties of undefined (reading 'count')[39m
+2026-03-09 23:19:41:1941 [31merror[39m: [31mError updating run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:19:41:1941 [31merror[39m: [31mError deleting run: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-09 23:22:30:2230 [31merror[39m: [31mError previewing case selection: TypeError: Cannot read properties of undefined (reading 'id')[39m
+2026-03-09 23:22:30:2230 [31merror[39m: [31mError previewing case selection: TypeError: Cannot read properties of undefined (reading 'id')[39m
+2026-03-09 23:22:30:2230 [31merror[39m: [31mError previewing case selection: TypeError: Cannot read properties of undefined (reading 'id')[39m
+2026-03-09 23:22:30:2230 [31merror[39m: [31mError previewing case selection: TypeError: Cannot read properties of undefined (reading 'id')[39m
+2026-03-09 23:22:30:2230 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:22:30:2230 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:22:30:2230 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:22:30:2230 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:22:30:2230 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:22:30:2230 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:22:55:2255 [31merror[39m: [31mError previewing case selection: TypeError: Cannot read properties of undefined (reading 'id')[39m
+2026-03-09 23:22:55:2255 [31merror[39m: [31mError previewing case selection: TypeError: Cannot read properties of undefined (reading 'id')[39m
+2026-03-09 23:22:55:2255 [31merror[39m: [31mError previewing case selection: TypeError: Cannot read properties of undefined (reading 'id')[39m
+2026-03-09 23:22:55:2255 [31merror[39m: [31mError previewing case selection: TypeError: Cannot read properties of undefined (reading 'id')[39m
+2026-03-09 23:22:55:2255 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:22:55:2255 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:22:55:2255 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:22:55:2255 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:22:55:2255 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:22:55:2255 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:24:20:2420 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:24:20:2420 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:24:20:2420 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:24:20:2420 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:24:20:2420 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:24:20:2420 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:25:32:2532 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:25:32:2532 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:25:32:2532 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:25:32:2532 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:25:32:2532 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:25:32:2532 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
+2026-03-09 23:32:39:3239 [31merror[39m: [31mError cloning run: TypeError: Cannot read properties of undefined (reading 'map')[39m

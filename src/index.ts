@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
+import http from 'http';
 import { config } from './config/environment';
 import { logger } from './config/logger';
 import { initializePrisma, getPrisma } from './config/database';
@@ -10,6 +11,8 @@ import { requestLogger } from './middleware/requestLogger';
 import { errorHandler } from './middleware/errorHandler';
 import authRoutes from './routes/auth';
 import testRepositoryRoutes from './routes/testRepository';
+import runsRoutes from './routes/runs';
+import { attachWebSocketServer } from './utils/runWebsocket';
 
 const app = express();
 
@@ -67,6 +70,7 @@ app.use(requestLogger);
  */
 app.use(`/api/${config.API_VERSION}/auth`, authRoutes);
 app.use(`/api/${config.API_VERSION}/projects`, testRepositoryRoutes);
+app.use(`/api/${config.API_VERSION}`, runsRoutes);
 
 // Health check endpoint
 app.get('/health', (_req, res) => {
@@ -98,8 +102,11 @@ const startServer = async () => {
     // Initialize app (database, cache, etc.)
     await initializeApp();
 
-    // Start listening
-    app.listen(config.PORT, config.HOST, () => {
+    // Create HTTP server and attach WebSocket server
+    const server = http.createServer(app);
+    attachWebSocketServer(server);
+
+    server.listen(config.PORT, config.HOST, () => {
       logger.info(
         `Server running on http://${config.HOST}:${config.PORT} in ${config.NODE_ENV} mode`,
       );

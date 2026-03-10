@@ -348,9 +348,9 @@ class TestRepositoryService {
                 data: { isLocked: !suite.isLocked },
             });
             // Create audit log
-            const action = suite.isLocked ? 'UNLOCK' : 'LOCK';
-            await this.createAuditLog(projectId, userId, 'Suite', suiteId, action, JSON.stringify({ isLocked: updated.isLocked }));
-            logger_1.logger.info(`Suite ${action}ed: ${suiteId}`);
+            const logAction = suite.isLocked ? 'UNLOCK' : 'LOCK';
+            await this.createAuditLog(projectId, userId, 'Suite', suiteId, 'UPDATE', JSON.stringify({ isLocked: updated.isLocked, action: logAction }));
+            logger_1.logger.info(`Suite ${logAction}ed: ${suiteId}`);
             return this.formatSuiteDTO(updated);
         }
         catch (error) {

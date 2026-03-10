@@ -1,0 +1,1019 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TestRunService = void 0;
+const database_1 = require("../config/database");
+const errors_1 = require("../types/errors");
+const logger_1 = require("../config/logger");
+const client_1 = require("@prisma/client");
+const runWebsocket_1 = require("../utils/runWebsocket");
+class TestRunService {
+    constructor() {
+        this.prisma = (0, database_1.getPrisma)();
+    }
+    /**
+     * ========== CASE SELECTION LOGIC ==========
+     */
+    /**
+     * Resolve all cases from selected suites (recursive)
+     * Apply exclude list, deduplicate
+     */
+    async resolveCasesFromSelection(input) {
+        const caseIds = new Set();
+        try {
+            // Add explicitly selected case IDs
+            if (input.caseIds && input.caseIds.length > 0) {
+                input.caseIds.forEach(id => caseIds.add(id));
+            }
+            // Resolve cases from suites (including nested suites)
+            if (input.suiteIds && input.suiteIds.length > 0) {
+                for (const suiteId of input.suiteIds) {
+                    const suiteCases = await this.getAllCasesInSuite(suiteId);
+                    suiteCases.forEach(caseId => caseIds.add(caseId));
+                }
+            }
+            // Apply query filters
+            if (input.queryFilters) {
+                const filteredCases = await this.filterCases(Array.from(caseIds), input.queryFilters);
+                const filteredSet = new Set(filteredCases);
+                caseIds.forEach(id => {
+                    if (!filteredSet.has(id)) {
+                        caseIds.delete(id);
+                    }
+                });
+            }
+            // Apply exclude list
+            if (input.excludeIds && input.excludeIds.length > 0) {
+                input.excludeIds.forEach(id => caseIds.delete(id));
+            }
+            return Array.from(caseIds);
+        }
+        catch (error) {
+            logger_1.logger.error(`Error resolving cases from selection: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to resolve cases from selection');
+        }
+    }
+    /**
+     * Get all cases in a suite (recursive - includes child suites)
+     */
+    async getAllCasesInSuite(suiteId) {
+        const caseIds = [];
+        // Get cases directly in this suite
+        const directCases = await this.prisma.testCase.findMany({
+            where: {
+                suiteId,
+                deletedAt: null,
+            },
+            select: { id: true },
+        });
+        directCases.forEach(tc => caseIds.push(tc.id));
+        // Get child suites recursively
+        const childSuites = await this.prisma.suite.findMany({
+            where: {
+                parentSuiteId: suiteId,
+                deletedAt: null,
+            },
+            select: { id: true },
+        });
+        for (const childSuite of childSuites) {
+            const childCases = await this.getAllCasesInSuite(childSuite.id);
+            childCases.forEach(id => caseIds.push(id));
+        }
+        return caseIds;
+    }
+    /**
+     * Apply query filters to case IDs
+     */
+    async filterCases(caseIds, filters) {
+        if (caseIds.length === 0)
+            return [];
+        const where = {
+            id: { in: caseIds },
+            deletedAt: null,
+        };
+        if (filters.priority)
+            where.priority = filters.priority;
+        if (filters.type)
+            where.type = filters.type;
+        if (filters.status)
+            where.status = filters.status;
+        if (filters.automationStatus)
+            where.automationStatus = filters.automationStatus;
+        const filtered = await this.prisma.testCase.findMany({
+            where,
+            select: { id: true },
+        });
+        return filtered.map(tc => tc.id);
+    }
+    /**
+     * ========== RUN ENDPOINTS ==========
+     */
+    /**
+     * POST /api/v1/projects/:projectId/runs
+     * Create run with case selection (preview first, then create)
+     */
+    async previewCaseSelection(projectId, input) {
+        try {
+            // Verify project exists
+            const project = await this.prisma.project.findUnique({
+                where: { id: projectId },
+            });
+            if (!project) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Project not found');
+            }
+            // Resolve cases
+            const selectedCaseIds = await this.resolveCasesFromSelection(input);
+            // Build suite breakdown
+            const suiteMap = new Map();
+            for (const caseId of selectedCaseIds) {
+                const testCase = await this.prisma.testCase.findUnique({
+                    where: { id: caseId },
+                    include: { suite: true },
+                });
+                if (testCase) {
+                    const key = testCase.suite.id;
+                    if (!suiteMap.has(key)) {
+                        suiteMap.set(key, { name: testCase.suite.name, count: 0 });
+                    }
+                    const entry = suiteMap.get(key);
+                    entry.count++;
+                }
+            }
+            const suiteBreakdown = Array.from(suiteMap.entries()).map(([suiteId, data]) => ({
+                suiteId,
+                suiteName: data.name,
+                caseCount: data.count,
+            }));
+            return {
+                selectedCases: selectedCaseIds,
+                totalCount: selectedCaseIds.length,
+                suiteBreakdown,
+            };
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error previewing case selection: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to preview case selection');
+        }
+    }
+    /**
+     * Create test run with selected cases
+     */
+    async createRun(projectId, userId, input) {
+        try {
+            // Verify project exists
+            const project = await this.prisma.project.findUnique({
+                where: { id: projectId },
+            });
+            if (!project) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Project not found');
+            }
+            // Resolve cases
+            const selectedCaseIds = await this.resolveCasesFromSelection(input.caseSelection);
+            if (selectedCaseIds.length === 0) {
+                throw new errors_1.AppError(400, errors_1.ErrorCodes.VALIDATION_FAILED, 'No cases selected for this run');
+            }
+            // Create test run
+            const testRun = await this.prisma.testRun.create({
+                data: {
+                    projectId,
+                    title: input.title,
+                    type: input.type,
+                    environment: input.environment,
+                    plannedStart: input.plannedStart,
+                    dueDate: input.dueDate,
+                    milestoneId: input.milestoneId,
+                    buildNumber: input.buildNumber,
+                    branch: input.branch,
+                    defaultAssigneeId: input.defaultAssigneeId,
+                    riskThreshold: 'HIGH',
+                },
+            });
+            // Create run cases (bulk insert)
+            const runCases = selectedCaseIds.map(caseId => ({
+                runId: testRun.id,
+                caseId,
+                assigneeId: input.defaultAssigneeId || null,
+            }));
+            await this.prisma.runCase.createMany({
+                data: runCases,
+            });
+            // Log audit
+            await this.logAudit(projectId, userId, 'TestRun', testRun.id, client_1.AuditAction.CREATE);
+            // Broadcast initial metrics (empty/initial)
+            try {
+                const metrics = await this.calculateRunMetrics(testRun.id);
+                (0, runWebsocket_1.broadcastRunMetrics)(testRun.id, metrics);
+            }
+            catch (e) {
+                logger_1.logger.warn(`Failed to broadcast metrics after run creation: ${e}`);
+            }
+            return this.mapTestRunToDTO(testRun);
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error creating run: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to create run');
+        }
+    }
+    /**
+     * GET /api/v1/projects/:projectId/runs
+     * List runs (paginated, filtered)
+     */
+    async listRuns(projectId, page = 1, limit = 20, filters) {
+        try {
+            // Verify project exists
+            const project = await this.prisma.project.findUnique({
+                where: { id: projectId },
+            });
+            if (!project) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Project not found');
+            }
+            // Build where clause
+            const where = {
+                projectId,
+                deletedAt: null,
+            };
+            if (filters?.status)
+                where.status = filters.status;
+            if (filters?.type)
+                where.type = filters.type;
+            if (filters?.environment)
+                where.environment = filters.environment;
+            if (filters?.milestoneId)
+                where.milestoneId = filters.milestoneId;
+            if (filters?.buildNumber)
+                where.buildNumber = filters.buildNumber;
+            if (filters?.dateFrom || filters?.dateTo) {
+                where.plannedStart = {};
+                if (filters.dateFrom)
+                    where.plannedStart.gte = filters.dateFrom;
+                if (filters.dateTo)
+                    where.plannedStart.lte = filters.dateTo;
+            }
+            // Count total
+            const total = await this.prisma.testRun.count({ where });
+            // Fetch paginated
+            const runs = await this.prisma.testRun.findMany({
+                where,
+                skip: (page - 1) * limit,
+                take: limit,
+                orderBy: {
+                    createdAt: 'desc',
+                },
+            });
+            const totalPages = Math.ceil(total / limit);
+            return {
+                data: runs.map(run => this.mapTestRunToDTO(run)),
+                pagination: {
+                    page,
+                    limit,
+                    total,
+                    totalPages,
+                    hasMore: page < totalPages,
+                },
+            };
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error listing runs: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to list runs');
+        }
+    }
+    /**
+     * GET /api/v1/projects/:projectId/runs/:id
+     * Run detail with metrics
+     */
+    async getRunDetail(projectId, runId) {
+        try {
+            const run = await this.prisma.testRun.findUnique({
+                where: { id: runId },
+            });
+            if (!run || run.projectId !== projectId || run.deletedAt !== null) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Run not found');
+            }
+            const cases = await this.getRunCases(runId);
+            const metrics = await this.calculateRunMetrics(runId);
+            return {
+                run: this.mapTestRunToDTO(run),
+                metrics,
+                cases,
+            };
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error getting run detail: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to get run detail');
+        }
+    }
+    /**
+     * PUT /api/v1/projects/:projectId/runs/:id
+     * Update run metadata
+     */
+    async updateRun(projectId, runId, userId, input) {
+        try {
+            const run = await this.prisma.testRun.findUnique({
+                where: { id: runId },
+            });
+            if (!run || run.projectId !== projectId || run.deletedAt !== null) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Run not found');
+            }
+            const updated = await this.prisma.testRun.update({
+                where: { id: runId },
+                data: {
+                    title: input.title ?? run.title,
+                    environment: input.environment ?? run.environment,
+                    plannedStart: input.plannedStart ?? run.plannedStart,
+                    dueDate: input.dueDate ?? run.dueDate,
+                    milestoneId: input.milestoneId ?? run.milestoneId,
+                    buildNumber: input.buildNumber ?? run.buildNumber,
+                    branch: input.branch ?? run.branch,
+                    defaultAssigneeId: input.defaultAssigneeId ?? run.defaultAssigneeId,
+                },
+            });
+            // Log audit
+            await this.logAudit(projectId, userId, 'TestRun', runId, client_1.AuditAction.UPDATE);
+            return this.mapTestRunToDTO(updated);
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error updating run: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to update run');
+        }
+    }
+    /**
+     * DELETE /api/v1/projects/:projectId/runs/:id
+     * Soft delete run
+     */
+    async deleteRun(projectId, runId, userId) {
+        try {
+            const run = await this.prisma.testRun.findUnique({
+                where: { id: runId },
+            });
+            if (!run || run.projectId !== projectId || run.deletedAt !== null) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Run not found');
+            }
+            await this.prisma.testRun.update({
+                where: { id: runId },
+                data: { deletedAt: new Date() },
+            });
+            // Log audit
+            await this.logAudit(projectId, userId, 'TestRun', runId, client_1.AuditAction.DELETE);
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error deleting run: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to delete run');
+        }
+    }
+    /**
+     * POST /api/v1/projects/:projectId/runs/:id/close
+     * Close run (requires approval role check)
+     */
+    async closeRun(projectId, runId, userId, userRole) {
+        try {
+            // Check if user has approval role (ADMIN, MANAGER, QA_LEAD)
+            const allowedRoles = ['ADMIN', 'MANAGER', 'QA_LEAD'];
+            if (!allowedRoles.includes(userRole)) {
+                throw new errors_1.AppError(403, errors_1.ErrorCodes.FORBIDDEN, 'Insufficient permissions to close run');
+            }
+            const run = await this.prisma.testRun.findUnique({
+                where: { id: runId },
+            });
+            if (!run || run.projectId !== projectId || run.deletedAt !== null) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Run not found');
+            }
+            const closed = await this.prisma.testRun.update({
+                where: { id: runId },
+                data: { status: 'COMPLETED' },
+            });
+            // Log audit
+            await this.logAudit(projectId, userId, 'TestRun', runId, client_1.AuditAction.UPDATE);
+            return this.mapTestRunToDTO(closed);
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error closing run: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to close run');
+        }
+    }
+    /**
+     * POST /api/v1/projects/:projectId/runs/:id/clone
+     * Clone run with cases
+     */
+    async cloneRun(projectId, runId, userId, input) {
+        try {
+            const original = await this.prisma.testRun.findUnique({
+                where: { id: runId },
+                include: { runCases: true },
+            });
+            if (!original || original.projectId !== projectId || original.deletedAt !== null) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Run not found');
+            }
+            // Determine which cases to copy
+            let caseIds;
+            if (input.newCaseSelection) {
+                caseIds = await this.resolveCasesFromSelection(input.newCaseSelection);
+            }
+            else {
+                caseIds = original.runCases.map(rc => rc.caseId);
+            }
+            // Create new run
+            const cloned = await this.prisma.testRun.create({
+                data: {
+                    projectId,
+                    title: input.title,
+                    type: original.type,
+                    environment: original.environment,
+                    plannedStart: input.plannedStart,
+                    dueDate: input.dueDate,
+                    milestoneId: original.milestoneId,
+                    buildNumber: original.buildNumber,
+                    branch: original.branch,
+                    defaultAssigneeId: original.defaultAssigneeId,
+                    riskThreshold: original.riskThreshold,
+                },
+            });
+            // Create run cases
+            const runCases = caseIds.map(caseId => ({
+                runId: cloned.id,
+                caseId,
+                assigneeId: original.defaultAssigneeId || null,
+            }));
+            await this.prisma.runCase.createMany({
+                data: runCases,
+            });
+            // Log audit
+            await this.logAudit(projectId, userId, 'TestRun', cloned.id, client_1.AuditAction.CREATE);
+            return {
+                originalRunId: runId,
+                clonedRunId: cloned.id,
+                casesCopied: caseIds.length,
+            };
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error cloning run: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to clone run');
+        }
+    }
+    /**
+     * ========== RUN CASE ENDPOINTS ==========
+     */
+    /**
+     * GET /api/v1/runs/:runId/cases
+     * List cases in run with current status
+     */
+    async getRunCases(runId) {
+        const runCases = await this.prisma.runCase.findMany({
+            where: { runId },
+            include: {
+                testCase: {
+                    select: {
+                        id: true,
+                        title: true,
+                        estimatedTime: true,
+                    },
+                },
+                assignee: {
+                    select: {
+                        id: true,
+                        name: true,
+                        email: true,
+                    },
+                },
+                stepResults: {
+                    select: {
+                        id: true,
+                        runCaseId: true,
+                        stepId: true,
+                        status: true,
+                        comment: true,
+                        attachments: true,
+                        createdAt: true,
+                        updatedAt: true,
+                    },
+                },
+            },
+        });
+        return runCases.map(rc => ({
+            id: rc.id,
+            runId: rc.runId,
+            caseId: rc.caseId,
+            assigneeId: rc.assigneeId,
+            status: rc.status,
+            executionType: rc.executionType,
+            startedAt: rc.startedAt,
+            completedAt: rc.completedAt,
+            testCase: rc.testCase,
+            assignee: rc.assignee || undefined,
+            stepResults: rc.stepResults,
+            createdAt: rc.createdAt,
+            updatedAt: rc.updatedAt,
+        }));
+    }
+    /**
+     * PUT /api/v1/runs/:runId/cases/:runCaseId
+     * Update run case status + step results
+     */
+    async updateRunCaseStatus(runId, runCaseId, userId, input) {
+        try {
+            const runCase = await this.prisma.runCase.findUnique({
+                where: { id: runCaseId },
+            });
+            if (!runCase || runCase.runId !== runId) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Run case not found');
+            }
+            // Update run case status
+            const oldStatus = runCase.status;
+            await this.prisma.runCase.update({
+                where: { id: runCaseId },
+                data: {
+                    status: input.status,
+                    executionType: input.executionType ?? runCase.executionType,
+                    assigneeId: input.assigneeId ?? runCase.assigneeId,
+                    startedAt: ['IN_PROGRESS'].includes(input.status) ? new Date() : runCase.startedAt,
+                    completedAt: ['PASSED', 'FAILED', 'BLOCKED', 'SKIPPED'].includes(input.status)
+                        ? new Date()
+                        : null,
+                },
+            });
+            // Update step results if provided
+            if (input.stepResults && input.stepResults.length > 0) {
+                for (const stepResult of input.stepResults) {
+                    // Find existing step result
+                    const existing = await this.prisma.stepResult.findFirst({
+                        where: {
+                            runCaseId,
+                            stepId: stepResult.stepId,
+                        },
+                    });
+                    if (existing) {
+                        // Update existing
+                        await this.prisma.stepResult.update({
+                            where: { id: existing.id },
+                            data: {
+                                status: stepResult.status,
+                                comment: stepResult.comment ?? undefined,
+                                attachments: stepResult.attachments ?? undefined,
+                            },
+                        });
+                    }
+                    else {
+                        // Create new
+                        await this.prisma.stepResult.create({
+                            data: {
+                                runCaseId,
+                                stepId: stepResult.stepId,
+                                status: stepResult.status,
+                                comment: stepResult.comment ?? null,
+                                attachments: stepResult.attachments ?? null,
+                            },
+                        });
+                    }
+                }
+            }
+            // Log audit with status change information
+            const run = await this.prisma.testRun.findUnique({
+                where: { id: runId },
+            });
+            if (run) {
+                const diff = oldStatus !== input.status
+                    ? {
+                        status: input.status,
+                        previousStatus: oldStatus,
+                    }
+                    : undefined;
+                await this.logAudit(run.projectId, userId, 'RunCase', runCaseId, client_1.AuditAction.UPDATE, diff);
+            }
+            // Fetch full updated case
+            const fullUpdated = await this.prisma.runCase.findUnique({
+                where: { id: runCaseId },
+                include: {
+                    testCase: {
+                        select: {
+                            id: true,
+                            title: true,
+                            estimatedTime: true,
+                        },
+                    },
+                    assignee: {
+                        select: {
+                            id: true,
+                            name: true,
+                            email: true,
+                        },
+                    },
+                    stepResults: {
+                        select: {
+                            id: true,
+                            runCaseId: true,
+                            stepId: true,
+                            status: true,
+                            comment: true,
+                            attachments: true,
+                            createdAt: true,
+                            updatedAt: true,
+                        },
+                    },
+                },
+            });
+            // Broadcast updated metrics for this run
+            try {
+                const metrics = await this.calculateRunMetrics(runId);
+                (0, runWebsocket_1.broadcastRunMetrics)(runId, metrics);
+            }
+            catch (e) {
+                logger_1.logger.warn(`Failed to broadcast metrics after update: ${e}`);
+            }
+            return {
+                id: fullUpdated.id,
+                runId: fullUpdated.runId,
+                caseId: fullUpdated.caseId,
+                assigneeId: fullUpdated.assigneeId,
+                status: fullUpdated.status,
+                executionType: fullUpdated.executionType,
+                startedAt: fullUpdated.startedAt,
+                completedAt: fullUpdated.completedAt,
+                testCase: fullUpdated.testCase,
+                assignee: fullUpdated.assignee || undefined,
+                stepResults: fullUpdated.stepResults,
+                createdAt: fullUpdated.createdAt,
+                updatedAt: fullUpdated.updatedAt,
+            };
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error updating run case status: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to update run case status');
+        }
+    }
+    /**
+     * POST /api/v1/runs/:runId/cases/bulk-status
+     * Bulk status update (must handle 200 cases in under 2 seconds)
+     */
+    async bulkUpdateCaseStatus(runId, userId, input) {
+        const errors = [];
+        let updated = 0;
+        try {
+            // Verify run exists
+            const run = await this.prisma.testRun.findUnique({
+                where: { id: runId },
+            });
+            if (!run) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Run not found');
+            }
+            // Process updates in parallel batches for performance
+            const batchSize = 50;
+            for (let i = 0; i < input.updates.length; i += batchSize) {
+                const batch = input.updates.slice(i, i + batchSize);
+                const updatePromises = batch.map(async (update) => {
+                    try {
+                        const runCase = await this.prisma.runCase.findUnique({
+                            where: { id: update.runCaseId },
+                        });
+                        if (!runCase || runCase.runId !== runId) {
+                            throw new Error('Run case not found');
+                        }
+                        // Update run case
+                        await this.prisma.runCase.update({
+                            where: { id: update.runCaseId },
+                            data: {
+                                status: update.status,
+                                assigneeId: update.assigneeId ?? runCase.assigneeId,
+                                startedAt: ['IN_PROGRESS'].includes(update.status) ? new Date() : runCase.startedAt,
+                                completedAt: ['PASSED', 'FAILED', 'BLOCKED', 'SKIPPED'].includes(update.status)
+                                    ? new Date()
+                                    : null,
+                            },
+                        });
+                        // Update step results if provided
+                        if (update.stepResults && update.stepResults.length > 0) {
+                            for (const stepResult of update.stepResults) {
+                                // Find existing step result
+                                const existing = await this.prisma.stepResult.findFirst({
+                                    where: {
+                                        runCaseId: update.runCaseId,
+                                        stepId: stepResult.stepId,
+                                    },
+                                });
+                                if (existing) {
+                                    // Update existing
+                                    await this.prisma.stepResult.update({
+                                        where: { id: existing.id },
+                                        data: {
+                                            status: stepResult.status,
+                                            comment: stepResult.comment ?? undefined,
+                                            attachments: stepResult.attachments ?? undefined,
+                                        },
+                                    });
+                                }
+                                else {
+                                    // Create new
+                                    await this.prisma.stepResult.create({
+                                        data: {
+                                            runCaseId: update.runCaseId,
+                                            stepId: stepResult.stepId,
+                                            status: stepResult.status,
+                                            comment: stepResult.comment ?? null,
+                                            attachments: stepResult.attachments ?? null,
+                                        },
+                                    });
+                                }
+                            }
+                        }
+                        updated++;
+                    }
+                    catch (error) {
+                        errors.push({
+                            runCaseId: update.runCaseId,
+                            error: error instanceof Error ? error.message : 'Unknown error',
+                        });
+                    }
+                });
+                await Promise.all(updatePromises);
+            }
+            // Log audit only if all successful
+            if (errors.length === 0) {
+                await this.logAudit(run.projectId, userId, 'TestRun', runId, client_1.AuditAction.UPDATE);
+            }
+            // Broadcast metrics after bulk update
+            try {
+                const metrics = await this.calculateRunMetrics(runId);
+                (0, runWebsocket_1.broadcastRunMetrics)(runId, metrics);
+            }
+            catch (e) {
+                logger_1.logger.warn(`Failed to broadcast metrics after bulk update: ${e}`);
+            }
+            return {
+                updated,
+                failed: errors.length,
+                errors,
+            };
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error bulk updating case statuses: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to bulk update case statuses');
+        }
+    }
+    /**
+     * ========== METRICS ENDPOINTS ==========
+     */
+    /**
+     * GET /api/v1/runs/:runId/metrics
+     * Live metrics aggregation
+     */
+    async calculateRunMetrics(runId) {
+        try {
+            const runCases = await this.prisma.runCase.findMany({
+                where: { runId },
+                include: {
+                    testCase: {
+                        select: { estimatedTime: true },
+                    },
+                    assignee: {
+                        select: { id: true, name: true },
+                    },
+                },
+            });
+            if (runCases.length === 0) {
+                return this.emptyMetrics();
+            }
+            // Detect flaky tests by checking audit logs for status changes from FAILED to PASSED
+            const failedThenPassedCases = new Set();
+            for (const rc of runCases) {
+                if (rc.status === 'PASSED') {
+                    // Check if this case was ever FAILED by querying audit logs
+                    const auditLogs = await this.prisma.auditLog.findMany({
+                        where: {
+                            entityType: 'RunCase',
+                            entityId: rc.id,
+                        },
+                        orderBy: {
+                            createdAt: 'asc',
+                        },
+                    });
+                    // Look for a transition from FAILED to PASSED
+                    let hasBeenFailed = false;
+                    for (const log of auditLogs) {
+                        if (log.diff && typeof log.diff === 'object') {
+                            const diff = log.diff;
+                            // Check if this update changed status to FAILED
+                            if (diff.status === 'FAILED') {
+                                hasBeenFailed = true;
+                            }
+                            // Check if this update changed status to PASSED while it was previously failed
+                            else if (diff.status === 'PASSED' && hasBeenFailed) {
+                                failedThenPassedCases.add(rc.caseId);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            // Count statuses
+            const statusCounts = {
+                passed: 0,
+                failed: 0,
+                blocked: 0,
+                skipped: 0,
+                notRun: 0,
+                inProgress: 0,
+            };
+            const testerStats = new Map();
+            let estimatedTime = 0;
+            let actualTime = 0;
+            for (const rc of runCases) {
+                // Count status
+                switch (rc.status) {
+                    case 'PASSED':
+                        statusCounts.passed++;
+                        break;
+                    case 'FAILED':
+                        statusCounts.failed++;
+                        break;
+                    case 'BLOCKED':
+                        statusCounts.blocked++;
+                        break;
+                    case 'SKIPPED':
+                        statusCounts.skipped++;
+                        break;
+                    case 'IN_PROGRESS':
+                        statusCounts.inProgress++;
+                        break;
+                    default:
+                        statusCounts.notRun++;
+                }
+                // Calculate time
+                if (rc.testCase?.estimatedTime) {
+                    estimatedTime += rc.testCase.estimatedTime;
+                }
+                if (rc.startedAt && rc.completedAt) {
+                    actualTime += (rc.completedAt.getTime() - rc.startedAt.getTime()) / 60000;
+                }
+                // Tester performance
+                if (rc.assignee) {
+                    const testerId = rc.assignee.id;
+                    const testerName = rc.assignee.name;
+                    if (!testerStats.has(testerId)) {
+                        testerStats.set(testerId, {
+                            testerId,
+                            testerName,
+                            casesHandled: 0,
+                            passed: 0,
+                            failed: 0,
+                            blocked: 0,
+                            totalTime: 0,
+                        });
+                    }
+                    const stats = testerStats.get(testerId);
+                    if (['PASSED', 'FAILED', 'BLOCKED', 'SKIPPED'].includes(rc.status)) {
+                        stats.casesHandled++;
+                        if (rc.status === 'PASSED')
+                            stats.passed++;
+                        if (rc.status === 'FAILED')
+                            stats.failed++;
+                        if (rc.status === 'BLOCKED')
+                            stats.blocked++;
+                        if (rc.startedAt && rc.completedAt) {
+                            stats.totalTime += rc.completedAt.getTime() - rc.startedAt.getTime();
+                        }
+                    }
+                }
+            }
+            // Count defects
+            const defectCount = await this.prisma.defect.count({
+                where: {
+                    runCase: {
+                        runId,
+                    },
+                },
+            });
+            // Build tester performance array
+            const testerPerformance = Array.from(testerStats.values()).map((stats) => ({
+                testerId: stats.testerId,
+                testerName: stats.testerName,
+                casesHandled: stats.casesHandled,
+                passed: stats.passed,
+                failed: stats.failed,
+                blocked: stats.blocked,
+                passRate: stats.casesHandled > 0 ? (stats.passed / stats.casesHandled) * 100 : 0,
+                averageTimePerCase: stats.casesHandled > 0 ? stats.totalTime / stats.casesHandled / 60000 : 0,
+            }));
+            const completedCases = statusCounts.passed +
+                statusCounts.failed +
+                statusCounts.blocked +
+                statusCounts.skipped;
+            const completionRate = (completedCases / runCases.length) * 100;
+            const passRate = statusCounts.passed + statusCounts.blocked > 0
+                ? ((statusCounts.passed + statusCounts.blocked) /
+                    (statusCounts.passed + statusCounts.failed + statusCounts.blocked)) *
+                    100
+                : 0;
+            const failRate = 100 - passRate;
+            return {
+                totalCases: runCases.length,
+                passedCases: statusCounts.passed,
+                failedCases: statusCounts.failed,
+                blockedCases: statusCounts.blocked,
+                skippedCases: statusCounts.skipped,
+                notRunCases: statusCounts.notRun,
+                inProgressCases: statusCounts.inProgress,
+                passRate: Math.round(passRate * 100) / 100,
+                failRate: Math.round(failRate * 100) / 100,
+                completionRate: Math.round(completionRate * 100) / 100,
+                defectCount,
+                flakyTests: Array.from(failedThenPassedCases),
+                estimatedTime,
+                actualTime: Math.round(actualTime),
+                testerPerformance,
+            };
+        }
+        catch (error) {
+            logger_1.logger.error(`Error calculating run metrics: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to calculate run metrics');
+        }
+    }
+    /**
+     * Helper to return empty metrics
+     */
+    emptyMetrics() {
+        return {
+            totalCases: 0,
+            passedCases: 0,
+            failedCases: 0,
+            blockedCases: 0,
+            skippedCases: 0,
+            notRunCases: 0,
+            inProgressCases: 0,
+            passRate: 0,
+            failRate: 0,
+            completionRate: 0,
+            defectCount: 0,
+            flakyTests: [],
+            estimatedTime: 0,
+            actualTime: 0,
+            testerPerformance: [],
+        };
+    }
+    /**
+     * ========== HELPERS ==========
+     */
+    mapTestRunToDTO(run) {
+        return {
+            id: run.id,
+            projectId: run.projectId,
+            title: run.title,
+            type: run.type,
+            environment: run.environment,
+            milestoneId: run.milestoneId,
+            buildNumber: run.buildNumber,
+            branch: run.branch,
+            status: run.status,
+            plannedStart: run.plannedStart,
+            dueDate: run.dueDate,
+            defaultAssigneeId: run.defaultAssigneeId,
+            riskThreshold: run.riskThreshold,
+            createdAt: run.createdAt,
+            updatedAt: run.updatedAt,
+        };
+    }
+    async logAudit(projectId, userId, entityType, entityId, action, diff) {
+        try {
+            const data = {
+                projectId,
+                userId,
+                entityType,
+                entityId,
+                action,
+            };
+            if (diff) {
+                data.diff = diff;
+            }
+            await this.prisma.auditLog.create({
+                data,
+            });
+        }
+        catch (error) {
+            logger_1.logger.warn(`Failed to log audit: ${error}`);
+        }
+    }
+    /**
+     * Public wrapper to list run cases
+     */
+    async listRunCases(runId) {
+        return this.getRunCases(runId);
+    }
+}
+exports.TestRunService = TestRunService;
+//# sourceMappingURL=TestRunService.js.map

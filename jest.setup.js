@@ -109,6 +109,8 @@ const testDataStore = {
   testCases: {},
   testSteps: {},
   auditLogs: [],
+  testRuns: {},
+  runCases: {},
 };
 
 // Helper function to apply Prisma filters
@@ -168,7 +170,7 @@ jest.mock('@prisma/client', () => {
       }),
       create: jest.fn(async ({ data }) => {
         const user = {
-          id: `user-${Date.now()}`,
+          id: require('crypto').randomUUID(),
           email: data.email,
           name: data.name,
           passwordHash: data.passwordHash,
@@ -193,7 +195,7 @@ jest.mock('@prisma/client', () => {
     organization: {
       create: jest.fn(async ({ data }) => {
         const org = {
-          id: `org-${Date.now()}`,
+          id: require('crypto').randomUUID(),
           name: data.name,
           slug: data.slug,
           plan: data.plan || 'FREE',
@@ -213,7 +215,7 @@ jest.mock('@prisma/client', () => {
       }),
       create: jest.fn(async ({ data }) => {
         const project = {
-          id: `proj-${Date.now()}`,
+          id: require('crypto').randomUUID(),
           name: data.name,
           slug: data.slug,
           description: data.description || '',
@@ -228,6 +230,13 @@ jest.mock('@prisma/client', () => {
       }),
       findMany: jest.fn(async ({ where }) => {
         return Object.values(testDataStore.projects).filter(p => !where || (where.organizationId ? p.organizationId === where.organizationId : true));
+      }),
+      delete: jest.fn(async ({ where }) => {
+        const project = testDataStore.projects[where.id];
+        if (project) {
+          delete testDataStore.projects[where.id];
+        }
+        return project;
       }),
     },
     suite: {
@@ -283,9 +292,8 @@ jest.mock('@prisma/client', () => {
         return result;
       }),
       create: jest.fn(async ({ data }) => {
-        testDataStore.suiteCounter = (testDataStore.suiteCounter || 0) + 1;
         const suite = {
-          id: `suite-${Date.now()}-${testDataStore.suiteCounter}`,
+          id: require('crypto').randomUUID(),
           name: data.name,
           description: data.description || '',
           projectId: data.projectId,
@@ -343,8 +351,20 @@ jest.mock('@prisma/client', () => {
       }),
     },
     testCase: {
-      findUnique: jest.fn(async ({ where }) => {
-        return testDataStore.testCases[where.id] || null;
+      findUnique: jest.fn(async ({ where, include }) => {
+        const testCase = testDataStore.testCases[where.id] || null;
+        if (!testCase) return null;
+        
+        const result = { ...testCase };
+        if (include && include.suite) {
+          result.suite = testDataStore.suites[testCase.suiteId] || null;
+        }
+        if (include && include.steps) {
+          result.steps = Object.values(testDataStore.testSteps || {})
+            .filter(s => s.testCaseId === testCase.id)
+            .sort((a, b) => a.order - b.order);
+        }
+        return result;
       }),
       findFirst: jest.fn(async ({ where, include }) => {
         const cases = Object.values(testDataStore.testCases);
@@ -407,9 +427,8 @@ jest.mock('@prisma/client', () => {
         return result;
       }),
       create: jest.fn(async ({ data }) => {
-        testDataStore.caseCounter = (testDataStore.caseCounter || 0) + 1;
         const testCase = {
-          id: `case-${Date.now()}-${testDataStore.caseCounter}`,
+          id: require('crypto').randomUUID(),
           title: data.title,
           description: data.description || '',
           preconditions: data.preconditions || '',
@@ -504,7 +523,7 @@ jest.mock('@prisma/client', () => {
       }),
       create: jest.fn(async ({ data }) => {
         const step = {
-          id: `step-${Object.keys(testDataStore.testSteps).length}-${Date.now()}`,
+          id: require('crypto').randomUUID(),
           testCaseId: data.testCaseId,
           order: data.order || 0,
           action: data.action || '',
@@ -532,7 +551,7 @@ jest.mock('@prisma/client', () => {
     auditLog: {
       create: jest.fn(async ({ data }) => {
         const log = {
-          id: `audit-${Date.now()}`,
+          id: require('crypto').randomUUID(),
           ...data,
           createdAt: new Date(),
         };
@@ -549,6 +568,279 @@ jest.mock('@prisma/client', () => {
         });
       }),
     },
+    testRun: {
+      findUnique: jest.fn(async ({ where, include }) => {
+        const run = testDataStore.testRuns?.[where.id] || null;
+        if (!run) return null;
+        
+        const result = { ...run };
+        if (include && include.runCases) {
+          result.runCases = Object.values(testDataStore.runCases || {}).filter(rc => rc.runId === run.id);
+        }
+        if (include && include.cases) {
+          result.cases = Object.values(testDataStore.runCases || {}).filter(rc => rc.runId === run.id);
+        }
+        return result;
+      }),
+      findFirst: jest.fn(async ({ where, include }) => {
+        const runs = Object.values(testDataStore.testRuns || {});
+        const run = runs.find(r => {
+          if (where?.id && r.id !== where.id) return false;
+          if (where?.projectId && r.projectId !== where.projectId) return false;
+          if (where?.deletedAt === null && r.deletedAt !== null) return false;
+          return true;
+        });
+        
+        if (!run) return null;
+        const result = { ...run };
+        if (include && include.runCases) {
+          result.runCases = Object.values(testDataStore.runCases || {}).filter(rc => rc.runId === run.id);
+        }
+        if (include && include.cases) {
+          result.cases = Object.values(testDataStore.runCases || {}).filter(rc => rc.runId === run.id);
+        }
+        return result;
+      }),
+      create: jest.fn(async ({ data, include }) => {
+        const run = {
+          id: require('crypto').randomUUID(),
+          projectId: data.projectId,
+          title: data.title,
+          type: data.type,
+          environment: data.environment,
+          plannedStart: data.plannedStart || null,
+          dueDate: data.dueDate || null,
+          milestoneId: data.milestoneId || null,
+          buildNumber: data.buildNumber || null,
+          branch: data.branch || null,
+          defaultAssigneeId: data.defaultAssigneeId || null,
+          riskThreshold: data.riskThreshold || 'MEDIUM',
+          status: 'IN_PROGRESS',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          deletedAt: null,
+        };
+        
+        testDataStore.testRuns = testDataStore.testRuns || {};
+        testDataStore.testRuns[run.id] = run;
+        
+        const result = { ...run };
+        if (include && include.cases) {
+          result.cases = [];
+        }
+        return result;
+      }),
+      findMany: jest.fn(async ({ where, skip, take, orderBy, include }) => {
+        const runs = Object.values(testDataStore.testRuns || {});
+        let filtered = runs.filter(r => {
+          if (where?.projectId && r.projectId !== where.projectId) return false;
+          if (where?.deletedAt === null && r.deletedAt !== null) return false;
+          if (where?.status && r.status !== where.status) return false;
+          return true;
+        });
+        
+        if (skip) filtered = filtered.slice(skip);
+        if (take) filtered = filtered.slice(0, take);
+        
+        if (include) {
+          filtered = filtered.map(r => {
+            const result = { ...r };
+            if (include.cases) {
+              result.cases = Object.values(testDataStore.runCases || {}).filter(rc => rc.runId === r.id);
+            }
+            return result;
+          });
+        }
+        
+        return filtered;
+      }),
+      update: jest.fn(async ({ where, data, include }) => {
+        const run = testDataStore.testRuns?.[where.id];
+        if (!run) return null;
+        Object.assign(run, data, { updatedAt: new Date() });
+        
+        const result = { ...run };
+        if (include && include.cases) {
+          result.cases = Object.values(testDataStore.runCases || {}).filter(rc => rc.runId === run.id);
+        }
+        return result;
+      }),
+      updateMany: jest.fn(async ({ where, data }) => {
+        const runs = Object.values(testDataStore.testRuns || {});
+        let filtered = runs.filter(r => {
+          if (where?.projectId && r.projectId !== where.projectId) return false;
+          if (where?.deletedAt === null && r.deletedAt !== null) return false;
+          return true;
+        });
+        
+        filtered.forEach(r => {
+          Object.assign(r, data, { updatedAt: new Date() });
+        });
+        
+        return { count: filtered.length };
+      }),
+      count: jest.fn(async ({ where }) => {
+        const runs = Object.values(testDataStore.testRuns || {});
+        return runs.filter(r => {
+          if (where?.projectId && r.projectId !== where.projectId) return false;
+          if (where?.deletedAt === null && r.deletedAt !== null) return false;
+          return true;
+        }).length;
+      }),
+    },
+    runCase: {
+      findUnique: jest.fn(async ({ where }) => {
+        return testDataStore.runCases?.[where.id] || null;
+      }),
+      findMany: jest.fn(async ({ where, include, skip, take }) => {
+        const cases = Object.values(testDataStore.runCases || {});
+        let filtered = cases.filter(rc => {
+          if (where?.runId && rc.runId !== where.runId) return false;
+          if (where?.deletedAt === null && rc.deletedAt !== null) return false;
+          return true;
+        });
+        
+        if (skip) filtered = filtered.slice(skip);
+        if (take) filtered = filtered.slice(0, take);
+        
+        if (include && include.testCase) {
+          filtered = filtered.map(rc => ({
+            ...rc,
+            testCase: testDataStore.testCases?.[rc.caseId] || null,
+          }));
+        }
+        
+        return filtered;
+      }),
+      create: jest.fn(async ({ data, include }) => {
+        const runCase = {
+          id: require('crypto').randomUUID(),
+          runId: data.runId,
+          caseId: data.caseId,
+          assigneeId: data.assigneeId || null,
+          status: data.status || 'IDLE',
+          executionType: data.executionType || 'MANUAL',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          deletedAt: null,
+        };
+        
+        testDataStore.runCases = testDataStore.runCases || {};
+        testDataStore.runCases[runCase.id] = runCase;
+        
+        const result = { ...runCase };
+        if (include && include.testCase) {
+          result.testCase = testDataStore.testCases?.[runCase.caseId] || null;
+        }
+        return result;
+      }),
+      createMany: jest.fn(async ({ data, skipDuplicates }) => {
+        testDataStore.runCases = testDataStore.runCases || {};
+        const created = data.map(d => {
+          const runCase = {
+            id: require('crypto').randomUUID(),
+            runId: d.runId,
+            caseId: d.caseId,
+            assigneeId: d.assigneeId || null,
+            status: d.status || 'IDLE',
+            executionType: d.executionType || 'MANUAL',
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            deletedAt: null,
+          };
+          testDataStore.runCases[runCase.id] = runCase;
+          return runCase;
+        });
+        return { count: created.length };
+      }),
+      update: jest.fn(async ({ where, data, include }) => {
+        const runCase = testDataStore.runCases?.[where.id];
+        if (!runCase) return null;
+        
+        // Track previous status for flaky test detection
+        if (data.status && data.status !== runCase.status) {
+          if (runCase.status === 'FAILED' && data.status === 'PASSED') {
+            // Mark as flaky
+            runCase.wasFailedThenPassed = true;
+          }
+          runCase.previousStatus = runCase.status;
+        }
+        
+        Object.assign(runCase, data, { updatedAt: new Date() });
+        
+        const result = { ...runCase };
+        if (include && include.testCase) {
+          result.testCase = testDataStore.testCases?.[runCase.caseId] || null;
+        }
+        return result;
+      }),
+      updateMany: jest.fn(async ({ where, data }) => {
+        const cases = Object.values(testDataStore.runCases || {});
+        let filtered = cases.filter(rc => {
+          if (where?.runId && rc.runId !== where.runId) return false;
+          if (where?.caseId && rc.caseId !== where.caseId) return false;
+          return true;
+        });
+        
+        filtered.forEach(rc => {
+          Object.assign(rc, data, { updatedAt: new Date() });
+        });
+        
+        return { count: filtered.length };
+      }),
+      count: jest.fn(async ({ where }) => {
+        const cases = Object.values(testDataStore.runCases || {});
+        return cases.filter(rc => {
+          if (where?.runId && rc.runId !== where.runId) return false;
+          return true;
+        }).length;
+      }),
+    },
+    auditLog: {
+      create: jest.fn(async ({ data }) => {
+        const log = {
+          id: require('crypto').randomUUID(),
+          ...data,
+          createdAt: new Date(),
+        };
+        testDataStore.auditLogs.push(log);
+        return log;
+      }),
+      findMany: jest.fn(async ({ where }) => {
+        return testDataStore.auditLogs.filter(log => {
+          if (where?.projectId && log.projectId !== where.projectId) return false;
+          if (where?.entityId && log.entityId !== where.entityId) return false;
+          if (where?.entityType && log.entityType !== where.entityType) return false;
+          if (where?.action && log.action !== where.action) return false;
+          return true;
+        });
+      }),
+    },
+    stepResult: {
+      findFirst: jest.fn(async ({ where }) => {
+        return null;
+      }),
+      create: jest.fn(async ({ data }) => {
+        return {
+          id: require('crypto').randomUUID(),
+          ...data,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+      }),
+      update: jest.fn(async ({ where, data }) => {
+        return {
+          id: where.id,
+          ...data,
+          updatedAt: new Date(),
+        };
+      }),
+    },
+    defect: {
+      count: jest.fn(async ({ where }) => {
+        return 0;
+      }),
+    },
     organizationMember: {
       findUnique: jest.fn(async ({ where }) => null),
     },
@@ -561,6 +853,25 @@ jest.mock('@prisma/client', () => {
 
   return {
     PrismaClient: jest.fn(() => mockPrismaClient),
-    Prisma: {},
+    Prisma: {
+      AuditAction: {
+        CREATE: 'CREATE',
+        UPDATE: 'UPDATE',
+        DELETE: 'DELETE',
+        RESTORE: 'RESTORE',
+        EXECUTE: 'EXECUTE',
+        ASSIGN: 'ASSIGN',
+        COMMENT: 'COMMENT',
+      },
+    },
+    AuditAction: {
+      CREATE: 'CREATE',
+      UPDATE: 'UPDATE',
+      DELETE: 'DELETE',
+      RESTORE: 'RESTORE',
+      EXECUTE: 'EXECUTE',
+      ASSIGN: 'ASSIGN',
+      COMMENT: 'COMMENT',
+    },
   };
 });

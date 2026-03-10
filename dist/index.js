@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const http_1 = __importDefault(require("http"));
 const environment_1 = require("./config/environment");
 const logger_1 = require("./config/logger");
 const database_1 = require("./config/database");
@@ -15,6 +16,8 @@ const requestLogger_1 = require("./middleware/requestLogger");
 const errorHandler_1 = require("./middleware/errorHandler");
 const auth_1 = __importDefault(require("./routes/auth"));
 const testRepository_1 = __importDefault(require("./routes/testRepository"));
+const runs_1 = __importDefault(require("./routes/runs"));
+const runWebsocket_1 = require("./utils/runWebsocket");
 const app = (0, express_1.default)();
 /**
  * Initialize database and cache
@@ -65,6 +68,7 @@ app.use(requestLogger_1.requestLogger);
  */
 app.use(`/api/${environment_1.config.API_VERSION}/auth`, auth_1.default);
 app.use(`/api/${environment_1.config.API_VERSION}/projects`, testRepository_1.default);
+app.use(`/api/${environment_1.config.API_VERSION}`, runs_1.default);
 // Health check endpoint
 app.get('/health', (_req, res) => {
     res.json({
@@ -91,8 +95,10 @@ const startServer = async () => {
     try {
         // Initialize app (database, cache, etc.)
         await initializeApp();
-        // Start listening
-        app.listen(environment_1.config.PORT, environment_1.config.HOST, () => {
+        // Create HTTP server and attach WebSocket server
+        const server = http_1.default.createServer(app);
+        (0, runWebsocket_1.attachWebSocketServer)(server);
+        server.listen(environment_1.config.PORT, environment_1.config.HOST, () => {
             logger_1.logger.info(`Server running on http://${environment_1.config.HOST}:${environment_1.config.PORT} in ${environment_1.config.NODE_ENV} mode`);
         });
     }
