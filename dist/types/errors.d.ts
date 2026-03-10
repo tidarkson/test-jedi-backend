@@ -14,6 +14,10 @@ export declare const ErrorCodes: {
     readonly UNAUTHORIZED: "UNAUTHORIZED";
     readonly FORBIDDEN: "FORBIDDEN";
     readonly VALIDATION_FAILED: "VALIDATION_FAILED";
+    readonly VALIDATION_ERROR: "VALIDATION_ERROR";
+    readonly INVALID_REQUEST: "INVALID_REQUEST";
+    readonly INVALID_INPUT: "INVALID_INPUT";
+    readonly EXPIRED: "EXPIRED";
     readonly NOT_FOUND: "NOT_FOUND";
     readonly LOCKED_RESOURCE: "LOCKED_RESOURCE";
     readonly DUPLICATE_CASE: "DUPLICATE_CASE";

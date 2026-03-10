@@ -111,6 +111,10 @@ const testDataStore = {
   auditLogs: [],
   testRuns: {},
   runCases: {},
+  organizationMembers: {},
+  pendingInvitations: {},
+  customFields: {},
+  retentionPolicies: {},
 };
 
 // Helper function to apply Prisma filters
@@ -181,6 +185,22 @@ jest.mock('@prisma/client', () => {
         };
         testDataStore.users[user.id] = user;
         testDataStore.users[`email_${data.email}`] = user;
+        
+        // Handle nested organizationMembers creation
+        if (data.organizationMembers?.create) {
+          const orgMembership = data.organizationMembers.create;
+          if (!testDataStore.organizationMembers) testDataStore.organizationMembers = {};
+          const key = `${orgMembership.organizationId}_${user.id}`;
+          testDataStore.organizationMembers[key] = {
+            id: require('crypto').randomUUID(),
+            organizationId: orgMembership.organizationId,
+            userId: user.id,
+            role: orgMembership.role || 'MEMBER',
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          };
+        }
+        
         return user;
       }),
       update: jest.fn(async ({ where, data }) => {
@@ -806,14 +826,28 @@ jest.mock('@prisma/client', () => {
         testDataStore.auditLogs.push(log);
         return log;
       }),
-      findMany: jest.fn(async ({ where }) => {
-        return testDataStore.auditLogs.filter(log => {
+      findFirst: jest.fn(async ({ where }) => {
+        return testDataStore.auditLogs.find(log => {
+          if (where?.organizationId && log.organizationId !== where.organizationId) return false;
+          if (where?.projectId && log.projectId !== where.projectId) return false;
+          if (where?.entityId && log.entityId !== where.entityId) return false;
+          if (where?.entityType && log.entityType !== where.entityType) return false;
+          if (where?.action && log.action !== where.action) return false;
+          return true;
+        }) || null;
+      }),
+      findMany: jest.fn(async ({ where, skip, take }) => {
+        let filtered = testDataStore.auditLogs.filter(log => {
+          if (where?.organizationId && log.organizationId !== where.organizationId) return false;
           if (where?.projectId && log.projectId !== where.projectId) return false;
           if (where?.entityId && log.entityId !== where.entityId) return false;
           if (where?.entityType && log.entityType !== where.entityType) return false;
           if (where?.action && log.action !== where.action) return false;
           return true;
         });
+        if (skip) filtered = filtered.slice(skip);
+        if (take) filtered = filtered.slice(0, take);
+        return filtered;
       }),
     },
     stepResult: {
@@ -842,10 +876,233 @@ jest.mock('@prisma/client', () => {
       }),
     },
     organizationMember: {
-      findUnique: jest.fn(async ({ where }) => null),
+      findUnique: jest.fn(async ({ where }) => {
+        if (where?.organizationId_userId) {
+          const key = `${where.organizationId_userId.organizationId}_${where.organizationId_userId.userId}`;
+          return testDataStore.organizationMembers?.[key] || null;
+        }
+        return null;
+      }),
+      findMany: jest.fn(async ({ where, include }) => {
+        if (where?.organizationId) {
+          const members = Object.values(testDataStore.organizationMembers || {}).filter(
+            m => m.organizationId === where.organizationId
+          );
+          return members.map(m => ({
+            ...m,
+            user: include?.user ? (testDataStore.users[m.userId] || null) : undefined,
+          }));
+        }
+        return [];
+      }),
+      create: jest.fn(async ({ data }) => {
+        if (!testDataStore.organizationMembers) testDataStore.organizationMembers = {};
+        const member = {
+          id: require('crypto').randomUUID(),
+          organizationId: data.organizationId,
+          userId: data.userId,
+          role: data.role || 'MEMBER',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+        const key = `${data.organizationId}_${data.userId}`;
+        testDataStore.organizationMembers[key] = member;
+        return member;
+      }),
+      update: jest.fn(async ({ where, data }) => {
+        if (where?.organizationId_userId) {
+          const key = `${where.organizationId_userId.organizationId}_${where.organizationId_userId.userId}`;
+          const member = testDataStore.organizationMembers?.[key];
+          if (member) {
+            Object.assign(member, data, { updatedAt: new Date() });
+          }
+          return member;
+        }
+        return null;
+      }),
+      delete: jest.fn(async ({ where }) => {
+        if (where?.organizationId_userId) {
+          const key = `${where.organizationId_userId.organizationId}_${where.organizationId_userId.userId}`;
+          const member = testDataStore.organizationMembers?.[key];
+          if (member) {
+            delete testDataStore.organizationMembers[key];
+          }
+          return member;
+        }
+        return null;
+      }),
+      count: jest.fn(async ({ where }) => {
+        if (where?.organizationId) {
+          return Object.values(testDataStore.organizationMembers || {}).filter(
+            m => m.organizationId === where.organizationId
+          ).length;
+        }
+        return 0;
+      }),
+    },
+    pendingInvitation: {
+      findUnique: jest.fn(async ({ where }) => {
+        if (where?.organizationId_email) {
+          const key = `${where.organizationId_email.organizationId}_${where.organizationId_email.email}`;
+          return testDataStore.pendingInvitations?.[key] || null;
+        }
+        if (where?.token) {
+          const invs = Object.values(testDataStore.pendingInvitations || {});
+          return invs.find(inv => inv.token === where.token) || null;
+        }
+        return null;
+      }),
+      findMany: jest.fn(async ({ where }) => {
+        if (where?.organizationId) {
+          return Object.values(testDataStore.pendingInvitations || {}).filter(
+            inv => inv.organizationId === where.organizationId
+          );
+        }
+        return [];
+      }),
+      create: jest.fn(async ({ data }) => {
+        if (!testDataStore.pendingInvitations) testDataStore.pendingInvitations = {};
+        const invitation = {
+          id: require('crypto').randomUUID(),
+          organizationId: data.organizationId,
+          email: data.email,
+          inviterUserId: data.inviterUserId,
+          role: data.role || 'QA_ENGINEER',
+          token: data.token || require('crypto').randomUUID(),
+          expiresAt: data.expiresAt || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+          status: 'PENDING',
+          sentAt: new Date(),
+        };
+        const key = `${data.organizationId}_${data.email}`;
+        testDataStore.pendingInvitations[key] = invitation;
+        return invitation;
+      }),
+      update: jest.fn(async ({ where, data }) => {
+        let invitation = null;
+        if (where?.organizationId_email) {
+          const key = `${where.organizationId_email.organizationId}_${where.organizationId_email.email}`;
+          invitation = testDataStore.pendingInvitations?.[key];
+          if (invitation) {
+            Object.assign(invitation, data);
+          }
+        }
+        return invitation;
+      }),
+    },
+    customField: {
+      findUnique: jest.fn(async ({ where }) => {
+        return testDataStore.customFields?.[where.id] || null;
+      }),
+      findFirst: jest.fn(async ({ where }) => {
+        if (!testDataStore.customFields) return null;
+        const fields = Object.values(testDataStore.customFields);
+        return fields.find(f => {
+          if (where?.organizationId && f.organizationId !== where.organizationId) return false;
+          if (where?.name && f.name !== where.name) return false;
+          return true;
+        }) || null;
+      }),
+      findMany: jest.fn(async ({ where }) => {
+        if (!testDataStore.customFields) return [];
+        return Object.values(testDataStore.customFields).filter(f => {
+          if (where?.organizationId && f.organizationId !== where.organizationId) return false;
+          return true;
+        });
+      }),
+      create: jest.fn(async ({ data }) => {
+        if (!testDataStore.customFields) testDataStore.customFields = {};
+        const field = {
+          id: require('crypto').randomUUID(),
+          organizationId: data.organizationId,
+          name: data.name,
+          description: data.description || '',
+          fieldType: data.fieldType,
+          isRequired: data.isRequired || false,
+          isGlobal: data.isGlobal !== false,
+          options: data.options,
+          displayOrder: data.displayOrder || 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+        testDataStore.customFields[field.id] = field;
+        return field;
+      }),
+      update: jest.fn(async ({ where, data }) => {
+        const field = testDataStore.customFields?.[where.id];
+        if (field) {
+          Object.assign(field, data, { updatedAt: new Date() });
+        }
+        return field;
+      }),
+      delete: jest.fn(async ({ where }) => {
+        const field = testDataStore.customFields?.[where.id];
+        if (field) {
+          delete testDataStore.customFields[where.id];
+        }
+        return field;
+      }),
+    },
+    customFieldValue: {
+      create: jest.fn(async ({ data }) => {
+        return {
+          id: require('crypto').randomUUID(),
+          ...data,
+          updatedAt: new Date(),
+        };
+      }),
+    },
+    retentionPolicy: {
+      findUnique: jest.fn(async ({ where }) => {
+        return testDataStore.retentionPolicies?.[where.id] || null;
+      }),
+      findMany: jest.fn(async ({ where }) => {
+        if (!testDataStore.retentionPolicies) return [];
+        return Object.values(testDataStore.retentionPolicies).filter(p => {
+          if (where?.organizationId && p.organizationId !== where.organizationId) return false;
+          if (where?.isActive !== undefined && p.isActive !== where.isActive) return false;
+          return true;
+        });
+      }),
+      create: jest.fn(async ({ data }) => {
+        if (!testDataStore.retentionPolicies) testDataStore.retentionPolicies = {};
+        const policy = {
+          id: require('crypto').randomUUID(),
+          organizationId: data.organizationId,
+          name: data.name,
+          description: data.description || '',
+          entityType: data.entityType,
+          actionType: data.actionType,
+          retentionDays: data.retentionDays,
+          filterCriteria: data.filterCriteria,
+          isActive: data.isActive !== false,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          lastRunAt: null,
+        };
+        testDataStore.retentionPolicies[policy.id] = policy;
+        return policy;
+      }),
+      update: jest.fn(async ({ where, data }) => {
+        const policy = testDataStore.retentionPolicies?.[where.id];
+        if (policy) {
+          Object.assign(policy, data, { updatedAt: new Date() });
+        }
+        return policy;
+      }),
     },
     projectMember: {
       findUnique: jest.fn(async ({ where }) => null),
+      create: jest.fn(async ({ data }) => {
+        const member = {
+          id: require('crypto').randomUUID(),
+          projectId: data.projectId,
+          userId: data.userId,
+          role: data.role || 'MEMBER',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+        return member;
+      }),
     },
     $connect: jest.fn(async () => {}),
     $disconnect: jest.fn(async () => {}),

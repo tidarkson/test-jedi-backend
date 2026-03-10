@@ -1436,3 +1436,273 @@
 2026-03-10 03:54:33:5433 [32minfo[39m: [32mPrisma client initialized[39m
 2026-03-10 03:55:16:5516 [32minfo[39m: [32mPrisma client initialized[39m
 2026-03-10 03:56:05:565 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 04:31:43:3143 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError getting plan detail: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError getting plan detail: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError setting baseline: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError getting baseline comparison: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError approving plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError listing plans: TypeError: Cannot read properties of undefined (reading 'count')[39m
+2026-03-10 04:32:51:3251 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError getting plan detail: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError getting plan detail: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError setting baseline: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError getting baseline comparison: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError approving plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError listing plans: TypeError: Cannot read properties of undefined (reading 'count')[39m
+2026-03-10 13:56:35:5635 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 13:56:37:5637 [32minfo[39m: [32mEmail service in TEST mode (console output only)[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32mPrisma initialized[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32mRetention policy job scheduled (runs daily at 2 AM)[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32mAll scheduled jobs initialized[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32mBackground jobs initialized[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32mServer running on http://localhost:3000 in test mode[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/users/invite - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/users/invite - Status: 403 - Duration: 4ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/users/invite - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/users/invite - Status: 403 - Duration: 1ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/custom-fields - Status: 403 - Duration: 1ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/audit-logs - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/audit-logs - Status: 403 - Duration: 1ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/audit-logs/export/csv - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/audit-logs/export/csv - Status: 403 - Duration: 2ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/retention-policies - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/retention-policies - Status: 403 - Duration: 1ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/retention-policies - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/retention-policies - Status: 403 - Duration: 1ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/users - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/users - Status: 403 - Duration: 2ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/users/a73e7cde-5563-4e61-b5a5-43f1c0a66cc1/activity - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/users/a73e7cde-5563-4e61-b5a5-43f1c0a66cc1/activity - Status: 403 - Duration: 3ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/projects - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/projects - Status: 403 - Duration: 1ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/projects/undefined - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[PUT] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/projects/undefined - Status: 403 - Duration: 1ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/projects/undefined/members - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/projects/undefined/members - Status: 403 - Duration: 1ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/projects/undefined/archive - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/projects/undefined/archive - Status: 403 - Duration: 2ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[GET] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/custom-fields - Status: 403 - Duration: 1ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[POST] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/custom-fields - Status: 403 - Duration: 1ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/custom-fields/undefined - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[PUT] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/custom-fields/undefined - Status: 403 - Duration: 2ms[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[DELETE] /api/v1/admin/orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/custom-fields/undefined - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 13:56:38:5638 [32minfo[39m: [32m[DELETE] /orgs/3c7b228d-1380-4f44-be23-5d4a4b16d647/custom-fields/undefined - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:54:254 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32mEmail service in TEST mode (console output only)[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32mPrisma initialized[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32mRetention policy job scheduled (runs daily at 2 AM)[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32mAll scheduled jobs initialized[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32mBackground jobs initialized[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32mServer running on http://localhost:3000 in test mode[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/invite - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/invite - Status: 403 - Duration: 3ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/invite - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/invite - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/61e224b6-82d1-4a79-b42a-cef83a431729/role - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[PUT] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/61e224b6-82d1-4a79-b42a-cef83a431729/role - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/5a57af21-d2c9-481b-b9e0-6b658c72f301/role - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[PUT] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/5a57af21-d2c9-481b-b9e0-6b658c72f301/role - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/custom-fields - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/audit-logs - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/audit-logs - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/audit-logs/export/csv - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/audit-logs/export/csv - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/retention-policies - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/retention-policies - Status: 403 - Duration: 0ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/retention-policies - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/retention-policies - Status: 403 - Duration: 3ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[DELETE] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/f94038a0-ec27-47fb-8cf6-22382721bc5f - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[DELETE] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/f94038a0-ec27-47fb-8cf6-22382721bc5f - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/efb2c381-876d-49b8-8b17-4d1297afd0c4/activity - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/users/efb2c381-876d-49b8-8b17-4d1297afd0c4/activity - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/projects - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/projects - Status: 403 - Duration: 0ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/projects/undefined - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[PUT] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/projects/undefined - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/projects/undefined/members - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[GET] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/projects/undefined/members - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/projects/undefined/members - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/projects/undefined/members - Status: 403 - Duration: 0ms[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/projects/undefined/archive - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:55:255 [32minfo[39m: [32m[POST] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/projects/undefined/archive - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:56:256 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:56:256 [32minfo[39m: [32m[GET] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/custom-fields - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:56:256 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:56:256 [32minfo[39m: [32m[POST] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/custom-fields - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:02:56:256 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/custom-fields/undefined - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:56:256 [32minfo[39m: [32m[PUT] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/custom-fields/undefined - Status: 403 - Duration: 0ms[39m
+2026-03-10 14:02:56:256 [32minfo[39m: [32m[DELETE] /api/v1/admin/orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/custom-fields/undefined - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:02:56:256 [32minfo[39m: [32m[DELETE] /orgs/0ba85b47-813e-4a8a-931a-2781e514bdb4/custom-fields/undefined - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:08:32:832 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32mEmail service in TEST mode (console output only)[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32mPrisma initialized[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32mRetention policy job scheduled (runs daily at 2 AM)[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32mAll scheduled jobs initialized[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32mBackground jobs initialized[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32mServer running on http://localhost:3000 in test mode[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/invite - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError inviting user: Cannot read properties of undefined (reading '0')[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mUnexpected error: Cannot read properties of undefined (reading '0')[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/invite - Status: 500 - Duration: 31ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/invite - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/invite - Status: 403 - Duration: 0ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/e7b38af6-77c7-41c3-a411-896dc324b6ae/role - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError updating user role: Only ADMIN or OWNER can update roles[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/e7b38af6-77c7-41c3-a411-896dc324b6ae/role - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/dde068ca-8f8d-4a33-98ca-18d544dd478d/role - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[PUT] /orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/dde068ca-8f8d-4a33-98ca-18d544dd478d/role - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/audit-logs - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError getting audit logs: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mUnexpected error: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/audit-logs - Status: 500 - Duration: 7ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/audit-logs/export/csv - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/retention-policies - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError setting retention policy: Only ADMIN or OWNER can set retention policies[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/retention-policies - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/retention-policies - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/retention-policies - Status: 200 - Duration: 0ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users - Status: 200 - Duration: 1ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[DELETE] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/33dfd566-2e2f-44e5-bc6f-91865cf63813 - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError deactivating user: Only ADMIN or OWNER can deactivate users[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[DELETE] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/33dfd566-2e2f-44e5-bc6f-91865cf63813 - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/ee7e0c5d-62e1-4f49-96c1-bca54739a9d6/activity - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError getting user activity: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mUnexpected error: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/users/ee7e0c5d-62e1-4f49-96c1-bca54739a9d6/activity - Status: 500 - Duration: 1ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/projects - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32mProject created: 821d3666-85e7-49ad-9945-6b0504e2276c in org 16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/projects - Status: 201 - Duration: 2ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/projects/821d3666-85e7-49ad-9945-6b0504e2276c - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError updating project: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/projects/821d3666-85e7-49ad-9945-6b0504e2276c - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/projects/821d3666-85e7-49ad-9945-6b0504e2276c/members - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError getting project members: this.prisma.projectMember.findMany is not a function[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mUnexpected error: this.prisma.projectMember.findMany is not a function[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/projects/821d3666-85e7-49ad-9945-6b0504e2276c/members - Status: 500 - Duration: 2ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/projects/821d3666-85e7-49ad-9945-6b0504e2276c/members - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError adding project member: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/projects/821d3666-85e7-49ad-9945-6b0504e2276c/members - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/projects/821d3666-85e7-49ad-9945-6b0504e2276c/archive - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError archiving project: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/projects/821d3666-85e7-49ad-9945-6b0504e2276c/archive - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[GET] /orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields - Status: 200 - Duration: 1ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields/undefined - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError updating custom field: Only ADMIN or OWNER can update custom fields[39m
+2026-03-10 14:08:33:833 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields/undefined - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:08:34:834 [32minfo[39m: [32m[DELETE] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields/undefined - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:08:34:834 [31merror[39m: [31mError deleting custom field: Only ADMIN or OWNER can delete custom fields[39m
+2026-03-10 14:08:34:834 [32minfo[39m: [32m[DELETE] /api/v1/admin/orgs/16a1fb44-ddd9-45b3-9093-9ef9b38fdaa1/custom-fields/undefined - Status: 403 - Duration: 3ms[39m
+2026-03-10 14:11:39:1139 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32mEmail service in TEST mode (console output only)[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32mPrisma initialized[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32mRetention policy job scheduled (runs daily at 2 AM)[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32mAll scheduled jobs initialized[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32mBackground jobs initialized[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32mServer running on http://localhost:3000 in test mode[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/invite - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mError inviting user: Cannot read properties of undefined (reading '0')[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mUnexpected error: Cannot read properties of undefined (reading '0')[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/invite - Status: 500 - Duration: 33ms[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/invite - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[POST] /orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/invite - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/c4f2a0b4-cec8-47b6-b48c-bf2f5c862ae0/role - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mError updating user role: Only ADMIN or OWNER can update roles[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/c4f2a0b4-cec8-47b6-b48c-bf2f5c862ae0/role - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/566028d4-95db-4758-9a89-73480295ab7a/role - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[PUT] /orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/566028d4-95db-4758-9a89-73480295ab7a/role - Status: 403 - Duration: 0ms[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/audit-logs - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mError getting audit logs: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mUnexpected error: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/audit-logs - Status: 500 - Duration: 7ms[39m
+2026-03-10 14:11:40:1140 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/audit-logs/export/csv - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields - Status: 403 - Duration: 3ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/retention-policies - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError setting retention policy: Only ADMIN or OWNER can set retention policies[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/retention-policies - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/retention-policies - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[GET] /orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/retention-policies - Status: 200 - Duration: 1ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[GET] /orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users - Status: 200 - Duration: 1ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[DELETE] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/4bdd03ab-8eba-45b9-b803-c138603492d7 - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError deactivating user: Only ADMIN or OWNER can deactivate users[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[DELETE] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/4bdd03ab-8eba-45b9-b803-c138603492d7 - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/9e814f34-a007-4dde-9be8-78e17bbe55f0/activity - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError getting user activity: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mUnexpected error: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/users/9e814f34-a007-4dde-9be8-78e17bbe55f0/activity - Status: 500 - Duration: 1ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/projects - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32mProject created: d88b439d-78ef-47a9-a575-fcd889666a2c in org e2df5f09-ad61-472d-9ae7-158ce087f7e7[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/projects - Status: 201 - Duration: 1ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/projects/d88b439d-78ef-47a9-a575-fcd889666a2c - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError updating project: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/projects/d88b439d-78ef-47a9-a575-fcd889666a2c - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/projects/d88b439d-78ef-47a9-a575-fcd889666a2c/members - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError getting project members: this.prisma.projectMember.findMany is not a function[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mUnexpected error: this.prisma.projectMember.findMany is not a function[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/projects/d88b439d-78ef-47a9-a575-fcd889666a2c/members - Status: 500 - Duration: 2ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/projects/d88b439d-78ef-47a9-a575-fcd889666a2c/members - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError adding project member: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/projects/d88b439d-78ef-47a9-a575-fcd889666a2c/members - Status: 403 - Duration: 4ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/projects/d88b439d-78ef-47a9-a575-fcd889666a2c/archive - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError archiving project: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/projects/d88b439d-78ef-47a9-a575-fcd889666a2c/archive - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[GET] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[GET] /orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields - Status: 200 - Duration: 1ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[POST] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields - Status: 403 - Duration: 2ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields/undefined - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError updating custom field: Only ADMIN or OWNER can update custom fields[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[PUT] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields/undefined - Status: 403 - Duration: 1ms[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[DELETE] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields/undefined - IP: ::ffff:127.0.0.1 - User-Agent: undefined[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError deleting custom field: Only ADMIN or OWNER can delete custom fields[39m
+2026-03-10 14:11:41:1141 [32minfo[39m: [32m[DELETE] /api/v1/admin/orgs/e2df5f09-ad61-472d-9ae7-158ce087f7e7/custom-fields/undefined - Status: 403 - Duration: 2ms[39m
+2026-03-10 16:40:33:4033 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 16:41:16:4116 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 16:42:30:4230 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 16:43:29:4329 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 16:44:06:446 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 16:44:45:4445 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 16:45:27:4527 [32minfo[39m: [32mPrisma client initialized[39m
+2026-03-10 16:49:14:4914 [32minfo[39m: [32mPrisma client initialized[39m

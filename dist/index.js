@@ -17,7 +17,11 @@ const errorHandler_1 = require("./middleware/errorHandler");
 const auth_1 = __importDefault(require("./routes/auth"));
 const testRepository_1 = __importDefault(require("./routes/testRepository"));
 const runs_1 = __importDefault(require("./routes/runs"));
+const plans_1 = __importDefault(require("./routes/plans"));
+const admin_1 = __importDefault(require("./routes/admin"));
+const exports_1 = __importDefault(require("./routes/exports"));
 const runWebsocket_1 = require("./utils/runWebsocket");
+const JobScheduler_1 = require("./workers/JobScheduler");
 const app = (0, express_1.default)();
 /**
  * Initialize database and cache
@@ -37,6 +41,9 @@ const initializeApp = async () => {
                 logger_1.logger.warn('Redis initialization failed, continuing without cache');
             }
         }
+        // Initialize scheduled jobs
+        JobScheduler_1.jobScheduler.initializeJobs();
+        logger_1.logger.info('Background jobs initialized');
     }
     catch (error) {
         logger_1.logger.error('Failed to initialize app:', error);
@@ -67,8 +74,11 @@ app.use(requestLogger_1.requestLogger);
  * Routes
  */
 app.use(`/api/${environment_1.config.API_VERSION}/auth`, auth_1.default);
+app.use(`/api/${environment_1.config.API_VERSION}/admin`, admin_1.default);
 app.use(`/api/${environment_1.config.API_VERSION}/projects`, testRepository_1.default);
 app.use(`/api/${environment_1.config.API_VERSION}`, runs_1.default);
+app.use(`/api/${environment_1.config.API_VERSION}`, plans_1.default);
+app.use(`/api/${environment_1.config.API_VERSION}`, exports_1.default);
 // Health check endpoint
 app.get('/health', (_req, res) => {
     res.json({
@@ -111,6 +121,9 @@ const startServer = async () => {
 process.on('SIGINT', async () => {
     logger_1.logger.info('Shutting down gracefully...');
     try {
+        // Stop scheduled jobs
+        JobScheduler_1.jobScheduler.stopAllJobs();
+        logger_1.logger.info('Scheduled jobs stopped');
         const prisma = (0, database_1.getPrisma)();
         await prisma.$disconnect();
         logger_1.logger.info('Database disconnected');

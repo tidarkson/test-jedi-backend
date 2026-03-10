@@ -25,5 +25,11 @@ export declare const config: {
     SLACK_BOT_TOKEN: string | undefined;
     SESSION_SECRET: string;
     BCRYPT_ROUNDS: number;
+    AWS_ACCESS_KEY_ID: string | undefined;
+    AWS_SECRET_ACCESS_KEY: string | undefined;
+    AWS_REGION: string;
+    AWS_S3_BUCKET: string;
+    REDIS_HOST: string;
+    REDIS_PORT: string;
 };
 //# sourceMappingURL=environment.d.ts.map

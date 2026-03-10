@@ -12,7 +12,11 @@ import { errorHandler } from './middleware/errorHandler';
 import authRoutes from './routes/auth';
 import testRepositoryRoutes from './routes/testRepository';
 import runsRoutes from './routes/runs';
+import plansRoutes from './routes/plans';
+import adminRoutes from './routes/admin';
+import exportsRoutes from './routes/exports';
 import { attachWebSocketServer } from './utils/runWebsocket';
+import { jobScheduler } from './workers/JobScheduler';
 
 const app = express();
 
@@ -34,6 +38,10 @@ const initializeApp = async () => {
         logger.warn('Redis initialization failed, continuing without cache');
       }
     }
+
+    // Initialize scheduled jobs
+    jobScheduler.initializeJobs();
+    logger.info('Background jobs initialized');
   } catch (error) {
     logger.error('Failed to initialize app:', error);
     throw error;
@@ -69,8 +77,11 @@ app.use(requestLogger);
  * Routes
  */
 app.use(`/api/${config.API_VERSION}/auth`, authRoutes);
+app.use(`/api/${config.API_VERSION}/admin`, adminRoutes);
 app.use(`/api/${config.API_VERSION}/projects`, testRepositoryRoutes);
 app.use(`/api/${config.API_VERSION}`, runsRoutes);
+app.use(`/api/${config.API_VERSION}`, plansRoutes);
+app.use(`/api/${config.API_VERSION}`, exportsRoutes);
 
 // Health check endpoint
 app.get('/health', (_req, res) => {
@@ -121,6 +132,10 @@ const startServer = async () => {
 process.on('SIGINT', async () => {
   logger.info('Shutting down gracefully...');
   try {
+    // Stop scheduled jobs
+    jobScheduler.stopAllJobs();
+    logger.info('Scheduled jobs stopped');
+
     const prisma = getPrisma();
     await prisma.$disconnect();
     logger.info('Database disconnected');

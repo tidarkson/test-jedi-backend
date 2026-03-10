@@ -260,3 +260,67 @@
 2026-03-09 23:25:32:2532 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
 2026-03-09 23:25:32:2532 [31merror[39m: [31mError creating run: TypeError: Cannot read properties of undefined (reading 'CREATE')[39m
 2026-03-09 23:32:39:3239 [31merror[39m: [31mError cloning run: TypeError: Cannot read properties of undefined (reading 'map')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError getting plan detail: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError getting plan detail: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError setting baseline: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError getting baseline comparison: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError approving plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:31:44:3144 [31merror[39m: [31mError listing plans: TypeError: Cannot read properties of undefined (reading 'count')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError adding run to plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError getting plan detail: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError getting plan detail: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError setting baseline: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError getting baseline comparison: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError approving plan: TypeError: Cannot read properties of undefined (reading 'findUnique')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError creating plan: TypeError: Cannot read properties of undefined (reading 'create')[39m
+2026-03-10 04:32:51:3251 [31merror[39m: [31mError listing plans: TypeError: Cannot read properties of undefined (reading 'count')[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError inviting user: Cannot read properties of undefined (reading '0')[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mUnexpected error: Cannot read properties of undefined (reading '0')[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError updating user role: Only ADMIN or OWNER can update roles[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError getting audit logs: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mUnexpected error: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError setting retention policy: Only ADMIN or OWNER can set retention policies[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError deactivating user: Only ADMIN or OWNER can deactivate users[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError getting user activity: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mUnexpected error: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError updating project: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError getting project members: this.prisma.projectMember.findMany is not a function[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mUnexpected error: this.prisma.projectMember.findMany is not a function[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError adding project member: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError archiving project: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:08:33:833 [31merror[39m: [31mError updating custom field: Only ADMIN or OWNER can update custom fields[39m
+2026-03-10 14:08:34:834 [31merror[39m: [31mError deleting custom field: Only ADMIN or OWNER can delete custom fields[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mError inviting user: Cannot read properties of undefined (reading '0')[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mUnexpected error: Cannot read properties of undefined (reading '0')[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mError updating user role: Only ADMIN or OWNER can update roles[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mError getting audit logs: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:11:40:1140 [31merror[39m: [31mUnexpected error: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError setting retention policy: Only ADMIN or OWNER can set retention policies[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError deactivating user: Only ADMIN or OWNER can deactivate users[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError getting user activity: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mUnexpected error: this.prisma.auditLog.count is not a function[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError updating project: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError getting project members: this.prisma.projectMember.findMany is not a function[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mUnexpected error: this.prisma.projectMember.findMany is not a function[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError adding project member: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError archiving project: Access denied. Required roles: ADMIN, OWNER[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError creating custom field: Only ADMIN or OWNER can create custom fields[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError updating custom field: Only ADMIN or OWNER can update custom fields[39m
+2026-03-10 14:11:41:1141 [31merror[39m: [31mError deleting custom field: Only ADMIN or OWNER can delete custom fields[39m
