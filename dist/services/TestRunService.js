@@ -1,14 +1,84 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TestRunService = void 0;
 const database_1 = require("../config/database");
+const redis_1 = require("../config/redis");
 const errors_1 = require("../types/errors");
 const logger_1 = require("../config/logger");
 const client_1 = require("@prisma/client");
 const runWebsocket_1 = require("../utils/runWebsocket");
+const WebhookService_1 = __importDefault(require("./WebhookService"));
+const SlackService_1 = __importDefault(require("./SlackService"));
+const JiraService_1 = __importDefault(require("./JiraService"));
+const GitHubService_1 = __importDefault(require("./GitHubService"));
 class TestRunService {
     constructor() {
         this.prisma = (0, database_1.getPrisma)();
+        this.runMetricsTtlSeconds = 10;
+    }
+    encodeCursor(entity) {
+        return Buffer.from(JSON.stringify({
+            id: entity.id,
+            createdAt: entity.createdAt.toISOString(),
+        })).toString('base64url');
+    }
+    decodeCursor(cursor) {
+        if (!cursor) {
+            return null;
+        }
+        try {
+            const decoded = JSON.parse(Buffer.from(cursor, 'base64url').toString('utf-8'));
+            return {
+                id: String(decoded.id),
+                createdAt: new Date(String(decoded.createdAt)),
+            };
+        }
+        catch (_error) {
+            return null;
+        }
+    }
+    getRunMetricsCacheKey(runId) {
+        return `run:metrics:${runId}`;
+    }
+    async invalidateRunMetricsCache(runId) {
+        const redis = (0, redis_1.getRedisOptional)();
+        if (!redis) {
+            return;
+        }
+        const key = this.getRunMetricsCacheKey(runId);
+        try {
+            await redis.del(key);
+        }
+        catch (error) {
+            logger_1.logger.warn(`Run metrics cache invalidation failed for ${key}: ${error}`);
+        }
+    }
+    async getCachedRunMetrics(runId, compute) {
+        const redis = (0, redis_1.getRedisOptional)();
+        if (!redis) {
+            return compute();
+        }
+        const key = this.getRunMetricsCacheKey(runId);
+        try {
+            const cached = await redis.get(key);
+            if (cached) {
+                return JSON.parse(cached);
+            }
+        }
+        catch (error) {
+            logger_1.logger.warn(`Run metrics cache read failed for ${key}: ${error}`);
+        }
+        const metrics = await compute();
+        try {
+            await redis.setex(key, this.runMetricsTtlSeconds, JSON.stringify(metrics));
+        }
+        catch (error) {
+            logger_1.logger.warn(`Run metrics cache write failed for ${key}: ${error}`);
+        }
+        return metrics;
     }
     /**
      * ========== CASE SELECTION LOGIC ==========
@@ -208,7 +278,27 @@ class TestRunService {
             catch (e) {
                 logger_1.logger.warn(`Failed to broadcast metrics after run creation: ${e}`);
             }
-            return this.mapTestRunToDTO(testRun);
+            // Fire integration events (non-blocking)
+            const runDto = this.mapTestRunToDTO(testRun);
+            setImmediate(async () => {
+                try {
+                    await WebhookService_1.default.publishEvent(projectId, 'RUN_CREATED', {
+                        runId: testRun.id,
+                        title: testRun.title,
+                        environment: testRun.environment,
+                        type: testRun.type,
+                    });
+                    await SlackService_1.default.notifyEvent(projectId, 'RUN_CREATED', {
+                        id: testRun.id,
+                        title: testRun.title,
+                        environment: testRun.environment,
+                    });
+                }
+                catch (e) {
+                    logger_1.logger.warn(`Integration events failed for run.created ${testRun.id}: ${e}`);
+                }
+            });
+            return runDto;
         }
         catch (error) {
             if (error instanceof errors_1.AppError)
@@ -252,26 +342,33 @@ class TestRunService {
                 if (filters.dateTo)
                     where.plannedStart.lte = filters.dateTo;
             }
-            // Count total
-            const total = await this.prisma.testRun.count({ where });
-            // Fetch paginated
+            const cursorData = this.decodeCursor(filters?.cursor);
+            if (cursorData) {
+                where.OR = [
+                    { createdAt: { lt: cursorData.createdAt } },
+                    { createdAt: cursorData.createdAt, id: { lt: cursorData.id } },
+                ];
+            }
+            const total = cursorData ? 0 : await this.prisma.testRun.count({ where });
             const runs = await this.prisma.testRun.findMany({
                 where,
-                skip: (page - 1) * limit,
-                take: limit,
-                orderBy: {
-                    createdAt: 'desc',
-                },
+                skip: cursorData ? 0 : (page - 1) * limit,
+                take: limit + 1,
+                orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
             });
-            const totalPages = Math.ceil(total / limit);
+            const hasMore = runs.length > limit;
+            const trimmed = hasMore ? runs.slice(0, limit) : runs;
+            const nextCursor = hasMore ? this.encodeCursor(trimmed[trimmed.length - 1]) : undefined;
+            const totalPages = cursorData ? 0 : Math.ceil(total / limit);
             return {
-                data: runs.map(run => this.mapTestRunToDTO(run)),
+                data: trimmed.map(run => this.mapTestRunToDTO(run)),
                 pagination: {
                     page,
                     limit,
                     total,
                     totalPages,
-                    hasMore: page < totalPages,
+                    hasMore: cursorData ? hasMore : page < totalPages || hasMore,
+                    nextCursor,
                 },
             };
         }
@@ -295,7 +392,7 @@ class TestRunService {
                 throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Run not found');
             }
             const cases = await this.getRunCases(runId);
-            const metrics = await this.calculateRunMetrics(runId);
+            const metrics = await this.getCachedRunMetrics(runId, () => this.computeRunMetrics(runId));
             return {
                 run: this.mapTestRunToDTO(run),
                 metrics,
@@ -394,7 +491,47 @@ class TestRunService {
             });
             // Log audit
             await this.logAudit(projectId, userId, 'TestRun', runId, client_1.AuditAction.UPDATE);
-            return this.mapTestRunToDTO(closed);
+            // Fire integration events (non-blocking)
+            const closedDto = this.mapTestRunToDTO(closed);
+            setImmediate(async () => {
+                try {
+                    const metrics = await this.calculateRunMetrics(runId);
+                    const metricsSummary = {
+                        totalCases: metrics.totalCases,
+                        passedCases: metrics.passedCases,
+                        failedCases: metrics.failedCases,
+                        blockedCases: metrics.blockedCases,
+                        skippedCases: metrics.skippedCases,
+                        passRate: metrics.passRate,
+                    };
+                    await WebhookService_1.default.publishEvent(projectId, 'RUN_CLOSED', {
+                        runId,
+                        title: closed.title,
+                        environment: closed.environment,
+                        status: closed.status,
+                        metrics: metricsSummary,
+                    });
+                    await SlackService_1.default.notifyEvent(projectId, 'RUN_CLOSED', {
+                        id: runId,
+                        title: closed.title,
+                        environment: closed.environment,
+                        status: closed.status,
+                        ...metricsSummary,
+                    });
+                    await SlackService_1.default.checkFailureThreshold(projectId, {
+                        id: runId,
+                        title: closed.title,
+                        environment: closed.environment,
+                        status: closed.status,
+                        ...metricsSummary,
+                    });
+                    await GitHubService_1.default.handleRunClosed(projectId, runId, closed.title, closed.status, metricsSummary, run.buildNumber ?? undefined);
+                }
+                catch (e) {
+                    logger_1.logger.warn(`Integration events failed for run.closed ${runId}: ${e}`);
+                }
+            });
+            return closedDto;
         }
         catch (error) {
             if (error instanceof errors_1.AppError)
@@ -627,11 +764,34 @@ class TestRunService {
             });
             // Broadcast updated metrics for this run
             try {
+                await this.invalidateRunMetricsCache(runId);
                 const metrics = await this.calculateRunMetrics(runId);
                 (0, runWebsocket_1.broadcastRunMetrics)(runId, metrics);
             }
             catch (e) {
                 logger_1.logger.warn(`Failed to broadcast metrics after update: ${e}`);
+            }
+            // Fire case.failed integration events (non-blocking)
+            if (input.status === 'FAILED' && oldStatus !== 'FAILED') {
+                const runForEvent = await this.prisma.testRun.findUnique({ where: { id: runId } });
+                setImmediate(async () => {
+                    try {
+                        if (!runForEvent)
+                            return;
+                        const caseTitle = fullUpdated.testCase.title;
+                        await WebhookService_1.default.publishEvent(runForEvent.projectId, 'CASE_FAILED', {
+                            runId,
+                            runCaseId: runCaseId,
+                            caseId: fullUpdated.caseId,
+                            caseTitle,
+                        });
+                        await SlackService_1.default.notifyEvent(runForEvent.projectId, 'CASE_FAILED', { id: runId, title: runForEvent.title, environment: runForEvent.environment }, { caseTitle });
+                        await JiraService_1.default.createIssueForFailedCase(runForEvent.projectId, runCaseId, caseTitle, runForEvent.title, runId);
+                    }
+                    catch (e) {
+                        logger_1.logger.warn(`Integration events failed for case.failed ${runCaseId}: ${e}`);
+                    }
+                });
             }
             return {
                 id: fullUpdated.id,
@@ -747,6 +907,7 @@ class TestRunService {
             }
             // Broadcast metrics after bulk update
             try {
+                await this.invalidateRunMetricsCache(runId);
                 const metrics = await this.calculateRunMetrics(runId);
                 (0, runWebsocket_1.broadcastRunMetrics)(runId, metrics);
             }
@@ -774,6 +935,9 @@ class TestRunService {
      * Live metrics aggregation
      */
     async calculateRunMetrics(runId) {
+        return this.getCachedRunMetrics(runId, () => this.computeRunMetrics(runId));
+    }
+    async computeRunMetrics(runId) {
         try {
             const runCases = await this.prisma.runCase.findMany({
                 where: { runId },

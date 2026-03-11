@@ -39,8 +39,13 @@ exports.config = {
     RATE_LIMIT_MAX_REQUESTS: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100', 10),
     // Integrations
     JIRA_APP_ID: process.env.JIRA_APP_ID,
+    JIRA_APP_SECRET: process.env.JIRA_APP_SECRET,
     GITHUB_APP_ID: process.env.GITHUB_APP_ID,
+    GITHUB_TOKEN: process.env.GITHUB_TOKEN,
+    GITLAB_TOKEN: process.env.GITLAB_TOKEN,
     SLACK_BOT_TOKEN: process.env.SLACK_BOT_TOKEN,
+    SLACK_WEBHOOK_URL: process.env.SLACK_WEBHOOK_URL,
+    TEAMS_WEBHOOK_URL: process.env.TEAMS_WEBHOOK_URL,
     // Session
     SESSION_SECRET: process.env.SESSION_SECRET || 'dev-session-secret',
     // Bcrypt

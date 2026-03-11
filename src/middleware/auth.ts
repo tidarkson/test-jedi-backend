@@ -32,13 +32,21 @@ export const authenticate = (
 
     try {
       const payload = authService.verifyAccessToken(token);
-      req.user = {
-        userId: payload.userId,
+      const normalizedUserId = (payload as any).userId || (payload as any).id;
+      const normalizedRoles = Array.isArray((payload as any).roles)
+        ? (payload as any).roles
+        : (payload as any).role
+          ? [(payload as any).role]
+          : [];
+
+      (req as any).user = {
+        userId: normalizedUserId,
+        id: normalizedUserId,
         email: payload.email,
         name: '',
-        roles: payload.roles,
-        organizationId: payload.organizationId,
-        projectId: payload.projectId,
+        roles: normalizedRoles,
+        organizationId: (payload as any).organizationId,
+        projectId: (payload as any).projectId,
       };
       req.token = token;
       next();

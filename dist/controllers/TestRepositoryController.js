@@ -257,6 +257,7 @@ class TestRepositoryController {
             // Parse and validate filters
             const filtersData = {
                 ...req.query,
+                cursor: req.query.cursor,
                 page: req.query.page ? parseInt(req.query.page) : 1,
                 limit: req.query.limit ? parseInt(req.query.limit) : 20,
                 // Parse arrays from query params

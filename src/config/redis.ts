@@ -32,11 +32,26 @@ export const initializeRedis = async (): Promise<Redis> => {
 
 export const getRedis = (): Redis => {
   if (!redis) {
+    if (!config.REDIS_ENABLED) {
+      throw new Error('Redis is disabled');
+    }
     // Initialize synchronously with a new connection for testing
     // This works because ioredis is mocked in tests
     redis = new Redis(config.REDIS_URL);
   }
   return redis;
+};
+
+export const getRedisOptional = (): Redis | null => {
+  if (!config.REDIS_ENABLED) {
+    return null;
+  }
+
+  try {
+    return getRedis();
+  } catch (_error) {
+    return null;
+  }
 };
 
 export { redis };

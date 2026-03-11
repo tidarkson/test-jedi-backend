@@ -242,6 +242,7 @@ export interface PaginatedResponse<T> {
     total: number;
     totalPages: number;
     hasMore: boolean;
+    nextCursor?: string;
   };
 }
 
@@ -257,6 +258,7 @@ export interface RunListFilters {
   dateFrom?: Date;
   dateTo?: Date;
   assignedToMe?: boolean;
+  cursor?: string;
 }
 
 /**

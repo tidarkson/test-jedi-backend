@@ -6,6 +6,78 @@ const router: Router = express.Router({ mergeParams: true });
 const controller = new TestRepositoryController();
 
 /**
+ * @openapi
+ * tags:
+ *   - name: Test Repository
+ *     description: Test suites and test cases management
+ * /projects/{projectId}/suites:
+ *   get:
+ *     tags: [Test Repository]
+ *     summary: Get suite tree
+ *     security: [{ bearerAuth: [] }]
+ *   post:
+ *     tags: [Test Repository]
+ *     summary: Create suite
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/suites/{id}:
+ *   put:
+ *     tags: [Test Repository]
+ *     summary: Update suite
+ *     security: [{ bearerAuth: [] }]
+ *   delete:
+ *     tags: [Test Repository]
+ *     summary: Delete suite
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/suites/{id}/clone:
+ *   post:
+ *     tags: [Test Repository]
+ *     summary: Clone suite
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/suites/{id}/lock:
+ *   post:
+ *     tags: [Test Repository]
+ *     summary: Toggle suite lock
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/suites/{id}/archive:
+ *   post:
+ *     tags: [Test Repository]
+ *     summary: Archive suite
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/cases:
+ *   get:
+ *     tags: [Test Repository]
+ *     summary: List test cases
+ *     security: [{ bearerAuth: [] }]
+ *   post:
+ *     tags: [Test Repository]
+ *     summary: Create test case
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/cases/{id}:
+ *   get:
+ *     tags: [Test Repository]
+ *     summary: Get test case details
+ *     security: [{ bearerAuth: [] }]
+ *   put:
+ *     tags: [Test Repository]
+ *     summary: Update test case
+ *     security: [{ bearerAuth: [] }]
+ *   delete:
+ *     tags: [Test Repository]
+ *     summary: Delete test case
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/cases/{id}/history:
+ *   get:
+ *     tags: [Test Repository]
+ *     summary: Get test case history
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/cases/bulk:
+ *   post:
+ *     tags: [Test Repository]
+ *     summary: Bulk operate on test cases
+ *     security: [{ bearerAuth: [] }]
+ */
+
+/**
  * ========== SUITE ENDPOINTS ==========
  */
 

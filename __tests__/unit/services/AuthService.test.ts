@@ -32,6 +32,7 @@ jest.mock('../../../src/config/database', () => ({
 
 jest.mock('../../../src/config/redis', () => ({
   getRedis: () => redisMock,
+  getRedisOptional: () => redisMock,
 }));
 
 describe('AuthService', () => {

@@ -3,10 +3,12 @@ import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import http from 'http';
+import swaggerUi from 'swagger-ui-express';
 import { config } from './config/environment';
 import { logger } from './config/logger';
 import { initializePrisma, getPrisma } from './config/database';
 import { initializeRedis } from './config/redis';
+import { openApiSpec } from './config/openapi';
 import { requestLogger } from './middleware/requestLogger';
 import { errorHandler } from './middleware/errorHandler';
 import authRoutes from './routes/auth';
@@ -15,6 +17,8 @@ import runsRoutes from './routes/runs';
 import plansRoutes from './routes/plans';
 import adminRoutes from './routes/admin';
 import exportsRoutes from './routes/exports';
+import integrationsRoutes from './routes/integrations';
+import analyticsRoutes from './routes/analytics';
 import { attachWebSocketServer } from './utils/runWebsocket';
 import { jobScheduler } from './workers/JobScheduler';
 
@@ -66,7 +70,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // 3. Body parsing (MUST be before session)
-app.use(express.json({ limit: '10mb' }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.text({ type: ['application/xml', 'text/xml'], limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser());
 
@@ -82,8 +87,22 @@ app.use(`/api/${config.API_VERSION}/projects`, testRepositoryRoutes);
 app.use(`/api/${config.API_VERSION}`, runsRoutes);
 app.use(`/api/${config.API_VERSION}`, plansRoutes);
 app.use(`/api/${config.API_VERSION}`, exportsRoutes);
+app.use(`/api/${config.API_VERSION}`, integrationsRoutes);
+app.use(`/api/${config.API_VERSION}`, analyticsRoutes);
 
 // Health check endpoint
+/**
+ * @openapi
+ * /health:
+ *   get:
+ *     tags:
+ *       - System
+ *     summary: Health check
+ *     description: Returns basic service health information.
+ *     responses:
+ *       200:
+ *         description: Service is healthy.
+ */
 app.get('/health', (_req, res) => {
   res.json({
     status: 'success',
@@ -91,6 +110,12 @@ app.get('/health', (_req, res) => {
     timestamp: new Date().toISOString(),
   });
 });
+
+app.get('/api/docs.json', (_req, res) => {
+  res.json(openApiSpec);
+});
+
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(openApiSpec));
 
 // 404 handler
 app.use((_req, res) => {

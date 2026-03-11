@@ -1,7 +1,8 @@
 import { JWTPayload, AuthUser, ProjectPermission } from '../types/auth';
 export declare class AuthService {
     private prisma;
-    private redis;
+    private readonly permissionTtlSeconds;
+    private getRedisClient;
     /**
      * Register a new user and create their organization
      */

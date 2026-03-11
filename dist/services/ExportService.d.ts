@@ -43,6 +43,8 @@ export declare class ExportService {
      * Fetch test cases with filters
      */
     private fetchTestCases;
+    private buildTestExportBuffer;
+    private getTestContentType;
     /**
      * Format run results
      */

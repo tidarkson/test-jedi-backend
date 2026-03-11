@@ -4,6 +4,103 @@ import { authenticate } from '../middleware/auth';
 
 const router = express.Router();
 
+/**
+ * @openapi
+ * tags:
+ *   - name: Admin
+ *     description: Organization administration and governance
+ * /admin/orgs/{organizationId}/users:
+ *   get:
+ *     tags: [Admin]
+ *     summary: List organization users
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/users/invite:
+ *   post:
+ *     tags: [Admin]
+ *     summary: Invite organization user
+ *     security: [{ bearerAuth: [] }]
+ * /admin/auth/accept-invitation:
+ *   post:
+ *     tags: [Admin]
+ *     summary: Accept invitation
+ * /admin/orgs/{organizationId}/users/{userId}/role:
+ *   put:
+ *     tags: [Admin]
+ *     summary: Update user role
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/users/{userId}:
+ *   delete:
+ *     tags: [Admin]
+ *     summary: Deactivate user
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/users/{userId}/activity:
+ *   get:
+ *     tags: [Admin]
+ *     summary: Get user activity
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/projects:
+ *   post:
+ *     tags: [Admin]
+ *     summary: Create project
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/projects/{projectId}:
+ *   put:
+ *     tags: [Admin]
+ *     summary: Update project
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/projects/{projectId}/archive:
+ *   post:
+ *     tags: [Admin]
+ *     summary: Archive project
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/projects/{projectId}/members:
+ *   get:
+ *     tags: [Admin]
+ *     summary: List project members
+ *     security: [{ bearerAuth: [] }]
+ *   post:
+ *     tags: [Admin]
+ *     summary: Add project member
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/custom-fields:
+ *   get:
+ *     tags: [Admin]
+ *     summary: List custom fields
+ *     security: [{ bearerAuth: [] }]
+ *   post:
+ *     tags: [Admin]
+ *     summary: Create custom field
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/custom-fields/{fieldId}:
+ *   put:
+ *     tags: [Admin]
+ *     summary: Update custom field
+ *     security: [{ bearerAuth: [] }]
+ *   delete:
+ *     tags: [Admin]
+ *     summary: Delete custom field
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/audit-logs:
+ *   get:
+ *     tags: [Admin]
+ *     summary: List audit logs
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/audit-logs/export/csv:
+ *   get:
+ *     tags: [Admin]
+ *     summary: Export audit logs
+ *     security: [{ bearerAuth: [] }]
+ * /admin/orgs/{organizationId}/retention-policies:
+ *   post:
+ *     tags: [Admin]
+ *     summary: Set retention policy
+ *     security: [{ bearerAuth: [] }]
+ *   get:
+ *     tags: [Admin]
+ *     summary: List retention policies
+ *     security: [{ bearerAuth: [] }]
+ */
+
 // All admin routes require authentication
 router.use(authenticate);
 

@@ -20,7 +20,8 @@
     "lint:fix": "eslint src --ext .ts --fix",
     "format": "prettier --write \"src/**/*.ts\"",
     "workers": "node dist/workers/index.js",
-    "workers:dev": "nodemon --exec ts-node src/workers/index.ts"
+    "workers:dev": "nodemon --exec ts-node src/workers/index.ts",
+    "export:docs": "ts-node scripts/export-spec.ts"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "@prisma/client": "^6.19.2",
     "@types/puppeteer": "^5.4.7",
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "bullmq": "^5.5.6",
     "connect-redis": "^7.1.0",
     "cookie-parser": "^1.4.6",
@@ -51,6 +53,8 @@
     "nodemailer": "^6.9.7",
     "puppeteer": "^21.6.0",
     "sharp": "^0.33.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "uuid": "^9.0.1",
     "winston": "^3.19.0",
     "ws": "^8.19.0",
@@ -59,6 +63,7 @@
   "devDependencies": {
     "@prisma/client": "^6.19.2",
     "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/connect-redis": "^0.0.21",
     "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
@@ -70,6 +75,8 @@
     "@types/node-cron": "^3.0.11",
     "@types/nodemailer": "^6.4.23",
     "@types/supertest": "^7.2.0",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "@types/uuid": "^9.0.7",
     "@types/ws": "^8.18.1",
     "@typescript-eslint/eslint-plugin": "^6.17.0",

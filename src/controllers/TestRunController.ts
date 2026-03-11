@@ -154,6 +154,7 @@ export class TestRunController {
       if (req.query.environment) filters.environment = req.query.environment;
       if (req.query.milestoneId) filters.milestoneId = req.query.milestoneId;
       if (req.query.buildNumber) filters.buildNumber = req.query.buildNumber;
+      if (req.query.cursor) filters.cursor = req.query.cursor as string;
 
       const result = await this.testRunService.listRuns(
         projectId,

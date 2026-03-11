@@ -2,11 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TestRepositoryService = void 0;
 const database_1 = require("../config/database");
+const redis_1 = require("../config/redis");
 const errors_1 = require("../types/errors");
 const logger_1 = require("../config/logger");
+const client_1 = require("@prisma/client");
 class TestRepositoryService {
     constructor() {
         this.prisma = (0, database_1.getPrisma)();
+        this.suiteTreeTtlSeconds = 30;
     }
     /**
      * ========== SUITE OPERATIONS ==========
@@ -16,6 +19,19 @@ class TestRepositoryService {
      */
     async getSuiteTree(projectId) {
         try {
+            const cacheKey = this.getSuiteTreeCacheKey(projectId);
+            const redis = (0, redis_1.getRedisOptional)();
+            if (redis) {
+                try {
+                    const cached = await redis.get(cacheKey);
+                    if (cached) {
+                        return JSON.parse(cached);
+                    }
+                }
+                catch (error) {
+                    logger_1.logger.warn(`Suite tree cache read failed for ${cacheKey}: ${error}`);
+                }
+            }
             // Verify project exists
             const project = await this.prisma.project.findUnique({
                 where: { id: projectId },
@@ -23,21 +39,99 @@ class TestRepositoryService {
             if (!project) {
                 throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Project not found');
             }
-            // Get all root suites (parentSuiteId is null)
-            const rootSuites = await this.prisma.suite.findMany({
-                where: {
-                    projectId,
-                    parentSuiteId: null,
-                    deletedAt: null,
-                },
-                include: {
-                    childSuites: {
-                        where: { deletedAt: null },
-                    },
-                },
+            const rows = await this.prisma.$queryRaw `
+        WITH RECURSIVE suite_tree AS (
+          SELECT
+            s."id",
+            s."projectId",
+            s."parentSuiteId",
+            s."name",
+            s."description",
+            s."ownerId",
+            s."reviewerId",
+            s."status",
+            s."isLocked",
+            s."createdAt",
+            s."updatedAt"
+          FROM "Suite" s
+          WHERE s."projectId" = ${projectId}
+            AND s."deletedAt" IS NULL
+            AND s."parentSuiteId" IS NULL
+          UNION ALL
+          SELECT
+            c."id",
+            c."projectId",
+            c."parentSuiteId",
+            c."name",
+            c."description",
+            c."ownerId",
+            c."reviewerId",
+            c."status",
+            c."isLocked",
+            c."createdAt",
+            c."updatedAt"
+          FROM "Suite" c
+          INNER JOIN suite_tree st ON c."parentSuiteId" = st."id"
+          WHERE c."deletedAt" IS NULL
+        ),
+        case_counts AS (
+          SELECT tc."suiteId", COUNT(*)::bigint AS "caseCount"
+          FROM "TestCase" tc
+          WHERE tc."deletedAt" IS NULL
+          GROUP BY tc."suiteId"
+        )
+        SELECT
+          st."id",
+          st."projectId",
+          st."parentSuiteId",
+          st."name",
+          st."description",
+          st."ownerId",
+          st."reviewerId",
+          st."status",
+          st."isLocked",
+          st."createdAt",
+          st."updatedAt",
+          COALESCE(cc."caseCount", 0)::bigint AS "caseCount"
+        FROM suite_tree st
+        LEFT JOIN case_counts cc ON cc."suiteId" = st."id"
+        ORDER BY st."createdAt" ASC
+      `;
+            const nodeMap = new Map();
+            rows.forEach((row) => {
+                nodeMap.set(row.id, {
+                    id: row.id,
+                    projectId: row.projectId,
+                    parentSuiteId: row.parentSuiteId,
+                    name: row.name,
+                    description: row.description,
+                    ownerId: row.ownerId,
+                    reviewerId: row.reviewerId,
+                    status: row.status,
+                    isLocked: row.isLocked,
+                    createdAt: row.createdAt,
+                    updatedAt: row.updatedAt,
+                    caseCount: Number(row.caseCount),
+                    childSuites: [],
+                });
             });
-            // Build tree structure
-            const tree = await Promise.all(rootSuites.map(suite => this.buildSuiteTreeNode(suite)));
+            const tree = [];
+            nodeMap.forEach((node) => {
+                if (node.parentSuiteId && nodeMap.has(node.parentSuiteId)) {
+                    nodeMap.get(node.parentSuiteId).childSuites.push(node);
+                }
+                else {
+                    tree.push(node);
+                }
+            });
+            if (redis) {
+                try {
+                    await redis.setex(cacheKey, this.suiteTreeTtlSeconds, JSON.stringify(tree));
+                }
+                catch (error) {
+                    logger_1.logger.warn(`Suite tree cache write failed for ${cacheKey}: ${error}`);
+                }
+            }
             return tree;
         }
         catch (error) {
@@ -46,41 +140,6 @@ class TestRepositoryService {
             logger_1.logger.error(`Error getting suite tree: ${error}`);
             throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to fetch suite tree');
         }
-    }
-    /**
-     * Build recursive tree node with case count
-     */
-    async buildSuiteTreeNode(suite) {
-        // Count cases in this suite
-        const caseCount = await this.prisma.testCase.count({
-            where: {
-                suiteId: suite.id,
-                deletedAt: null,
-            },
-        });
-        // Get child suites
-        const childSuites = await this.prisma.suite.findMany({
-            where: {
-                parentSuiteId: suite.id,
-                deletedAt: null,
-            },
-        });
-        const childNodes = await Promise.all(childSuites.map(child => this.buildSuiteTreeNode(child)));
-        return {
-            id: suite.id,
-            projectId: suite.projectId,
-            parentSuiteId: suite.parentSuiteId,
-            name: suite.name,
-            description: suite.description,
-            ownerId: suite.ownerId,
-            reviewerId: suite.reviewerId,
-            status: suite.status,
-            isLocked: suite.isLocked,
-            createdAt: suite.createdAt,
-            updatedAt: suite.updatedAt,
-            caseCount,
-            childSuites: childNodes,
-        };
     }
     /**
      * POST /api/v1/projects/:projectId/suites — create suite
@@ -125,6 +184,7 @@ class TestRepositoryService {
             // Create audit log
             await this.createAuditLog(projectId, userId, 'Suite', suite.id, 'CREATE', JSON.stringify(suite));
             logger_1.logger.info(`Suite created: ${suite.id} (Project: ${projectId})`);
+            await this.invalidateSuiteTreeCache(projectId);
             return this.formatSuiteDTO(suite);
         }
         catch (error) {
@@ -190,6 +250,7 @@ class TestRepositoryService {
                 after: updated,
             }));
             logger_1.logger.info(`Suite updated: ${suiteId}`);
+            await this.invalidateSuiteTreeCache(projectId);
             return this.formatSuiteDTO(updated);
         }
         catch (error) {
@@ -231,6 +292,7 @@ class TestRepositoryService {
             // Create audit log
             await this.createAuditLog(projectId, userId, 'Suite', suiteId, 'DELETE', JSON.stringify(suite));
             logger_1.logger.info(`Suite soft deleted: ${suiteId}`);
+            await this.invalidateSuiteTreeCache(projectId);
         }
         catch (error) {
             if (error instanceof errors_1.AppError)
@@ -351,6 +413,7 @@ class TestRepositoryService {
             const logAction = suite.isLocked ? 'UNLOCK' : 'LOCK';
             await this.createAuditLog(projectId, userId, 'Suite', suiteId, 'UPDATE', JSON.stringify({ isLocked: updated.isLocked, action: logAction }));
             logger_1.logger.info(`Suite ${logAction}ed: ${suiteId}`);
+            await this.invalidateSuiteTreeCache(projectId);
             return this.formatSuiteDTO(updated);
         }
         catch (error) {
@@ -385,6 +448,7 @@ class TestRepositoryService {
             // Create audit log
             await this.createAuditLog(projectId, userId, 'Suite', suiteId, 'UPDATE', JSON.stringify({ status: 'ARCHIVED' }));
             logger_1.logger.info(`Suite archived: ${suiteId}`);
+            await this.invalidateSuiteTreeCache(projectId);
             return this.formatSuiteDTO(updated);
         }
         catch (error) {
@@ -402,9 +466,10 @@ class TestRepositoryService {
      */
     async getTestCases(projectId, filters) {
         try {
+            const cursorData = this.decodeCursor(filters.cursor);
             const page = filters.page || 1;
             const limit = filters.limit || 20;
-            const skip = (page - 1) * limit;
+            const skip = cursorData ? 0 : (page - 1) * limit;
             // Build filter conditions
             const where = {
                 deletedAt: null,
@@ -452,33 +517,55 @@ class TestRepositoryService {
                     hasSome: filters.tags,
                 };
             }
-            // Search filter (title and description)
-            if (filters.search) {
+            if (cursorData) {
                 where.OR = [
-                    { title: { contains: filters.search, mode: 'insensitive' } },
                     {
-                        description: {
-                            contains: filters.search,
-                            mode: 'insensitive',
+                        createdAt: {
+                            lt: cursorData.createdAt,
+                        },
+                    },
+                    {
+                        createdAt: cursorData.createdAt,
+                        id: {
+                            lt: cursorData.id,
                         },
                     },
                 ];
             }
-            // Get total count
-            const total = await this.prisma.testCase.count({ where });
-            // Get paginated results
+            if (filters.search?.trim()) {
+                const searchIds = await this.findSearchCandidateCaseIds(projectId, filters.search, Math.min(limit * 5, 500), cursorData);
+                if (searchIds.length === 0) {
+                    return {
+                        data: [],
+                        pagination: {
+                            page,
+                            limit,
+                            total: 0,
+                            totalPages: 0,
+                            hasMore: false,
+                        },
+                    };
+                }
+                where.id = { in: searchIds };
+            }
+            const total = cursorData
+                ? 0
+                : await this.prisma.testCase.count({ where });
             const testCases = await this.prisma.testCase.findMany({
                 where,
                 skip,
-                take: limit,
+                take: limit + 1,
                 include: {
                     steps: {
                         orderBy: { order: 'asc' },
                     },
                 },
-                orderBy: { createdAt: 'desc' },
+                orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
             });
-            const data = testCases.map(tc => this.formatTestCaseDTO(tc));
+            const hasMore = testCases.length > limit;
+            const trimmed = hasMore ? testCases.slice(0, limit) : testCases;
+            const data = trimmed.map(tc => this.formatTestCaseDTO(tc));
+            const nextCursor = hasMore ? this.encodeCursor(trimmed[trimmed.length - 1]) : undefined;
             const totalPages = Math.ceil(total / limit);
             return {
                 data,
@@ -486,8 +573,9 @@ class TestRepositoryService {
                     page,
                     limit,
                     total,
-                    totalPages,
-                    hasMore: page < totalPages,
+                    totalPages: cursorData ? 0 : totalPages,
+                    hasMore: cursorData ? hasMore : page < totalPages || hasMore,
+                    nextCursor,
                 },
             };
         }
@@ -561,6 +649,7 @@ class TestRepositoryService {
             // Create audit log
             await this.createAuditLog(projectId, userId, 'TestCase', testCase.id, 'CREATE', JSON.stringify(testCase));
             logger_1.logger.info(`Test case created: ${testCase.id} (Suite: ${suiteId})`);
+            await this.invalidateSuiteTreeCache(projectId);
             return this.formatTestCaseDTO({ ...testCase, steps });
         }
         catch (error) {
@@ -694,6 +783,7 @@ class TestRepositoryService {
                 after: updated,
             }));
             logger_1.logger.info(`Test case updated: ${caseId}`);
+            await this.invalidateSuiteTreeCache(projectId);
             return this.formatTestCaseDTO(updated);
         }
         catch (error) {
@@ -733,6 +823,7 @@ class TestRepositoryService {
             // Create audit log
             await this.createAuditLog(projectId, userId, 'TestCase', caseId, 'DELETE', JSON.stringify(testCase));
             logger_1.logger.info(`Test case soft deleted: ${caseId}`);
+            await this.invalidateSuiteTreeCache(projectId);
         }
         catch (error) {
             if (error instanceof errors_1.AppError)
@@ -883,6 +974,9 @@ class TestRepositoryService {
                 }
             }
             logger_1.logger.info(`Bulk operations completed: ${result.successful} successful, ${result.failed} failed`);
+            if (result.successful > 0) {
+                await this.invalidateSuiteTreeCache(projectId);
+            }
             return result;
         }
         catch (error) {
@@ -895,6 +989,69 @@ class TestRepositoryService {
     /**
      * ========== HELPER METHODS ==========
      */
+    encodeCursor(entity) {
+        return Buffer.from(JSON.stringify({
+            id: entity.id,
+            createdAt: entity.createdAt.toISOString(),
+        })).toString('base64url');
+    }
+    decodeCursor(cursor) {
+        if (!cursor) {
+            return null;
+        }
+        try {
+            const decoded = JSON.parse(Buffer.from(cursor, 'base64url').toString('utf-8'));
+            if (!decoded?.id || !decoded?.createdAt) {
+                return null;
+            }
+            return {
+                id: String(decoded.id),
+                createdAt: new Date(String(decoded.createdAt)),
+            };
+        }
+        catch (_error) {
+            return null;
+        }
+    }
+    async findSearchCandidateCaseIds(projectId, search, take, cursorData) {
+        const cursorSql = cursorData
+            ? client_1.Prisma.sql `
+        AND (
+          tc."createdAt" < ${cursorData.createdAt}
+          OR (tc."createdAt" = ${cursorData.createdAt} AND tc."id" < ${cursorData.id})
+        )
+      `
+            : client_1.Prisma.empty;
+        const rows = await this.prisma.$queryRaw `
+      SELECT tc."id"
+      FROM "TestCase" tc
+      JOIN "Suite" s ON s."id" = tc."suiteId"
+      WHERE s."projectId" = ${projectId}
+        AND s."deletedAt" IS NULL
+        AND tc."deletedAt" IS NULL
+        AND tc."searchVector" @@ plainto_tsquery('english', ${search})
+        ${cursorSql}
+      ORDER BY tc."createdAt" DESC, tc."id" DESC
+      LIMIT ${take}
+    `;
+        return rows.map((row) => row.id);
+    }
+    getSuiteTreeCacheKey(projectId) {
+        return `suite:tree:${projectId}`;
+    }
+    async invalidateSuiteTreeCache(projectId) {
+        const redis = (0, redis_1.getRedisOptional)();
+        if (!redis) {
+            return;
+        }
+        const key = this.getSuiteTreeCacheKey(projectId);
+        try {
+            await redis.del(key);
+        }
+        catch (error) {
+            logger_1.logger.warn(`Suite tree cache invalidation failed for ${key}: ${error}`);
+        }
+    }
     /**
      * Detect duplicate test case title in suite
      */

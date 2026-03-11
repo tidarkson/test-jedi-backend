@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const environment_1 = require("../config/environment");
 const database_1 = require("../config/database");
 const redis_1 = require("../config/redis");
@@ -14,7 +14,10 @@ const errors_1 = require("../types/errors");
 class AuthService {
     constructor() {
         this.prisma = (0, database_1.getPrisma)();
-        this.redis = (0, redis_1.getRedis)();
+        this.permissionTtlSeconds = 300;
+    }
+    getRedisClient() {
+        return (0, redis_1.getRedisOptional)();
     }
     /**
      * Register a new user and create their organization
@@ -28,7 +31,7 @@ class AuthService {
             throw new errors_1.AppError(409, errors_1.ErrorCodes.USER_ALREADY_EXISTS, 'User with this email already exists');
         }
         // Hash password
-        const passwordHash = await bcrypt_1.default.hash(password, environment_1.config.BCRYPT_ROUNDS);
+        const passwordHash = await bcryptjs_1.default.hash(password, environment_1.config.BCRYPT_ROUNDS);
         // Create organization first
         const organization = await this.prisma.organization.create({
             data: {
@@ -84,7 +87,7 @@ class AuthService {
             throw new errors_1.AppError(401, errors_1.ErrorCodes.INVALID_CREDENTIALS, 'Invalid email or password');
         }
         // Verify password
-        const isPasswordValid = await bcrypt_1.default.compare(password, user.passwordHash);
+        const isPasswordValid = await bcryptjs_1.default.compare(password, user.passwordHash);
         if (!isPasswordValid) {
             throw new errors_1.AppError(401, errors_1.ErrorCodes.INVALID_CREDENTIALS, 'Invalid email or password');
         }
@@ -111,7 +114,10 @@ class AuthService {
             // Verify refresh token
             const payload = jsonwebtoken_1.default.verify(refreshToken, environment_1.config.JWT_SECRET);
             // Check token revocation
-            const isRevoked = await this.redis.get(`revoked:${payload.userId}:${payload.tokenVersion}`);
+            const redis = this.getRedisClient();
+            const isRevoked = redis
+                ? await redis.get(`revoked:${payload.userId}:${payload.tokenVersion}`)
+                : null;
             if (isRevoked) {
                 throw new errors_1.AppError(401, errors_1.ErrorCodes.EXPIRED_TOKEN, 'Refresh token has been revoked');
             }
@@ -149,8 +155,11 @@ class AuthService {
      */
     async logout(userId, tokenVersion) {
         // Revoke refresh token in Redis
-        const ttl = 7 * 24 * 60 * 60; // 7 days in seconds
-        await this.redis.setex(`revoked:${userId}:${tokenVersion}`, ttl, 'revoked');
+        const redis = this.getRedisClient();
+        if (redis) {
+            const ttl = 7 * 24 * 60 * 60; // 7 days in seconds
+            await redis.setex(`revoked:${userId}:${tokenVersion}`, ttl, 'revoked');
+        }
         logger_1.logger.info(`User logged out: ${userId}`);
     }
     /**
@@ -197,12 +206,12 @@ class AuthService {
             throw new errors_1.AppError(404, errors_1.ErrorCodes.USER_NOT_FOUND, 'User not found');
         }
         // Verify current password
-        const isPasswordValid = await bcrypt_1.default.compare(currentPassword, user.passwordHash);
+        const isPasswordValid = await bcryptjs_1.default.compare(currentPassword, user.passwordHash);
         if (!isPasswordValid) {
             throw new errors_1.AppError(401, errors_1.ErrorCodes.INVALID_CREDENTIALS, 'Current password is incorrect');
         }
         // Hash new password
-        const newPasswordHash = await bcrypt_1.default.hash(newPassword, environment_1.config.BCRYPT_ROUNDS);
+        const newPasswordHash = await bcryptjs_1.default.hash(newPassword, environment_1.config.BCRYPT_ROUNDS);
         // Update password
         await this.prisma.user.update({
             where: { id: userId },
@@ -214,6 +223,19 @@ class AuthService {
      * Check project-level permissions for RBAC
      */
     async checkProjectPermission(userId, projectId, action) {
+        const redis = this.getRedisClient();
+        const permissionCacheKey = `perms:${userId}:${projectId}`;
+        if (redis) {
+            try {
+                const cachedRole = await redis.get(permissionCacheKey);
+                if (cachedRole) {
+                    return this.hasPermission(cachedRole, action);
+                }
+            }
+            catch (error) {
+                logger_1.logger.warn(`Permission cache read failed for ${permissionCacheKey}: ${error}`);
+            }
+        }
         // Get user's role in project
         const projectMember = await this.prisma.projectMember.findUnique({
             where: {
@@ -225,6 +247,14 @@ class AuthService {
         });
         if (!projectMember) {
             return false;
+        }
+        if (redis) {
+            try {
+                await redis.setex(permissionCacheKey, this.permissionTtlSeconds, projectMember.role);
+            }
+            catch (error) {
+                logger_1.logger.warn(`Permission cache write failed for ${permissionCacheKey}: ${error}`);
+            }
         }
         return this.hasPermission(projectMember.role, action);
     }

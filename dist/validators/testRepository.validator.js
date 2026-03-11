@@ -246,6 +246,7 @@ exports.testCaseFiltersSchema = zod_1.z.object({
         .optional(),
     tags: zod_1.z.array(zod_1.z.string()).optional(),
     search: zod_1.z.string().optional(),
+    cursor: zod_1.z.string().optional(),
     page: zod_1.z.number().int().positive().default(1),
     limit: zod_1.z.number().int().positive().max(100).default(20),
 });

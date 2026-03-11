@@ -1,6 +1,7 @@
 import { SuiteDTO, SuiteTreeNode, TestCaseDTO, CloneResult, CreateSuiteInput, UpdateSuiteInput, CreateTestCaseInput, UpdateTestCaseInput, TestCaseFilters, PaginatedResponse, BulkOperationInput, BulkOperationResult } from '../types/testRepository';
 export declare class TestRepositoryService {
     private prisma;
+    private readonly suiteTreeTtlSeconds;
     /**
      * ========== SUITE OPERATIONS ==========
      */
@@ -8,10 +9,6 @@ export declare class TestRepositoryService {
      * GET /api/v1/projects/:projectId/suites — tree structure
      */
     getSuiteTree(projectId: string): Promise<SuiteTreeNode[]>;
-    /**
-     * Build recursive tree node with case count
-     */
-    private buildSuiteTreeNode;
     /**
      * POST /api/v1/projects/:projectId/suites — create suite
      */
@@ -73,6 +70,11 @@ export declare class TestRepositoryService {
     /**
      * ========== HELPER METHODS ==========
      */
+    private encodeCursor;
+    private decodeCursor;
+    private findSearchCandidateCaseIds;
+    private getSuiteTreeCacheKey;
+    private invalidateSuiteTreeCache;
     /**
      * Detect duplicate test case title in suite
      */

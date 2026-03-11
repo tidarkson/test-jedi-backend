@@ -1,4 +1,5 @@
 import { getPrisma } from '../config/database';
+import { getRedisOptional } from '../config/redis';
 import { AppError, ErrorCodes } from '../types/errors';
 import { logger } from '../config/logger';
 import {
@@ -23,9 +24,84 @@ import {
   TestRun,
 } from '@prisma/client';
 import { broadcastRunMetrics } from '../utils/runWebsocket';
+import webhookService from './WebhookService';
+import slackService from './SlackService';
+import jiraService from './JiraService';
+import githubService from './GitHubService';
 
 export class TestRunService {
   private prisma = getPrisma();
+  private readonly runMetricsTtlSeconds = 10;
+
+  private encodeCursor(entity: { id: string; createdAt: Date }): string {
+    return Buffer.from(
+      JSON.stringify({
+        id: entity.id,
+        createdAt: entity.createdAt.toISOString(),
+      }),
+    ).toString('base64url');
+  }
+
+  private decodeCursor(cursor?: string): { id: string; createdAt: Date } | null {
+    if (!cursor) {
+      return null;
+    }
+
+    try {
+      const decoded = JSON.parse(Buffer.from(cursor, 'base64url').toString('utf-8'));
+      return {
+        id: String(decoded.id),
+        createdAt: new Date(String(decoded.createdAt)),
+      };
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  private getRunMetricsCacheKey(runId: string): string {
+    return `run:metrics:${runId}`;
+  }
+
+  private async invalidateRunMetricsCache(runId: string): Promise<void> {
+    const redis = getRedisOptional();
+    if (!redis) {
+      return;
+    }
+
+    const key = this.getRunMetricsCacheKey(runId);
+    try {
+      await redis.del(key);
+    } catch (error) {
+      logger.warn(`Run metrics cache invalidation failed for ${key}: ${error}`);
+    }
+  }
+
+  private async getCachedRunMetrics(runId: string, compute: () => Promise<RunMetrics>): Promise<RunMetrics> {
+    const redis = getRedisOptional();
+    if (!redis) {
+      return compute();
+    }
+
+    const key = this.getRunMetricsCacheKey(runId);
+    try {
+      const cached = await redis.get(key);
+      if (cached) {
+        return JSON.parse(cached) as RunMetrics;
+      }
+    } catch (error) {
+      logger.warn(`Run metrics cache read failed for ${key}: ${error}`);
+    }
+
+    const metrics = await compute();
+
+    try {
+      await redis.setex(key, this.runMetricsTtlSeconds, JSON.stringify(metrics));
+    } catch (error) {
+      logger.warn(`Run metrics cache write failed for ${key}: ${error}`);
+    }
+
+    return metrics;
+  }
 
   /**
    * ========== CASE SELECTION LOGIC ==========
@@ -283,7 +359,27 @@ export class TestRunService {
         logger.warn(`Failed to broadcast metrics after run creation: ${e}`);
       }
 
-      return this.mapTestRunToDTO(testRun);
+      // Fire integration events (non-blocking)
+      const runDto = this.mapTestRunToDTO(testRun);
+      setImmediate(async () => {
+        try {
+          await webhookService.publishEvent(projectId, 'RUN_CREATED', {
+            runId: testRun.id,
+            title: testRun.title,
+            environment: testRun.environment,
+            type: testRun.type,
+          });
+          await slackService.notifyEvent(projectId, 'RUN_CREATED', {
+            id: testRun.id,
+            title: testRun.title,
+            environment: testRun.environment,
+          });
+        } catch (e) {
+          logger.warn(`Integration events failed for run.created ${testRun.id}: ${e}`);
+        }
+      });
+
+      return runDto;
     } catch (error) {
       if (error instanceof AppError) throw error;
       logger.error(`Error creating run: ${error}`);
@@ -333,29 +429,38 @@ export class TestRunService {
         if (filters.dateTo) where.plannedStart.lte = filters.dateTo;
       }
 
-      // Count total
-      const total = await this.prisma.testRun.count({ where });
+      const cursorData = this.decodeCursor(filters?.cursor);
 
-      // Fetch paginated
+      if (cursorData) {
+        where.OR = [
+          { createdAt: { lt: cursorData.createdAt } },
+          { createdAt: cursorData.createdAt, id: { lt: cursorData.id } },
+        ];
+      }
+
+      const total = cursorData ? 0 : await this.prisma.testRun.count({ where });
+
       const runs = await this.prisma.testRun.findMany({
         where,
-        skip: (page - 1) * limit,
-        take: limit,
-        orderBy: {
-          createdAt: 'desc',
-        },
+        skip: cursorData ? 0 : (page - 1) * limit,
+        take: limit + 1,
+        orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
       });
 
-      const totalPages = Math.ceil(total / limit);
+      const hasMore = runs.length > limit;
+      const trimmed = hasMore ? runs.slice(0, limit) : runs;
+      const nextCursor = hasMore ? this.encodeCursor(trimmed[trimmed.length - 1]) : undefined;
+      const totalPages = cursorData ? 0 : Math.ceil(total / limit);
 
       return {
-        data: runs.map(run => this.mapTestRunToDTO(run)),
+        data: trimmed.map(run => this.mapTestRunToDTO(run)),
         pagination: {
           page,
           limit,
           total,
           totalPages,
-          hasMore: page < totalPages,
+          hasMore: cursorData ? hasMore : page < totalPages || hasMore,
+          nextCursor,
         },
       };
     } catch (error) {
@@ -388,7 +493,7 @@ export class TestRunService {
       }
 
       const cases = await this.getRunCases(runId);
-      const metrics = await this.calculateRunMetrics(runId);
+      const metrics = await this.getCachedRunMetrics(runId, () => this.computeRunMetrics(runId));
 
       return {
         run: this.mapTestRunToDTO(run),
@@ -527,7 +632,58 @@ export class TestRunService {
       // Log audit
       await this.logAudit(projectId, userId, 'TestRun', runId, AuditAction.UPDATE);
 
-      return this.mapTestRunToDTO(closed);
+      // Fire integration events (non-blocking)
+      const closedDto = this.mapTestRunToDTO(closed);
+      setImmediate(async () => {
+        try {
+          const metrics = await this.calculateRunMetrics(runId);
+          const metricsSummary = {
+            totalCases: metrics.totalCases,
+            passedCases: metrics.passedCases,
+            failedCases: metrics.failedCases,
+            blockedCases: metrics.blockedCases,
+            skippedCases: metrics.skippedCases,
+            passRate: metrics.passRate,
+          };
+          await webhookService.publishEvent(projectId, 'RUN_CLOSED', {
+            runId,
+            title: closed.title,
+            environment: closed.environment,
+            status: closed.status,
+            metrics: metricsSummary,
+          });
+          await slackService.notifyEvent(
+            projectId,
+            'RUN_CLOSED',
+            {
+              id: runId,
+              title: closed.title,
+              environment: closed.environment,
+              status: closed.status,
+              ...metricsSummary,
+            },
+          );
+          await slackService.checkFailureThreshold(projectId, {
+            id: runId,
+            title: closed.title,
+            environment: closed.environment,
+            status: closed.status,
+            ...metricsSummary,
+          });
+          await githubService.handleRunClosed(
+            projectId,
+            runId,
+            closed.title,
+            closed.status,
+            metricsSummary,
+            run.buildNumber ?? undefined,
+          );
+        } catch (e) {
+          logger.warn(`Integration events failed for run.closed ${runId}: ${e}`);
+        }
+      });
+
+      return closedDto;
     } catch (error) {
       if (error instanceof AppError) throw error;
       logger.error(`Error closing run: ${error}`);
@@ -792,10 +948,43 @@ export class TestRunService {
 
       // Broadcast updated metrics for this run
       try {
+        await this.invalidateRunMetricsCache(runId);
         const metrics = await this.calculateRunMetrics(runId);
         broadcastRunMetrics(runId, metrics);
       } catch (e) {
         logger.warn(`Failed to broadcast metrics after update: ${e}`);
+      }
+
+      // Fire case.failed integration events (non-blocking)
+      if (input.status === 'FAILED' && oldStatus !== 'FAILED') {
+        const runForEvent = await this.prisma.testRun.findUnique({ where: { id: runId } });
+        setImmediate(async () => {
+          try {
+            if (!runForEvent) return;
+            const caseTitle = fullUpdated!.testCase.title;
+            await webhookService.publishEvent(runForEvent.projectId, 'CASE_FAILED', {
+              runId,
+              runCaseId: runCaseId,
+              caseId: fullUpdated!.caseId,
+              caseTitle,
+            });
+            await slackService.notifyEvent(
+              runForEvent.projectId,
+              'CASE_FAILED',
+              { id: runId, title: runForEvent.title, environment: runForEvent.environment },
+              { caseTitle },
+            );
+            await jiraService.createIssueForFailedCase(
+              runForEvent.projectId,
+              runCaseId,
+              caseTitle,
+              runForEvent.title,
+              runId,
+            );
+          } catch (e) {
+            logger.warn(`Integration events failed for case.failed ${runCaseId}: ${e}`);
+          }
+        });
       }
 
       return {
@@ -929,6 +1118,7 @@ export class TestRunService {
 
       // Broadcast metrics after bulk update
       try {
+        await this.invalidateRunMetricsCache(runId);
         const metrics = await this.calculateRunMetrics(runId);
         broadcastRunMetrics(runId, metrics);
       } catch (e) {
@@ -960,6 +1150,10 @@ export class TestRunService {
    * Live metrics aggregation
    */
   async calculateRunMetrics(runId: string): Promise<RunMetrics> {
+    return this.getCachedRunMetrics(runId, () => this.computeRunMetrics(runId));
+  }
+
+  private async computeRunMetrics(runId: string): Promise<RunMetrics> {
     try {
       const runCases = await this.prisma.runCase.findMany({
         where: { runId },

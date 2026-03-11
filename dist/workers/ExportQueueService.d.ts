@@ -8,6 +8,7 @@ export declare class ExportQueueService {
     private worker;
     private s3Service;
     private prisma;
+    private readonly queueEnabled;
     constructor();
     /**
      * Initialize worker for processing export jobs

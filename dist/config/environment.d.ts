@@ -21,8 +21,13 @@ export declare const config: {
     RATE_LIMIT_WINDOW_MS: number;
     RATE_LIMIT_MAX_REQUESTS: number;
     JIRA_APP_ID: string | undefined;
+    JIRA_APP_SECRET: string | undefined;
     GITHUB_APP_ID: string | undefined;
+    GITHUB_TOKEN: string | undefined;
+    GITLAB_TOKEN: string | undefined;
     SLACK_BOT_TOKEN: string | undefined;
+    SLACK_WEBHOOK_URL: string | undefined;
+    TEAMS_WEBHOOK_URL: string | undefined;
     SESSION_SECRET: string;
     BCRYPT_ROUNDS: number;
     AWS_ACCESS_KEY_ID: string | undefined;

@@ -18,6 +18,8 @@ import {
   TestPlanRunDTO,
 } from '../types/testPlan';
 import { TestPlanStatus, AuditAction } from '@prisma/client';
+import webhookService from './WebhookService';
+import slackService from './SlackService';
 
 export class TestPlanService {
   private prisma = getPrisma();
@@ -366,7 +368,26 @@ export class TestPlanService {
       // Audit log
       await this.createAuditLog(plan.projectId, userId, 'TestPlan', planId, AuditAction.UPDATE, plan, approved);
 
-      return this.mapToPlanDTO(approved);
+      // Fire integration events (non-blocking)
+      const approvedDto = this.mapToPlanDTO(approved);
+      setImmediate(async () => {
+        try {
+          await webhookService.publishEvent(plan.projectId, 'PLAN_APPROVED', {
+            planId,
+            title: approved.title,
+            approvedById: userId,
+          });
+          await slackService.notifyEvent(
+            plan.projectId,
+            'PLAN_APPROVED',
+            { id: planId, title: approved.title, environment: 'N/A' },
+          );
+        } catch (e) {
+          logger.warn(`Integration events failed for plan.approved ${planId}: ${e}`);
+        }
+      });
+
+      return approvedDto;
     } catch (error) {
       if (error instanceof AppError) throw error;
       logger.error(`Error approving plan: ${error}`);
@@ -489,7 +510,7 @@ export class TestPlanService {
       // Component scores (0-100)
       const passRateScore = metrics.passRate;
       const completionScore = metrics.completionRate;
-      const defectScore = Math.max(0, 100 - Math.min(metrics.openDefectCount * 5, 100)); // 5 points per defect, max 100
+      const defectScore = Math.max(0, 100 - Math.min(metrics.openDefectCount * 6, 100));
       const coverageScore = metrics.linkedRunCount > 0 ? 100 : 50; // Full score if runs linked
 
       // Weights
@@ -521,6 +542,9 @@ export class TestPlanService {
         recommendation = 'ready-with-risks';
         if (metrics.passRate < 90) risks.push('Pass rate below 90%');
         if (metrics.openDefectCount > 5) risks.push('Moderate number of open defects');
+      } else if (metrics.openDefectCount > 0) {
+        recommendation = 'ready-with-risks';
+        risks.push('Open defect count requires review before release');
       }
 
       return {
@@ -802,7 +826,7 @@ export class TestPlanService {
     const { passRate, completionRate, openDefectCount, totalCases } = params;
 
     // Weight: 40% pass rate, 30% completion, 20% defects, 10% coverage
-    const defectScore = Math.max(0, 100 - Math.min(openDefectCount * 5, 100));
+    const defectScore = Math.max(0, 100 - Math.min(openDefectCount * 6, 100));
     const coverageScore = totalCases > 0 ? 100 : 50;
 
     return Math.round(passRate * 0.4 + completionRate * 0.3 + defectScore * 0.2 + coverageScore * 0.1);

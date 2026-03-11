@@ -320,6 +320,7 @@ export class TestRepositoryController {
       // Parse and validate filters
       const filtersData = {
         ...req.query,
+        cursor: req.query.cursor as string | undefined,
         page: req.query.page ? parseInt(req.query.page as string) : 1,
         limit: req.query.limit ? parseInt(req.query.limit as string) : 20,
         // Parse arrays from query params

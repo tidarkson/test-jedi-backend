@@ -292,14 +292,14 @@ describe('Test Plan API - Comprehensive Testing', () => {
       // Total cases: 10 + 10 + 10 = 30
       expect(metrics.totalCases).toBe(30);
 
-      // Passed: 10 + 8 + 9 = 27
-      expect(metrics.passedCases).toBe(27);
+      // Passed: 10 + 8 + 5 = 23
+      expect(metrics.passedCases).toBe(23);
 
       // Failed: 0 + 2 + 0 = 2
       expect(metrics.failedCases).toBe(2);
 
-      // Pass rate: 27 / 30 = 90%
-      expect(metrics.passRate).toBe(90);
+      // Pass rate: 23 / 30 = 77%
+      expect(metrics.passRate).toBe(77);
 
       // Completed: 10 + 10 + 5 = 25
       // Completion rate: 25 / 30 = 83.33% (rounded to 83)
@@ -351,7 +351,7 @@ describe('Test Plan API - Comprehensive Testing', () => {
       expect(response.body.data.snapshot).toBeDefined();
 
       const baselineSnapshot = response.body.data.snapshot;
-      expect(baselineSnapshot.metrics.passRate).toBe(90);
+      expect(baselineSnapshot.metrics.passRate).toBe(77);
       expect(baselineSnapshot.metrics.completionRate).toBeGreaterThanOrEqual(80);
 
       console.log('✓ Baseline set with metrics:', {
@@ -393,12 +393,12 @@ describe('Test Plan API - Comprehensive Testing', () => {
 
       // Verify baseline snapshot exists
       expect(baseline).toBeDefined();
-      expect(baseline.metrics.passRate).toBe(90);
+      expect(baseline.metrics.passRate).toBe(77);
 
       // Verify current snapshot shows improvement
       expect(current).toBeDefined();
-      // New pass rate: 28 / 30 = 93.33% (rounded to 93)
-      expect(current.metrics.passRate).toBeGreaterThanOrEqual(90);
+      // New pass rate: 24 / 30 = 80%
+      expect(current.metrics.passRate).toBeGreaterThanOrEqual(80);
 
       // Verify deltas show positive change
       expect(deltas).toBeDefined();

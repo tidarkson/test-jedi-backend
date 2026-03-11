@@ -6,8 +6,73 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const auth_1 = require("../middleware/auth");
 const TestPlanController_1 = require("../controllers/TestPlanController");
+const TestRunController_1 = require("../controllers/TestRunController");
 const router = express_1.default.Router();
 const controller = new TestPlanController_1.TestPlanController();
+const runController = new TestRunController_1.TestRunController();
+/**
+ * @openapi
+ * tags:
+ *   - name: Test Plans
+ *     description: Planning, approvals, baselines, and versions
+ * /projects/{projectId}/plans:
+ *   post:
+ *     tags: [Test Plans]
+ *     summary: Create plan
+ *     security: [{ bearerAuth: [] }]
+ *   get:
+ *     tags: [Test Plans]
+ *     summary: List plans
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/plans/{id}:
+ *   get:
+ *     tags: [Test Plans]
+ *     summary: Get plan detail
+ *     security: [{ bearerAuth: [] }]
+ *   put:
+ *     tags: [Test Plans]
+ *     summary: Update plan
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/plans/{id}/runs:
+ *   post:
+ *     tags: [Test Plans]
+ *     summary: Add run to plan
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/plans/{id}/runs/{runId}:
+ *   delete:
+ *     tags: [Test Plans]
+ *     summary: Remove run from plan
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/plans/{id}/approve:
+ *   post:
+ *     tags: [Test Plans]
+ *     summary: Approve plan
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/plans/{id}/readiness:
+ *   get:
+ *     tags: [Test Plans]
+ *     summary: Get release readiness
+ *     security: [{ bearerAuth: [] }]
+ * /plans/{id}/versions:
+ *   get:
+ *     tags: [Test Plans]
+ *     summary: List plan versions
+ *     security: [{ bearerAuth: [] }]
+ * /plans/{id}/versions/{versionId}:
+ *   get:
+ *     tags: [Test Plans]
+ *     summary: Get plan version snapshot
+ *     security: [{ bearerAuth: [] }]
+ * /plans/{id}/baseline:
+ *   post:
+ *     tags: [Test Plans]
+ *     summary: Set baseline
+ *     security: [{ bearerAuth: [] }]
+ *   get:
+ *     tags: [Test Plans]
+ *     summary: Get baseline comparison
+ *     security: [{ bearerAuth: [] }]
+ */
 /**
  * ========== PLAN ENDPOINTS ==========
  */
@@ -62,5 +127,8 @@ router.post('/plans/:id/baseline', auth_1.authenticate, (req, res) => controller
 // GET /api/v1/plans/:id/baseline
 // Get baseline comparison
 router.get('/plans/:id/baseline', auth_1.authenticate, (req, res) => controller.getBaselineComparison(req, res));
+// Compatibility endpoints used by plan integration flows
+router.post('/projects/:projectId/runs/:id/close', auth_1.authenticate, (req, res) => runController.closeRun(req, res));
+router.put('/runs/:runId/cases/:runCaseId', auth_1.authenticate, (req, res) => runController.updateRunCaseStatus(req, res));
 exports.default = router;
 //# sourceMappingURL=plans.js.map

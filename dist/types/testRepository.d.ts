@@ -73,6 +73,7 @@ export interface PaginatedResponse<T> {
         total: number;
         totalPages: number;
         hasMore: boolean;
+        nextCursor?: string;
     };
 }
 /**
@@ -173,6 +174,7 @@ export interface TestCaseFilters {
     status?: SuiteStatus | SuiteStatus[];
     tags?: string[];
     search?: string;
+    cursor?: string;
     page?: number;
     limit?: number;
 }

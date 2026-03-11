@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.redis = exports.getRedis = exports.initializeRedis = void 0;
+exports.redis = exports.getRedisOptional = exports.getRedis = exports.initializeRedis = void 0;
 const ioredis_1 = __importDefault(require("ioredis"));
 const environment_1 = require("./environment");
 const logger_1 = require("./logger");
@@ -34,6 +34,9 @@ const initializeRedis = async () => {
 exports.initializeRedis = initializeRedis;
 const getRedis = () => {
     if (!redis) {
+        if (!environment_1.config.REDIS_ENABLED) {
+            throw new Error('Redis is disabled');
+        }
         // Initialize synchronously with a new connection for testing
         // This works because ioredis is mocked in tests
         exports.redis = redis = new ioredis_1.default(environment_1.config.REDIS_URL);
@@ -41,4 +44,16 @@ const getRedis = () => {
     return redis;
 };
 exports.getRedis = getRedis;
+const getRedisOptional = () => {
+    if (!environment_1.config.REDIS_ENABLED) {
+        return null;
+    }
+    try {
+        return (0, exports.getRedis)();
+    }
+    catch (_error) {
+        return null;
+    }
+};
+exports.getRedisOptional = getRedisOptional;
 //# sourceMappingURL=redis.js.map

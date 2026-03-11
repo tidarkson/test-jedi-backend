@@ -99,7 +99,9 @@ class TestPlanController {
             res.status(200).json({
                 status: 'success',
                 code: 200,
-                data: result.data,
+                data: {
+                    plans: result.data,
+                },
                 pagination: result.pagination,
                 message: 'Plans retrieved successfully',
             });

@@ -131,6 +131,8 @@ class TestRunController {
                 filters.milestoneId = req.query.milestoneId;
             if (req.query.buildNumber)
                 filters.buildNumber = req.query.buildNumber;
+            if (req.query.cursor)
+                filters.cursor = req.query.cursor;
             const result = await this.testRunService.listRuns(projectId, page, limit, filters);
             res.status(200).json({
                 status: 'success',

@@ -197,6 +197,7 @@ export declare const testCaseFiltersSchema: z.ZodObject<{
     }>>]>>;
     tags: z.ZodOptional<z.ZodArray<z.ZodString>>;
     search: z.ZodOptional<z.ZodString>;
+    cursor: z.ZodOptional<z.ZodString>;
     page: z.ZodDefault<z.ZodNumber>;
     limit: z.ZodDefault<z.ZodNumber>;
 }, z.core.$strip>;

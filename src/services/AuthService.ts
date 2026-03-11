@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { User, UserRole } from '@prisma/client';
 import { config } from '../config/environment';
 import { getPrisma } from '../config/database';
-import { getRedis } from '../config/redis';
+import { getRedisOptional } from '../config/redis';
 import { logger } from '../config/logger';
 import { AppError, ErrorCodes } from '../types/errors';
 import {
@@ -15,7 +15,11 @@ import {
 
 export class AuthService {
   private prisma = getPrisma();
-  private redis = getRedis();
+  private readonly permissionTtlSeconds = 300;
+
+  private getRedisClient() {
+    return getRedisOptional();
+  }
 
   /**
    * Register a new user and create their organization
@@ -152,9 +156,12 @@ export class AuthService {
       ) as RefreshTokenPayload;
 
       // Check token revocation
-      const isRevoked = await this.redis.get(
+      const redis = this.getRedisClient();
+      const isRevoked = redis
+        ? await redis.get(
         `revoked:${payload.userId}:${payload.tokenVersion}`,
-      );
+          )
+        : null;
 
       if (isRevoked) {
         throw new AppError(
@@ -214,12 +221,15 @@ export class AuthService {
    */
   async logout(userId: string, tokenVersion: number): Promise<void> {
     // Revoke refresh token in Redis
-    const ttl = 7 * 24 * 60 * 60; // 7 days in seconds
-    await this.redis.setex(
-      `revoked:${userId}:${tokenVersion}`,
-      ttl,
-      'revoked',
-    );
+    const redis = this.getRedisClient();
+    if (redis) {
+      const ttl = 7 * 24 * 60 * 60; // 7 days in seconds
+      await redis.setex(
+        `revoked:${userId}:${tokenVersion}`,
+        ttl,
+        'revoked',
+      );
+    }
 
     logger.info(`User logged out: ${userId}`);
   }
@@ -330,6 +340,20 @@ export class AuthService {
     projectId: string,
     action: ProjectPermission,
   ): Promise<boolean> {
+    const redis = this.getRedisClient();
+    const permissionCacheKey = `perms:${userId}:${projectId}`;
+
+    if (redis) {
+      try {
+        const cachedRole = await redis.get(permissionCacheKey);
+        if (cachedRole) {
+          return this.hasPermission(cachedRole as UserRole, action);
+        }
+      } catch (error) {
+        logger.warn(`Permission cache read failed for ${permissionCacheKey}: ${error}`);
+      }
+    }
+
     // Get user's role in project
     const projectMember = await this.prisma.projectMember.findUnique({
       where: {
@@ -342,6 +366,14 @@ export class AuthService {
 
     if (!projectMember) {
       return false;
+    }
+
+    if (redis) {
+      try {
+        await redis.setex(permissionCacheKey, this.permissionTtlSeconds, projectMember.role);
+      } catch (error) {
+        logger.warn(`Permission cache write failed for ${permissionCacheKey}: ${error}`);
+      }
     }
 
     return this.hasPermission(projectMember.role, action);

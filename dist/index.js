@@ -8,10 +8,12 @@ const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const http_1 = __importDefault(require("http"));
+const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const environment_1 = require("./config/environment");
 const logger_1 = require("./config/logger");
 const database_1 = require("./config/database");
 const redis_1 = require("./config/redis");
+const openapi_1 = require("./config/openapi");
 const requestLogger_1 = require("./middleware/requestLogger");
 const errorHandler_1 = require("./middleware/errorHandler");
 const auth_1 = __importDefault(require("./routes/auth"));
@@ -20,6 +22,8 @@ const runs_1 = __importDefault(require("./routes/runs"));
 const plans_1 = __importDefault(require("./routes/plans"));
 const admin_1 = __importDefault(require("./routes/admin"));
 const exports_1 = __importDefault(require("./routes/exports"));
+const integrations_1 = __importDefault(require("./routes/integrations"));
+const analytics_1 = __importDefault(require("./routes/analytics"));
 const runWebsocket_1 = require("./utils/runWebsocket");
 const JobScheduler_1 = require("./workers/JobScheduler");
 const app = (0, express_1.default)();
@@ -65,7 +69,8 @@ const corsOptions = {
 };
 app.use((0, cors_1.default)(corsOptions));
 // 3. Body parsing (MUST be before session)
-app.use(express_1.default.json({ limit: '10mb' }));
+app.use(express_1.default.json({ limit: '50mb' }));
+app.use(express_1.default.text({ type: ['application/xml', 'text/xml'], limit: '10mb' }));
 app.use(express_1.default.urlencoded({ extended: true, limit: '10mb' }));
 app.use((0, cookie_parser_1.default)());
 // 4. Request logging
@@ -79,7 +84,21 @@ app.use(`/api/${environment_1.config.API_VERSION}/projects`, testRepository_1.de
 app.use(`/api/${environment_1.config.API_VERSION}`, runs_1.default);
 app.use(`/api/${environment_1.config.API_VERSION}`, plans_1.default);
 app.use(`/api/${environment_1.config.API_VERSION}`, exports_1.default);
+app.use(`/api/${environment_1.config.API_VERSION}`, integrations_1.default);
+app.use(`/api/${environment_1.config.API_VERSION}`, analytics_1.default);
 // Health check endpoint
+/**
+ * @openapi
+ * /health:
+ *   get:
+ *     tags:
+ *       - System
+ *     summary: Health check
+ *     description: Returns basic service health information.
+ *     responses:
+ *       200:
+ *         description: Service is healthy.
+ */
 app.get('/health', (_req, res) => {
     res.json({
         status: 'success',
@@ -87,6 +106,10 @@ app.get('/health', (_req, res) => {
         timestamp: new Date().toISOString(),
     });
 });
+app.get('/api/docs.json', (_req, res) => {
+    res.json(openapi_1.openApiSpec);
+});
+app.use('/api/docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(openapi_1.openApiSpec));
 // 404 handler
 app.use((_req, res) => {
     res.status(404).json({

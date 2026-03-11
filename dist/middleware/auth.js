@@ -22,11 +22,18 @@ const authenticate = (req, res, next) => {
         const token = authHeader.slice(7);
         try {
             const payload = authService.verifyAccessToken(token);
+            const normalizedUserId = payload.userId || payload.id;
+            const normalizedRoles = Array.isArray(payload.roles)
+                ? payload.roles
+                : payload.role
+                    ? [payload.role]
+                    : [];
             req.user = {
-                userId: payload.userId,
+                userId: normalizedUserId,
+                id: normalizedUserId,
                 email: payload.email,
                 name: '',
-                roles: payload.roles,
+                roles: normalizedRoles,
                 organizationId: payload.organizationId,
                 projectId: payload.projectId,
             };

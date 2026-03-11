@@ -1,6 +1,12 @@
 import { TestRunDTO, RunCaseDTO, RunMetrics, CaseSelectionInput, CaseSelectionPreview, CreateRunInput, UpdateRunInput, UpdateRunCaseStatusInput, BulkStatusUpdateInput, BulkStatusUpdateResult, CloneRunInput, CloneRunResult, PaginatedResponse, RunListFilters } from '../types/testRun';
 export declare class TestRunService {
     private prisma;
+    private readonly runMetricsTtlSeconds;
+    private encodeCursor;
+    private decodeCursor;
+    private getRunMetricsCacheKey;
+    private invalidateRunMetricsCache;
+    private getCachedRunMetrics;
     /**
      * ========== CASE SELECTION LOGIC ==========
      */
@@ -89,6 +95,7 @@ export declare class TestRunService {
      * Live metrics aggregation
      */
     calculateRunMetrics(runId: string): Promise<RunMetrics>;
+    private computeRunMetrics;
     /**
      * Helper to return empty metrics
      */
