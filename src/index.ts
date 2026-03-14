@@ -83,7 +83,8 @@ app.use(requestLogger);
  */
 app.use(`/api/${config.API_VERSION}/auth`, authRoutes);
 app.use(`/api/${config.API_VERSION}/admin`, adminRoutes);
-app.use(`/api/${config.API_VERSION}/projects`, testRepositoryRoutes);
+// Test repository routes are project-scoped and require :projectId in path.
+app.use(`/api/${config.API_VERSION}/projects/:projectId`, testRepositoryRoutes);
 app.use(`/api/${config.API_VERSION}`, runsRoutes);
 app.use(`/api/${config.API_VERSION}`, plansRoutes);
 app.use(`/api/${config.API_VERSION}`, exportsRoutes);
@@ -137,6 +138,11 @@ const startServer = async () => {
   try {
     // Initialize app (database, cache, etc.)
     await initializeApp();
+
+    if (config.NODE_ENV === 'test') {
+      logger.info('Test environment detected, skipping HTTP listen');
+      return;
+    }
 
     // Create HTTP server and attach WebSocket server
     const server = http.createServer(app);

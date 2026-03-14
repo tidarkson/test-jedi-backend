@@ -1,4 +1,4 @@
-import { SuiteDTO, SuiteTreeNode, TestCaseDTO, CloneResult, CreateSuiteInput, UpdateSuiteInput, CreateTestCaseInput, UpdateTestCaseInput, TestCaseFilters, PaginatedResponse, BulkOperationInput, BulkOperationResult } from '../types/testRepository';
+import { SuiteDTO, SuiteTreeNode, TestCaseDTO, CloneResult, CreateSuiteInput, UpdateSuiteInput, CreateTestCaseInput, UpdateTestCaseInput, TestCaseFilters, PaginatedResponse, BulkOperationInput, BulkOperationResult, ImportRepositoryInput, ImportRepositoryResult, RepositoryExportPayload } from '../types/testRepository';
 export declare class TestRepositoryService {
     private prisma;
     private readonly suiteTreeTtlSeconds;
@@ -67,9 +67,12 @@ export declare class TestRepositoryService {
      * POST /api/v1/projects/:projectId/cases/bulk — bulk operations (up to 500)
      */
     bulkOperateTestCases(projectId: string, userId: string, input: BulkOperationInput): Promise<BulkOperationResult>;
+    exportRepository(projectId: string, suiteId?: string): Promise<RepositoryExportPayload>;
+    importRepository(projectId: string, userId: string, input: ImportRepositoryInput): Promise<ImportRepositoryResult>;
     /**
      * ========== HELPER METHODS ==========
      */
+    private importSuiteTree;
     private encodeCursor;
     private decodeCursor;
     private findSearchCandidateCaseIds;

@@ -78,6 +78,16 @@ const controller = new TestRepositoryController_1.TestRepositoryController();
  *     tags: [Test Repository]
  *     summary: Bulk operate on test cases
  *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/repository/export:
+ *   get:
+ *     tags: [Test Repository]
+ *     summary: Export repository data as JSON payload
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/repository/import:
+ *   post:
+ *     tags: [Test Repository]
+ *     summary: Import repository data from JSON payload
+ *     security: [{ bearerAuth: [] }]
  */
 /**
  * ========== SUITE ENDPOINTS ==========
@@ -176,5 +186,7 @@ router.get('/cases/:id/history', auth_1.authenticate, (req, res) => controller.g
  * @body    suiteId, items: [{ action, id?, data?, newSuiteId? }]
  */
 router.post('/cases/bulk', auth_1.authenticate, (req, res) => controller.bulkOperateTestCases(req, res));
+router.get('/repository/export', auth_1.authenticate, (req, res) => controller.exportRepository(req, res));
+router.post('/repository/import', auth_1.authenticate, (req, res) => controller.importRepository(req, res));
 exports.default = router;
 //# sourceMappingURL=testRepository.js.map

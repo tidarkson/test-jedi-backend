@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.bulkOperationSchema = exports.testCaseFiltersSchema = exports.paginationSchema = exports.updateTestCaseSchema = exports.createTestCaseSchema = exports.updateSuiteSchema = exports.createSuiteSchema = void 0;
+exports.bulkOperationSchema = exports.testCaseFiltersSchema = exports.paginationSchema = exports.repositoryExportQuerySchema = exports.repositoryImportSchema = exports.updateTestCaseSchema = exports.createTestCaseSchema = exports.updateSuiteSchema = exports.createSuiteSchema = void 0;
 const zod_1 = require("zod");
 /**
  * Suite Validators
@@ -109,7 +109,7 @@ exports.createTestCaseSchema = zod_1.z.object({
         .string()
         .uuid('Invalid reviewer ID')
         .optional(),
-    tags: zod_1.z.array(zod_1.z.string().uuid()).optional(),
+    tags: zod_1.z.array(zod_1.z.string().min(1, 'Tag is required')).optional(),
     customFields: zod_1.z.record(zod_1.z.string(), zod_1.z.any()).optional(),
     steps: zod_1.z.array(testStepSchema).optional(),
 });
@@ -172,9 +172,59 @@ exports.updateTestCaseSchema = zod_1.z.object({
     approvalStatus: zod_1.z
         .enum(['PENDING', 'APPROVED', 'REJECTED'])
         .optional(),
-    tags: zod_1.z.array(zod_1.z.string().uuid()).optional(),
+    tags: zod_1.z.array(zod_1.z.string().min(1, 'Tag is required')).optional(),
     customFields: zod_1.z.record(zod_1.z.string(), zod_1.z.any()).optional(),
     steps: zod_1.z.array(testStepSchema).optional(),
+});
+const exportedCaseSchema = zod_1.z.object({
+    title: zod_1.z.string().min(1).max(500),
+    description: zod_1.z.string().max(3000).nullable().optional(),
+    preconditions: zod_1.z.string().max(2000).nullable().optional(),
+    postconditions: zod_1.z.string().max(2000).nullable().optional(),
+    priority: zod_1.z.enum(['CRITICAL', 'HIGH', 'MEDIUM', 'LOW']),
+    severity: zod_1.z.enum(['BLOCKER', 'CRITICAL', 'MAJOR', 'MINOR', 'TRIVIAL']),
+    type: zod_1.z.enum([
+        'FUNCTIONAL',
+        'REGRESSION',
+        'SMOKE',
+        'INTEGRATION',
+        'E2E',
+        'PERFORMANCE',
+        'SECURITY',
+        'USABILITY',
+    ]),
+    automationStatus: zod_1.z.enum([
+        'MANUAL',
+        'AUTOMATED',
+        'PARTIALLY_AUTOMATED',
+        'PENDING_AUTOMATION',
+    ]),
+    status: zod_1.z.enum(['ACTIVE', 'DRAFT', 'ARCHIVED', 'DEPRECATED']),
+    estimatedTime: zod_1.z.number().int().nonnegative().nullable().optional(),
+    tags: zod_1.z.array(zod_1.z.string().min(1)).default([]),
+    customFields: zod_1.z.record(zod_1.z.string(), zod_1.z.any()).optional(),
+    steps: zod_1.z.array(testStepSchema).default([]),
+});
+const exportedSuiteSchema = zod_1.z.lazy(() => zod_1.z.object({
+    name: zod_1.z.string().min(1).max(255),
+    description: zod_1.z.string().max(2000).nullable().optional(),
+    status: zod_1.z.enum(['ACTIVE', 'DRAFT', 'ARCHIVED', 'DEPRECATED']),
+    isLocked: zod_1.z.boolean(),
+    cases: zod_1.z.array(exportedCaseSchema).default([]),
+    childSuites: zod_1.z.array(exportedSuiteSchema).default([]),
+}));
+exports.repositoryImportSchema = zod_1.z.object({
+    parentSuiteId: zod_1.z.string().uuid('Invalid parent suite ID').optional(),
+    repository: zod_1.z.object({
+        version: zod_1.z.literal(1),
+        exportedAt: zod_1.z.string().datetime(),
+        projectId: zod_1.z.string().uuid('Invalid source project ID'),
+        projectName: zod_1.z.string().min(1),
+        rootSuites: zod_1.z.array(exportedSuiteSchema),
+    }),
+});
+exports.repositoryExportQuerySchema = zod_1.z.object({
+    suiteId: zod_1.z.string().uuid('Invalid suite ID').optional(),
 });
 /**
  * Pagination & Filters

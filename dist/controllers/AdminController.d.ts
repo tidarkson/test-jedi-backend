@@ -31,6 +31,16 @@ export declare class AdminController {
      */
     getUserActivity(req: Request, res: Response): Promise<void>;
     /**
+     * GET /api/v1/admin/orgs/:organizationId/projects
+     * List projects for organization
+     */
+    listProjects(req: Request, res: Response): Promise<void>;
+    /**
+     * GET /api/v1/admin/orgs/:organizationId/projects/:projectId
+     * Get a single project
+     */
+    getProject(req: Request, res: Response): Promise<void>;
+    /**
      * POST /api/v1/admin/projects
      * Create project
      */

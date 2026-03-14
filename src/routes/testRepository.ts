@@ -75,6 +75,16 @@ const controller = new TestRepositoryController();
  *     tags: [Test Repository]
  *     summary: Bulk operate on test cases
  *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/repository/export:
+ *   get:
+ *     tags: [Test Repository]
+ *     summary: Export repository data as JSON payload
+ *     security: [{ bearerAuth: [] }]
+ * /projects/{projectId}/repository/import:
+ *   post:
+ *     tags: [Test Repository]
+ *     summary: Import repository data from JSON payload
+ *     security: [{ bearerAuth: [] }]
  */
 
 /**
@@ -245,6 +255,18 @@ router.post(
   '/cases/bulk',
   authenticate,
   (req, res) => controller.bulkOperateTestCases(req, res),
+);
+
+router.get(
+  '/repository/export',
+  authenticate,
+  (req, res) => controller.exportRepository(req, res),
+);
+
+router.post(
+  '/repository/import',
+  authenticate,
+  (req, res) => controller.importRepository(req, res),
 );
 
 export default router;

@@ -2857,3 +2857,1191 @@
 2026-03-11 13:28:44:2844 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
 2026-03-11 13:28:44:2844 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
 2026-03-11 13:28:44:2844 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:50:55:5055 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-12 15:51:21:5121 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-12 15:52:08:528 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-12 15:52:27:5227 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:32:5532 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:33:5533 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:33:5533 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:33:5533 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:33:5533 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:38:5538 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:38:5538 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:38:5538 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:55:38:5538 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 15:56:21:5621 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:04:21:421 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-12 16:05:15:515 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-12 16:09:24:924 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:24:924 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:24:924 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:24:924 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:09:25:925 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-12 16:12:35:1235 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mAuthentication failed against database server, the provided database credentials for `postgres` are not valid.[39m
+
+[31mPlease make sure to provide valid database credentials for the database server at the configured address.[39m
+2026-03-13 20:42:00:420 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:00:420 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:00:420 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:00:420 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:00:420 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:00:420 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:42:01:421 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:07:447 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:07:447 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:07:447 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:07:447 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:44:08:448 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 20:57:39:5739 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mCan't reach database server at `localhost:5432`[39m
+
+[31mPlease make sure your database server is running at `localhost:5432`.[39m
+2026-03-13 21:04:04:44 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mCan't reach database server at `localhost:5432`[39m
+
+[31mPlease make sure your database server is running at `localhost:5432`.[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:04:264 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:05:265 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:05:265 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:05:265 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:05:265 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:05:265 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:05:265 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:05:265 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:05:265 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:05:265 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:05:265 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:26:05:265 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-13 21:27:28:2728 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mCan't reach database server at `localhost:5432`[39m
+
+[31mPlease make sure your database server is running at `localhost:5432`.[39m
+2026-03-14 08:18:53:1853 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:53:1853 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:53:1853 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:53:1853 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:53:1853 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:53:1853 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:53:1853 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:53:1853 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:18:54:1854 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:19:57:1957 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:50:2250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:50:2250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:50:2250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:50:2250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:50:2250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:50:2250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:50:2250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:50:2250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:22:51:2251 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:42:2642 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:42:2642 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:43:2643 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:43:2643 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:43:2643 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:44:2644 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:26:45:2645 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:09:289 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:13:2813 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:13:2813 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:13:2813 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 08:28:13:2813 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 09:24:36:2436 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:49:349 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:49:349 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:49:349 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:49:349 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:49:349 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:49:349 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:03:50:350 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:36:536 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:37:537 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:37:537 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:37:537 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:37:537 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:37:537 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:05:37:537 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:06:04:64 [31merror[39m: [31mRegister error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-03-14 10:08:20:820 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:08:21:821 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:09:33:933 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:05:105 [31merror[39m: [31mRegister database connectivity error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:34:49[39m
+
+[31m  31   organizationName: string,[39m
+[31m  32 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  33   // Check if user already exists[39m
+[31m→ 34   const existingUser = await this.prisma.user.findUnique([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-03-14 10:10:39:1039 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:39:1039 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:39:1039 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:39:1039 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:39:1039 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:39:1039 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:39:1039 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:39:1039 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:39:1039 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:39:1039 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:10:40:1040 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:06:206 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:07:207 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:07:207 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:07:207 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:20:07:207 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:15:3115 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:16:3116 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:16:3116 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:16:3116 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:16:3116 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:16:3116 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:16:3116 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:16:3116 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:16:3116 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:16:3116 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:31:16:3116 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:49:3249 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:49:3249 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:49:3249 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:49:3249 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:50:3250 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:51:3251 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:51:3251 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:51:3251 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:32:51:3251 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:44:3344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:44:3344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:44:3344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:44:3344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:44:3344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:44:3344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:33:45:3345 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:08:428 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:09:429 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:09:429 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:09:429 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:09:429 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:09:429 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:09:429 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:09:429 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:42:09:429 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:32:5732 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:33:5733 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:33:5733 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:33:5733 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:33:5733 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:33:5733 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:57:33:5733 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:39:5839 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:39:5839 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:39:5839 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:39:5839 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:39:5839 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:39:5839 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:58:40:5840 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:15:5915 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:15:5915 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:15:5915 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:15:5915 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:15:5915 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:15:5915 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 10:59:16:5916 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:00:29:029 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:01:53:153 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:11:411 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:12:412 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:12:412 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:12:412 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:12:412 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:12:412 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:12:412 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:12:412 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:04:12:412 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:51:551 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:51:551 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:51:551 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:51:551 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:52:552 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:53:553 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:05:53:553 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:06:58:658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:08:02:82 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:07:97 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:07:97 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:07:97 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:07:97 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:07:97 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:07:97 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:07:97 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:07:97 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 11:09:08:98 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:43:1343 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:43:1343 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:43:1343 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:43:1343 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:13:44:1344 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:57:1657 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:57:1657 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:57:1657 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:58:1658 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:59:1659 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:59:1659 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:59:1659 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:16:59:1659 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:28:2528 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:28:2528 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:28:2528 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:28:2528 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:29:2529 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 14:25:58:2558 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:19:1019 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:20:1020 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:20:1020 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:20:1020 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:20:1020 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:20:1020 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:20:1020 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:22:1022 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:22:1022 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:22:1022 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:10:22:1022 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:43:1243 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:43:1243 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:43:1243 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:43:1243 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:44:1244 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:45:1245 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:45:1245 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:46:1246 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:12:46:1246 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:32:1532 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:32:1532 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:32:1532 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:32:1532 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:34:1534 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:34:1534 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:34:1534 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:35:1535 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:35:1535 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:35:1535 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:35:1535 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:35:1535 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:35:1535 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:35:1535 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:35:1535 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:35:1535 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:36:1536 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:36:1536 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:36:1536 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:36:1536 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:38:1538 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:38:1538 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:38:1538 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:15:38:1538 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:16:30:1630 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 15:19:35:1935 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:12:54:1254 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:03:183 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:04:184 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:04:184 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:04:184 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:04:184 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:04:184 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:04:184 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:04:184 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:04:184 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:23:1823 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m

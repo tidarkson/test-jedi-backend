@@ -1,5 +1,5 @@
 import { AuthService } from '../../../src/services/AuthService';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 // Create mocks BEFORE importing AuthService
@@ -10,6 +10,7 @@ const prismaMock = {
     update: jest.fn(),
   },
   organization: {
+    findUnique: jest.fn(),
     create: jest.fn(),
   },
   organizationMember: {
@@ -54,6 +55,8 @@ describe('AuthService', () => {
       prismaMock.user.findUnique.mockResolvedValueOnce(null);
       (bcrypt.hash as jest.Mock).mockResolvedValueOnce('hashed_password');
       
+      prismaMock.organization.findUnique.mockResolvedValueOnce(null);
+
       const mockOrg = { id: 'org-1', name: orgName, slug: 'test-org' };
       prismaMock.organization.create.mockResolvedValueOnce(mockOrg);
 

@@ -986,9 +986,227 @@ class TestRepositoryService {
             throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Bulk operations failed');
         }
     }
+    async exportRepository(projectId, suiteId) {
+        try {
+            const project = await this.prisma.project.findUnique({
+                where: { id: projectId },
+            });
+            if (!project) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Project not found');
+            }
+            const suites = await this.prisma.suite.findMany({
+                where: {
+                    projectId,
+                    deletedAt: null,
+                },
+                orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+            });
+            const suiteMap = new Map();
+            const childrenByParent = new Map();
+            for (const suite of suites) {
+                suiteMap.set(suite.id, suite);
+                const siblings = childrenByParent.get(suite.parentSuiteId) ?? [];
+                siblings.push(suite);
+                childrenByParent.set(suite.parentSuiteId, siblings);
+            }
+            let rootSuiteIds;
+            if (suiteId) {
+                const requestedSuite = suiteMap.get(suiteId);
+                if (!requestedSuite) {
+                    throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Suite not found');
+                }
+                rootSuiteIds = [requestedSuite.id];
+            }
+            else {
+                rootSuiteIds = (childrenByParent.get(null) ?? []).map((suite) => suite.id);
+            }
+            const includedSuiteIds = new Set();
+            const collectSuiteIds = (currentSuiteId) => {
+                includedSuiteIds.add(currentSuiteId);
+                for (const child of childrenByParent.get(currentSuiteId) ?? []) {
+                    collectSuiteIds(child.id);
+                }
+            };
+            rootSuiteIds.forEach(collectSuiteIds);
+            const cases = await this.prisma.testCase.findMany({
+                where: {
+                    deletedAt: null,
+                    suite: {
+                        projectId,
+                        deletedAt: null,
+                    },
+                },
+                include: {
+                    steps: {
+                        orderBy: { order: 'asc' },
+                    },
+                },
+                orderBy: [{ createdAt: 'asc' }, { id: 'asc' }],
+            });
+            const casesBySuite = new Map();
+            for (const testCase of cases) {
+                if (!includedSuiteIds.has(testCase.suiteId)) {
+                    continue;
+                }
+                const suiteCases = casesBySuite.get(testCase.suiteId) ?? [];
+                suiteCases.push({
+                    title: testCase.title,
+                    description: testCase.description,
+                    preconditions: testCase.preconditions,
+                    postconditions: testCase.postconditions,
+                    priority: testCase.priority,
+                    severity: testCase.severity,
+                    type: testCase.type,
+                    automationStatus: testCase.automationStatus,
+                    status: testCase.status,
+                    estimatedTime: testCase.estimatedTime,
+                    tags: testCase.tags ?? [],
+                    customFields: testCase.customFields,
+                    steps: testCase.steps.map((step) => ({
+                        order: step.order,
+                        action: step.action,
+                        expectedResult: step.expectedResult,
+                        testData: step.testData,
+                    })),
+                });
+                casesBySuite.set(testCase.suiteId, suiteCases);
+            }
+            const buildExportSuite = (currentSuiteId) => {
+                const suite = suiteMap.get(currentSuiteId);
+                return {
+                    name: suite.name,
+                    description: suite.description,
+                    status: suite.status,
+                    isLocked: suite.isLocked,
+                    cases: casesBySuite.get(currentSuiteId) ?? [],
+                    childSuites: (childrenByParent.get(currentSuiteId) ?? []).map((child) => buildExportSuite(child.id)),
+                };
+            };
+            return {
+                version: 1,
+                exportedAt: new Date().toISOString(),
+                projectId: project.id,
+                projectName: project.name,
+                rootSuites: rootSuiteIds.map((id) => buildExportSuite(id)),
+            };
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error exporting repository: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to export repository');
+        }
+    }
+    async importRepository(projectId, userId, input) {
+        try {
+            const project = await this.prisma.project.findUnique({
+                where: { id: projectId },
+            });
+            if (!project) {
+                throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Project not found');
+            }
+            if (input.parentSuiteId) {
+                const parentSuite = await this.prisma.suite.findFirst({
+                    where: {
+                        id: input.parentSuiteId,
+                        projectId,
+                        deletedAt: null,
+                    },
+                });
+                if (!parentSuite) {
+                    throw new errors_1.AppError(404, errors_1.ErrorCodes.NOT_FOUND, 'Parent suite not found');
+                }
+                if (parentSuite.isLocked) {
+                    throw new errors_1.AppError(423, 'LOCKED_RESOURCE', 'Parent suite is locked');
+                }
+            }
+            const result = await this.prisma.$transaction(async (tx) => {
+                const counts = {
+                    suitesCreated: 0,
+                    casesCreated: 0,
+                };
+                for (const suite of input.repository.rootSuites) {
+                    await this.importSuiteTree(tx, projectId, userId, input.parentSuiteId ?? null, suite, counts);
+                }
+                return counts;
+            });
+            await this.createAuditLog(projectId, userId, 'Suite', input.parentSuiteId ?? projectId, 'CREATE', JSON.stringify({
+                action: 'IMPORT_REPOSITORY',
+                sourceProjectId: input.repository.projectId,
+                sourceProjectName: input.repository.projectName,
+                suitesCreated: result.suitesCreated,
+                casesCreated: result.casesCreated,
+            }));
+            await this.invalidateSuiteTreeCache(projectId);
+            return result;
+        }
+        catch (error) {
+            if (error instanceof errors_1.AppError)
+                throw error;
+            logger_1.logger.error(`Error importing repository: ${error}`);
+            throw new errors_1.AppError(500, errors_1.ErrorCodes.INTERNAL_SERVER_ERROR, 'Failed to import repository');
+        }
+    }
     /**
      * ========== HELPER METHODS ==========
      */
+    async importSuiteTree(tx, projectId, userId, parentSuiteId, suite, result) {
+        const createdSuite = await tx.suite.create({
+            data: {
+                projectId,
+                parentSuiteId,
+                name: suite.name,
+                description: suite.description ?? undefined,
+                ownerId: userId,
+                status: suite.status,
+                isLocked: false,
+            },
+        });
+        result.suitesCreated += 1;
+        for (const testCase of suite.cases) {
+            const createdCase = await tx.testCase.create({
+                data: {
+                    suiteId: createdSuite.id,
+                    title: testCase.title,
+                    description: testCase.description ?? undefined,
+                    preconditions: testCase.preconditions ?? undefined,
+                    postconditions: testCase.postconditions ?? undefined,
+                    priority: testCase.priority,
+                    severity: testCase.severity,
+                    type: testCase.type,
+                    automationStatus: testCase.automationStatus,
+                    estimatedTime: testCase.estimatedTime ?? undefined,
+                    status: testCase.status,
+                    authorId: userId,
+                    tags: testCase.tags,
+                    customFields: testCase.customFields,
+                },
+            });
+            if (testCase.steps.length > 0) {
+                for (const step of testCase.steps) {
+                    await tx.testStep.create({
+                        data: {
+                            testCaseId: createdCase.id,
+                            order: step.order ?? 1,
+                            action: step.action,
+                            expectedResult: step.expectedResult,
+                            testData: step.testData,
+                        },
+                    });
+                }
+            }
+            result.casesCreated += 1;
+        }
+        for (const childSuite of suite.childSuites) {
+            await this.importSuiteTree(tx, projectId, userId, createdSuite.id, childSuite, result);
+        }
+        if (suite.isLocked) {
+            await tx.suite.update({
+                where: { id: createdSuite.id },
+                data: { isLocked: true },
+            });
+        }
+    }
     encodeCursor(entity) {
         return Buffer.from(JSON.stringify({
             id: entity.id,

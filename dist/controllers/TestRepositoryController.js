@@ -524,6 +524,77 @@ class TestRepositoryController {
             this.handleError(error, res);
         }
     }
+    async exportRepository(req, res) {
+        try {
+            const { projectId } = req.params;
+            if (!projectId) {
+                res.status(400).json({
+                    status: 'error',
+                    code: 400,
+                    error: errors_1.ErrorCodes.VALIDATION_FAILED,
+                    message: 'Project ID is required',
+                });
+                return;
+            }
+            const validation = testRepository_validator_1.repositoryExportQuerySchema.safeParse(req.query);
+            if (!validation.success) {
+                res.status(400).json({
+                    status: 'error',
+                    code: 400,
+                    error: errors_1.ErrorCodes.VALIDATION_FAILED,
+                    message: 'Validation failed',
+                    errors: validation.error.issues,
+                });
+                return;
+            }
+            const payload = await this.testRepoService.exportRepository(projectId, validation.data.suiteId);
+            res.status(200).json({
+                status: 'success',
+                code: 200,
+                data: payload,
+                message: 'Repository exported successfully',
+            });
+        }
+        catch (error) {
+            this.handleError(error, res);
+        }
+    }
+    async importRepository(req, res) {
+        try {
+            const { projectId } = req.params;
+            const userId = req.user?.userId;
+            if (!projectId || !userId) {
+                res.status(400).json({
+                    status: 'error',
+                    code: 400,
+                    error: errors_1.ErrorCodes.VALIDATION_FAILED,
+                    message: 'Missing required parameters',
+                });
+                return;
+            }
+            const validation = testRepository_validator_1.repositoryImportSchema.safeParse(req.body);
+            if (!validation.success) {
+                res.status(400).json({
+                    status: 'error',
+                    code: 400,
+                    error: errors_1.ErrorCodes.VALIDATION_FAILED,
+                    message: 'Validation failed',
+                    errors: validation.error.issues,
+                });
+                return;
+            }
+            const result = await this.testRepoService.importRepository(projectId, userId, validation.data);
+            res.status(201).json({
+                status: 'success',
+                code: 201,
+                data: result,
+                message: 'Repository imported successfully',
+            });
+        }
+        catch (error) {
+            this.handleError(error, res);
+        }
+    }
     /**
      * ========== ERROR HANDLING ==========
      */

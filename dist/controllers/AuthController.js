@@ -6,6 +6,15 @@ const errors_1 = require("../types/errors");
 const auth_validator_1 = require("../validators/auth.validator");
 const logger_1 = require("../config/logger");
 const environment_1 = require("../config/environment");
+function isDatabaseUnavailableError(error) {
+    if (!error || typeof error !== 'object') {
+        return false;
+    }
+    const maybeError = error;
+    const message = maybeError.message || '';
+    // Prisma connectivity errors commonly surface with P1001 or this message.
+    return maybeError.code === 'P1001' || message.includes("Can't reach database server");
+}
 class AuthController {
     constructor() {
         this.authService = new AuthService_1.AuthService();
@@ -54,6 +63,16 @@ class AuthController {
                     error: error.code,
                     message: error.message,
                     details: error.details,
+                });
+                return;
+            }
+            if (isDatabaseUnavailableError(error)) {
+                logger_1.logger.error(`Register database connectivity error: ${error.message}`);
+                res.status(503).json({
+                    status: 'error',
+                    code: 503,
+                    error: errors_1.ErrorCodes.INTERNAL_SERVER_ERROR,
+                    message: 'Database is temporarily unavailable. Please try again shortly.',
                 });
                 return;
             }
@@ -109,6 +128,16 @@ class AuthController {
                     code: error.statusCode,
                     error: error.code,
                     message: error.message,
+                });
+                return;
+            }
+            if (isDatabaseUnavailableError(error)) {
+                logger_1.logger.error(`Login database connectivity error: ${error.message}`);
+                res.status(503).json({
+                    status: 'error',
+                    code: 503,
+                    error: errors_1.ErrorCodes.INTERNAL_SERVER_ERROR,
+                    message: 'Database is temporarily unavailable. Please try again shortly.',
                 });
                 return;
             }

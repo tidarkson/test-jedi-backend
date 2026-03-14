@@ -441,6 +441,49 @@ export class AdminService {
      ======================================== */
 
   /**
+   * List projects in an organization
+   */
+  async listOrganizationProjects(organizationId: string) {
+    const projects = await this.prisma.project.findMany({
+      where: { organizationId },
+      orderBy: { createdAt: 'desc' },
+    });
+
+    return projects.map((project) => ({
+      id: project.id,
+      name: project.name,
+      slug: project.slug,
+      description: project.description,
+      settings: project.settings,
+      createdAt: project.createdAt,
+      updatedAt: project.updatedAt,
+    }));
+  }
+
+  /**
+   * Get a single project in an organization
+   */
+  async getOrganizationProject(organizationId: string, projectId: string) {
+    const project = await this.prisma.project.findUnique({
+      where: { id: projectId },
+    });
+
+    if (!project || project.organizationId !== organizationId) {
+      throw new AppError(404, ErrorCodes.NOT_FOUND, 'Project not found');
+    }
+
+    return {
+      id: project.id,
+      name: project.name,
+      slug: project.slug,
+      description: project.description,
+      settings: project.settings,
+      createdAt: project.createdAt,
+      updatedAt: project.updatedAt,
+    };
+  }
+
+  /**
    * Create new project
    */
   async createProject(

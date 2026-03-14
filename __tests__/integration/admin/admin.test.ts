@@ -461,6 +461,55 @@ describe('Admin & User Management APIs', () => {
   });
 
   describe('Project Management Endpoints', () => {
+    test('GET /api/v1/admin/orgs/:organizationId/projects should list projects', async () => {
+      const projectName = `Project ${Date.now()}`;
+
+      const createResponse = await request(app)
+        .post(`/api/v1/admin/orgs/${organizationId}/projects`)
+        .set('Authorization', `Bearer ${authToken}`)
+        .send({
+          name: projectName,
+          description: 'Integration test project',
+        });
+
+      expect(createResponse.status).toBe(201);
+
+      const listResponse = await request(app)
+        .get(`/api/v1/admin/orgs/${organizationId}/projects`)
+        .set('Authorization', `Bearer ${authToken}`);
+
+      expect(listResponse.status).toBe(200);
+      expect(listResponse.body.status).toBe('success');
+      expect(Array.isArray(listResponse.body.data)).toBe(true);
+      expect(listResponse.body.data.some((p: any) => p.name === projectName)).toBe(true);
+    });
+
+    test('GET /api/v1/admin/orgs/:organizationId/projects/:projectId should return one project', async () => {
+      const projectName = `Single Project ${Date.now()}`;
+
+      const createResponse = await request(app)
+        .post(`/api/v1/admin/orgs/${organizationId}/projects`)
+        .set('Authorization', `Bearer ${authToken}`)
+        .send({
+          name: projectName,
+          description: 'Single project fetch test',
+        });
+
+      expect(createResponse.status).toBe(201);
+      const projectId = createResponse.body.data.id;
+
+      const getResponse = await request(app)
+        .get(`/api/v1/admin/orgs/${organizationId}/projects/${projectId}`)
+        .set('Authorization', `Bearer ${authToken}`);
+
+      expect(getResponse.status).toBe(200);
+      expect(getResponse.body.status).toBe('success');
+      expect(getResponse.body.data.id).toBe(projectId);
+      expect(getResponse.body.data.name).toBe(projectName);
+    });
+  });
+
+  describe('Project Management Endpoints', () => {
     let projectId: string;
 
     test('POST /api/v1/admin/projects should create project', async () => {

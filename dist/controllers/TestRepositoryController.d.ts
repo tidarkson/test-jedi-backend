@@ -82,6 +82,8 @@ export declare class TestRepositoryController {
      * Bulk create/edit/move/delete operations (max 500)
      */
     bulkOperateTestCases(req: AuthenticatedRequest, res: Response): Promise<void>;
+    exportRepository(req: AuthenticatedRequest, res: Response): Promise<void>;
+    importRepository(req: AuthenticatedRequest, res: Response): Promise<void>;
     /**
      * ========== ERROR HANDLING ==========
      */

@@ -120,6 +120,77 @@ export declare const updateTestCaseSchema: z.ZodObject<{
         testData: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
     }, z.core.$strip>>>;
 }, z.core.$strip>;
+declare const exportedCaseSchema: z.ZodObject<{
+    title: z.ZodString;
+    description: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    preconditions: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    postconditions: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    priority: z.ZodEnum<{
+        CRITICAL: "CRITICAL";
+        HIGH: "HIGH";
+        MEDIUM: "MEDIUM";
+        LOW: "LOW";
+    }>;
+    severity: z.ZodEnum<{
+        CRITICAL: "CRITICAL";
+        BLOCKER: "BLOCKER";
+        MAJOR: "MAJOR";
+        MINOR: "MINOR";
+        TRIVIAL: "TRIVIAL";
+    }>;
+    type: z.ZodEnum<{
+        FUNCTIONAL: "FUNCTIONAL";
+        REGRESSION: "REGRESSION";
+        SMOKE: "SMOKE";
+        INTEGRATION: "INTEGRATION";
+        E2E: "E2E";
+        PERFORMANCE: "PERFORMANCE";
+        SECURITY: "SECURITY";
+        USABILITY: "USABILITY";
+    }>;
+    automationStatus: z.ZodEnum<{
+        MANUAL: "MANUAL";
+        AUTOMATED: "AUTOMATED";
+        PARTIALLY_AUTOMATED: "PARTIALLY_AUTOMATED";
+        PENDING_AUTOMATION: "PENDING_AUTOMATION";
+    }>;
+    status: z.ZodEnum<{
+        ACTIVE: "ACTIVE";
+        DRAFT: "DRAFT";
+        ARCHIVED: "ARCHIVED";
+        DEPRECATED: "DEPRECATED";
+    }>;
+    estimatedTime: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+    tags: z.ZodDefault<z.ZodArray<z.ZodString>>;
+    customFields: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+    steps: z.ZodDefault<z.ZodArray<z.ZodObject<{
+        order: z.ZodOptional<z.ZodNumber>;
+        action: z.ZodString;
+        expectedResult: z.ZodString;
+        testData: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodAny>>;
+    }, z.core.$strip>>>;
+}, z.core.$strip>;
+type ExportedSuiteSchema = {
+    name: string;
+    description?: string | null;
+    status: 'ACTIVE' | 'DRAFT' | 'ARCHIVED' | 'DEPRECATED';
+    isLocked: boolean;
+    cases: z.infer<typeof exportedCaseSchema>[];
+    childSuites: ExportedSuiteSchema[];
+};
+export declare const repositoryImportSchema: z.ZodObject<{
+    parentSuiteId: z.ZodOptional<z.ZodString>;
+    repository: z.ZodObject<{
+        version: z.ZodLiteral<1>;
+        exportedAt: z.ZodString;
+        projectId: z.ZodString;
+        projectName: z.ZodString;
+        rootSuites: z.ZodArray<z.ZodType<ExportedSuiteSchema, unknown, z.core.$ZodTypeInternals<ExportedSuiteSchema, unknown>>>;
+    }, z.core.$strip>;
+}, z.core.$strip>;
+export declare const repositoryExportQuerySchema: z.ZodObject<{
+    suiteId: z.ZodOptional<z.ZodString>;
+}, z.core.$strip>;
 /**
  * Pagination & Filters
  */
@@ -324,4 +395,7 @@ export type UpdateTestCaseInput = z.infer<typeof updateTestCaseSchema>;
 export type TestCaseFilters = z.infer<typeof testCaseFiltersSchema>;
 export type BulkOperationInput = z.infer<typeof bulkOperationSchema>;
 export type PaginationInput = z.infer<typeof paginationSchema>;
+export type RepositoryImportInput = z.infer<typeof repositoryImportSchema>;
+export type RepositoryExportQueryInput = z.infer<typeof repositoryExportQuerySchema>;
+export {};
 //# sourceMappingURL=testRepository.validator.d.ts.map

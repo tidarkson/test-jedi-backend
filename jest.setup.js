@@ -5,6 +5,12 @@ jest.mock('bcrypt', () => ({
   genSalt: jest.fn(async () => 'salt'),
 }));
 
+jest.mock('bcryptjs', () => ({
+  hash: jest.fn(async (password) => 'hashed_' + password),
+  compare: jest.fn(async (password, hash) => password === hash.replace('hashed_', '')),
+  genSalt: jest.fn(async () => 'salt'),
+}));
+
 // Create error classes for jwt
 class TokenExpiredError extends Error {
   constructor(message) {

@@ -7,6 +7,7 @@
 import { getPrisma } from '../../../src/config/database';
 import { TestRepositoryService } from '../../../src/services/TestRepositoryService';
 import { AppError } from '../../../src/types/errors';
+import type { RepositoryExportPayload } from '../../../src/types/testRepository';
 
 const prisma = getPrisma();
 const service = new TestRepositoryService();
@@ -339,6 +340,117 @@ describe('Test Repository Comprehensive Suite', () => {
         const hasTags = testCase.tags?.some(tag => ['regression', 'smoke'].includes(tag));
         expect(hasTags).toBe(true);
       });
+    });
+  });
+
+  describe('Test Suite 4: Repository import and export', () => {
+    let exportRootSuite: any;
+    let sourcePayload: RepositoryExportPayload;
+
+    beforeAll(async () => {
+      exportRootSuite = await service.createSuite(projectId, userId, {
+        name: 'Export Root Suite',
+        description: 'Source suite for import export coverage',
+      });
+
+      const exportChildSuite = await service.createSuite(projectId, userId, {
+        name: 'Export Child Suite',
+        parentSuiteId: exportRootSuite.id,
+      });
+
+      await service.createTestCase(projectId, exportRootSuite.id, userId, {
+        title: 'Exportable Login Case',
+        description: 'Validates login path',
+        preconditions: 'User exists',
+        postconditions: 'Session created',
+        priority: 'HIGH',
+        severity: 'MAJOR',
+        type: 'FUNCTIONAL',
+        automationStatus: 'AUTOMATED',
+        tags: ['api', 'smoke'],
+        steps: [
+          {
+            order: 1,
+            action: 'Open login page',
+            expectedResult: 'Login form is visible',
+          },
+        ],
+      });
+
+      await service.createTestCase(projectId, exportChildSuite.id, userId, {
+        title: 'Exportable MFA Case',
+        priority: 'CRITICAL',
+        severity: 'CRITICAL',
+        type: 'SECURITY',
+        automationStatus: 'PENDING_AUTOMATION',
+        tags: ['security'],
+      });
+
+      sourcePayload = await service.exportRepository(projectId, exportRootSuite.id);
+    });
+
+    it('should export a suite subtree with nested cases', async () => {
+      expect(sourcePayload.rootSuites).toHaveLength(1);
+      expect(sourcePayload.rootSuites[0].name).toBe('Export Root Suite');
+      expect(sourcePayload.rootSuites[0].cases).toHaveLength(1);
+      expect(sourcePayload.rootSuites[0].childSuites).toHaveLength(1);
+      expect(sourcePayload.rootSuites[0].childSuites[0].cases).toHaveLength(1);
+    });
+
+    it('should import an exported repository subtree under another parent suite', async () => {
+      const importParent = await service.createSuite(projectId, userId, {
+        name: 'Import Destination Suite',
+      });
+
+      const importResult = await service.importRepository(projectId, userId, {
+        parentSuiteId: importParent.id,
+        repository: sourcePayload,
+      });
+
+      expect(importResult.suitesCreated).toBe(2);
+      expect(importResult.casesCreated).toBe(2);
+
+      const tree = await service.getSuiteTree(projectId);
+      const destinationNode = tree.find((node) => node.id === importParent.id);
+      expect(destinationNode).toBeDefined();
+      expect(destinationNode?.childSuites.some((node) => node.name === 'Export Root Suite')).toBe(true);
+
+      const importedRootSuite = await prisma.suite.findFirst({
+        where: {
+          projectId,
+          deletedAt: null,
+          parentSuiteId: importParent.id,
+          name: 'Export Root Suite',
+        },
+      });
+
+      const importedChildSuite = await prisma.suite.findFirst({
+        where: {
+          projectId,
+          deletedAt: null,
+          parentSuiteId: importedRootSuite?.id,
+          name: 'Export Child Suite',
+        },
+      });
+
+      const importedSuiteIds = new Set(
+        [importedRootSuite?.id, importedChildSuite?.id].filter(Boolean) as string[],
+      );
+
+      const importedCases = await prisma.testCase.findMany({
+        where: {
+          deletedAt: null,
+          suite: {
+            projectId,
+          },
+        },
+      });
+
+      const importedCaseCount = importedCases.filter((testCase) =>
+        importedSuiteIds.has(testCase.suiteId),
+      ).length;
+
+      expect(importedCaseCount).toBe(2);
     });
   });
 

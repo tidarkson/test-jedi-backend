@@ -160,6 +160,45 @@ export class AdminController {
      ======================================== */
 
   /**
+   * GET /api/v1/admin/orgs/:organizationId/projects
+   * List projects for organization
+   */
+  async listProjects(req: Request, res: Response) {
+    try {
+      const organizationId = req.params.organizationId;
+      const result = await adminService.listOrganizationProjects(organizationId);
+
+      res.json({
+        status: 'success',
+        data: result,
+      });
+    } catch (error) {
+      logger.error('Error listing projects:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * GET /api/v1/admin/orgs/:organizationId/projects/:projectId
+   * Get a single project
+   */
+  async getProject(req: Request, res: Response) {
+    try {
+      const organizationId = req.params.organizationId;
+      const projectId = req.params.projectId;
+      const result = await adminService.getOrganizationProject(organizationId, projectId);
+
+      res.json({
+        status: 'success',
+        data: result,
+      });
+    } catch (error) {
+      logger.error('Error getting project:', error);
+      throw error;
+    }
+  }
+
+  /**
    * POST /api/v1/admin/projects
    * Create project
    */

@@ -10,6 +10,8 @@ import {
   updateTestCaseSchema,
   testCaseFiltersSchema,
   bulkOperationSchema,
+  repositoryExportQuerySchema,
+  repositoryImportSchema,
 } from '../validators/testRepository.validator';
 
 export class TestRepositoryController {
@@ -633,6 +635,94 @@ export class TestRepositoryController {
         code: 200,
         data: result,
         message: `Bulk operations completed: ${result.successful} successful, ${result.failed} failed`,
+      });
+    } catch (error: any) {
+      this.handleError(error, res);
+    }
+  }
+
+  async exportRepository(req: AuthenticatedRequest, res: Response): Promise<void> {
+    try {
+      const { projectId } = req.params;
+
+      if (!projectId) {
+        res.status(400).json({
+          status: 'error',
+          code: 400,
+          error: ErrorCodes.VALIDATION_FAILED,
+          message: 'Project ID is required',
+        });
+        return;
+      }
+
+      const validation = repositoryExportQuerySchema.safeParse(req.query);
+
+      if (!validation.success) {
+        res.status(400).json({
+          status: 'error',
+          code: 400,
+          error: ErrorCodes.VALIDATION_FAILED,
+          message: 'Validation failed',
+          errors: validation.error.issues,
+        });
+        return;
+      }
+
+      const payload = await this.testRepoService.exportRepository(
+        projectId,
+        validation.data.suiteId,
+      );
+
+      res.status(200).json({
+        status: 'success',
+        code: 200,
+        data: payload,
+        message: 'Repository exported successfully',
+      });
+    } catch (error: any) {
+      this.handleError(error, res);
+    }
+  }
+
+  async importRepository(req: AuthenticatedRequest, res: Response): Promise<void> {
+    try {
+      const { projectId } = req.params;
+      const userId = req.user?.userId;
+
+      if (!projectId || !userId) {
+        res.status(400).json({
+          status: 'error',
+          code: 400,
+          error: ErrorCodes.VALIDATION_FAILED,
+          message: 'Missing required parameters',
+        });
+        return;
+      }
+
+      const validation = repositoryImportSchema.safeParse(req.body);
+
+      if (!validation.success) {
+        res.status(400).json({
+          status: 'error',
+          code: 400,
+          error: ErrorCodes.VALIDATION_FAILED,
+          message: 'Validation failed',
+          errors: validation.error.issues,
+        });
+        return;
+      }
+
+      const result = await this.testRepoService.importRepository(
+        projectId,
+        userId,
+        validation.data,
+      );
+
+      res.status(201).json({
+        status: 'success',
+        code: 201,
+        data: result,
+        message: 'Repository imported successfully',
       });
     } catch (error: any) {
       this.handleError(error, res);

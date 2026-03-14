@@ -152,6 +152,10 @@ router.get('/orgs/:organizationId/users/:userId/activity', requireAdminRole, (re
 /* ========================================
    PROJECT MANAGEMENT
    ======================================== */
+// GET /api/v1/admin/orgs/:organizationId/projects
+router.get('/orgs/:organizationId/projects', requireAdminRole, (req, res, next) => AdminController_1.adminController.listProjects(req, res).catch(next));
+// GET /api/v1/admin/orgs/:organizationId/projects/:projectId
+router.get('/orgs/:organizationId/projects/:projectId', requireAdminRole, (req, res, next) => AdminController_1.adminController.getProject(req, res).catch(next));
 // POST /api/v1/admin/orgs/:organizationId/projects
 router.post('/orgs/:organizationId/projects', requireAdminRole, (req, res, next) => AdminController_1.adminController.createProject(req, res).catch(next));
 // PUT /api/v1/admin/orgs/:organizationId/projects/:projectId

@@ -128,6 +128,10 @@ const startServer = async () => {
     try {
         // Initialize app (database, cache, etc.)
         await initializeApp();
+        if (environment_1.config.NODE_ENV === 'test') {
+            logger_1.logger.info('Test environment detected, skipping HTTP listen');
+            return;
+        }
         // Create HTTP server and attach WebSocket server
         const server = http_1.default.createServer(app);
         (0, runWebsocket_1.attachWebSocketServer)(server);

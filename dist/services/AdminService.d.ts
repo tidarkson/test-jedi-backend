@@ -75,6 +75,30 @@ export declare class AdminService {
         };
     }>;
     /**
+     * List projects in an organization
+     */
+    listOrganizationProjects(organizationId: string): Promise<{
+        id: string;
+        name: string;
+        slug: string;
+        description: string | null;
+        settings: import("@prisma/client/runtime/library").JsonValue;
+        createdAt: Date;
+        updatedAt: Date;
+    }[]>;
+    /**
+     * Get a single project in an organization
+     */
+    getOrganizationProject(organizationId: string, projectId: string): Promise<{
+        id: string;
+        name: string;
+        slug: string;
+        description: string | null;
+        settings: import("@prisma/client/runtime/library").JsonValue;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    /**
      * Create new project
      */
     createProject(organizationId: string, userId: string, data: {

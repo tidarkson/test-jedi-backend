@@ -46,14 +46,30 @@ export class AuthService {
     // Hash password
     const passwordHash = await bcrypt.hash(password, config.BCRYPT_ROUNDS);
 
+    // Generate organization slug
+    const baseSlug = organizationName
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+
+    // Check if slug already exists
+    const existingOrg = await this.prisma.organization.findUnique({
+      where: { slug: baseSlug },
+    });
+
+    if (existingOrg) {
+      throw new AppError(
+        409,
+        ErrorCodes.USER_ALREADY_EXISTS,
+        'An organization with this name already exists. Please choose a different organization name.',
+      );
+    }
+
     // Create organization first
     const organization = await this.prisma.organization.create({
       data: {
         name: organizationName,
-        slug: organizationName
-          .toLowerCase()
-          .replace(/\s+/g, '-')
-          .replace(/[^a-z0-9-]/g, ''),
+        slug: baseSlug,
         plan: 'FREE',
       },
     });

@@ -10,6 +10,18 @@ import {
 import { logger } from '../config/logger';
 import { config } from '../config/environment';
 
+function isDatabaseUnavailableError(error: unknown): boolean {
+  if (!error || typeof error !== 'object') {
+    return false;
+  }
+
+  const maybeError = error as { code?: string; message?: string };
+  const message = maybeError.message || '';
+
+  // Prisma connectivity errors commonly surface with P1001 or this message.
+  return maybeError.code === 'P1001' || message.includes("Can't reach database server");
+}
+
 export class AuthController {
   private authService: AuthService;
 
@@ -75,6 +87,17 @@ export class AuthController {
         return;
       }
 
+      if (isDatabaseUnavailableError(error)) {
+        logger.error(`Register database connectivity error: ${error.message}`);
+        res.status(503).json({
+          status: 'error',
+          code: 503,
+          error: ErrorCodes.INTERNAL_SERVER_ERROR,
+          message: 'Database is temporarily unavailable. Please try again shortly.',
+        });
+        return;
+      }
+
       logger.error(`Register error: ${error.message}`);
       res.status(500).json({
         status: 'error',
@@ -133,6 +156,17 @@ export class AuthController {
           code: error.statusCode,
           error: error.code,
           message: error.message,
+        });
+        return;
+      }
+
+      if (isDatabaseUnavailableError(error)) {
+        logger.error(`Login database connectivity error: ${error.message}`);
+        res.status(503).json({
+          status: 'error',
+          code: 503,
+          error: ErrorCodes.INTERNAL_SERVER_ERROR,
+          message: 'Database is temporarily unavailable. Please try again shortly.',
         });
         return;
       }

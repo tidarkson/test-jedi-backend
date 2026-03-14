@@ -203,4 +203,42 @@ export interface CloneResult {
     clone: SuiteDTO;
     casesCopied: number;
 }
+export interface ExportedRepositoryCase {
+    title: string;
+    description?: string | null;
+    preconditions?: string | null;
+    postconditions?: string | null;
+    priority: TestCasePriority;
+    severity: TestCaseSeverity;
+    type: TestCaseType;
+    automationStatus: AutomationStatus;
+    status: SuiteStatus;
+    estimatedTime?: number | null;
+    tags: string[];
+    customFields?: Record<string, any>;
+    steps: CreateTestStepInput[];
+}
+export interface ExportedRepositorySuite {
+    name: string;
+    description?: string | null;
+    status: SuiteStatus;
+    isLocked: boolean;
+    cases: ExportedRepositoryCase[];
+    childSuites: ExportedRepositorySuite[];
+}
+export interface RepositoryExportPayload {
+    version: 1;
+    exportedAt: string;
+    projectId: string;
+    projectName: string;
+    rootSuites: ExportedRepositorySuite[];
+}
+export interface ImportRepositoryInput {
+    parentSuiteId?: string;
+    repository: RepositoryExportPayload;
+}
+export interface ImportRepositoryResult {
+    suitesCreated: number;
+    casesCreated: number;
+}
 //# sourceMappingURL=testRepository.d.ts.map
