@@ -4045,3 +4045,82 @@
 2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
 2026-03-14 16:18:24:1824 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
 2026-03-14 16:18:24:1824 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError publishing webhook event: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:18:47:1847 [31merror[39m: [31mError sending Slack/Teams notification: Cannot read properties of undefined (reading 'findMany')[39m
+2026-03-14 16:29:29:2929 [31merror[39m: [31mAnalytics endpoint error: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.project.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AnalyticsService.ts:77:47[39m
+
+[31m  74 private readonly cacheTtlSeconds = 300;[39m
+[31m  75 [39m
+[31m  76 private async ensureProject(projectId: string): Promise<void> {[39m
+[31m→ 77   const project = await this.prisma.project.findUnique([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-03-16 12:09:58:958 [31merror[39m: [31mError listing runs: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.project.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\TestRunService.ts:406:49[39m
+
+[31m  403 ): Promise<PaginatedResponse<TestRunDTO>> {[39m
+[31m  404   try {[39m
+[31m  405     // Verify project exists[39m
+[31m→ 406     const project = await this.prisma.project.findUnique([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-03-16 12:09:58:958 [31merror[39m: [31mAnalytics endpoint error: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.project.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AnalyticsService.ts:77:47[39m
+
+[31m  74 private readonly cacheTtlSeconds = 300;[39m
+[31m  75 [39m
+[31m  76 private async ensureProject(projectId: string): Promise<void> {[39m
+[31m→ 77   const project = await this.prisma.project.findUnique([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-03-16 12:10:09:109 [31merror[39m: [31mError getting test cases: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.testCase.count()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\TestRepositoryService.ts:814:38[39m
+
+[31m  811 [39m
+[31m  812 const total = cursorData[39m
+[31m  813   ? 0[39m
+[31m→ 814   : await this.prisma.testCase.count([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-03-16 12:10:09:109 [31merror[39m: [31mAnalytics endpoint error: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.project.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AnalyticsService.ts:77:47[39m
+
+[31m  74 private readonly cacheTtlSeconds = 300;[39m
+[31m  75 [39m
+[31m  76 private async ensureProject(projectId: string): Promise<void> {[39m
+[31m→ 77   const project = await this.prisma.project.findUnique([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m

@@ -80,7 +80,8 @@ app.use(requestLogger_1.requestLogger);
  */
 app.use(`/api/${environment_1.config.API_VERSION}/auth`, auth_1.default);
 app.use(`/api/${environment_1.config.API_VERSION}/admin`, admin_1.default);
-app.use(`/api/${environment_1.config.API_VERSION}/projects`, testRepository_1.default);
+// Test repository routes are project-scoped and require :projectId in path.
+app.use(`/api/${environment_1.config.API_VERSION}/projects/:projectId`, testRepository_1.default);
 app.use(`/api/${environment_1.config.API_VERSION}`, runs_1.default);
 app.use(`/api/${environment_1.config.API_VERSION}`, plans_1.default);
 app.use(`/api/${environment_1.config.API_VERSION}`, exports_1.default);
