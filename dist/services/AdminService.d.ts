@@ -24,7 +24,7 @@ export declare class AdminService {
     /**
      * Invite user to organization by email
      */
-    inviteUser(organizationId: string, inviterUserId: string, email: string, role?: UserRole): Promise<{
+    inviteUser(organizationId: string, inviterUserId: string, email: string, role?: string | UserRole): Promise<{
         id: string;
         email: string;
         role: import(".prisma/client").$Enums.UserRole;
@@ -42,7 +42,7 @@ export declare class AdminService {
     /**
      * Update user role in organization
      */
-    updateUserRole(organizationId: string, userId: string, newRole: UserRole, requestingUserId: string): Promise<{
+    updateUserRole(organizationId: string, userId: string, newRole: string | UserRole, requestingUserId: string): Promise<{
         id: string;
         email: string;
         name: string;
@@ -83,6 +83,10 @@ export declare class AdminService {
         slug: string;
         description: string | null;
         settings: import("@prisma/client/runtime/library").JsonValue;
+        memberCount: number;
+        testCaseCount: number;
+        activeRunsCount: number;
+        lastRunDate: Date | null;
         createdAt: Date;
         updatedAt: Date;
     }[]>;

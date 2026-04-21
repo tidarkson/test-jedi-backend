@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../test-jedi-software"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"prisma.pinToPrisma6": true,
+		"liveServer.settings.multiRootWorkspaceName": "test-jedi-backend"
+	}
+}

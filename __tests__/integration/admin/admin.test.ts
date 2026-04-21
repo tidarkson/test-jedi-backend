@@ -1,4 +1,5 @@
 import request from 'supertest';
+import { afterAll, beforeAll, describe, expect, test } from '@jest/globals';
 import { getPrisma } from '../../../src/config/database';
 import app from '../../../src/index';
 
@@ -160,11 +161,11 @@ describe('Admin & User Management APIs', () => {
           .put(`/api/v1/admin/orgs/${organizationId}/users/${targetUser.id}/role`)
           .set('Authorization', `Bearer ${authToken}`)
           .send({
-            role: 'QA_LEAD',
+            role: 'MANAGER',
           });
 
         expect(roleUpdateResponse.status).toBe(200);
-        expect(roleUpdateResponse.body.data.role).toBe('QA_LEAD');
+        expect(roleUpdateResponse.body.data.role).toBe('MANAGER');
 
         // Verify in database
         const updatedMember = await prisma.organizationMember.findUnique({
@@ -176,7 +177,7 @@ describe('Admin & User Management APIs', () => {
           },
         });
 
-        expect(updatedMember.role).toBe('QA_LEAD');
+        expect(updatedMember.role).toBe('MANAGER');
       });
 
       test('should not allow non-admin to update roles', async () => {
@@ -299,7 +300,7 @@ describe('Admin & User Management APIs', () => {
     describe('AC4: Audit Log Immutability (DB Trigger)', () => {
       test('should prevent direct update of audit logs', async () => {
         // Get an audit log
-        const auditLog = await prisma.auditLog.findFirst({
+        let auditLog = await prisma.auditLog.findFirst({
           where: { organizationId },
         });
 
@@ -312,14 +313,21 @@ describe('Admin & User Management APIs', () => {
               name: `Field ${Date.now()}`,
               fieldType: 'TEXT',
             });
+
+          auditLog = await prisma.auditLog.findFirst({
+            where: { organizationId },
+            orderBy: { createdAt: 'desc' },
+          });
         }
+
+        expect(auditLog).toBeTruthy();
 
         // Try to update via raw query (simulating database access)
         try {
           await prisma.$executeRawUnsafe(
             'UPDATE "AuditLog" SET "action" = $1 WHERE "id" = $2',
             'DELETED',
-            auditLog.id
+            auditLog!.id
           );
           // If we got here, trigger didn't work
           throw new Error('Audit log was updated - trigger not working');
@@ -330,7 +338,7 @@ describe('Admin & User Management APIs', () => {
       });
 
       test('should prevent direct delete of audit logs', async () => {
-        const auditLog = await prisma.auditLog.findFirst({
+        let auditLog = await prisma.auditLog.findFirst({
           where: { organizationId },
         });
 
@@ -343,13 +351,20 @@ describe('Admin & User Management APIs', () => {
               name: `Field ${Date.now()}`,
               fieldType: 'TEXT',
             });
+
+          auditLog = await prisma.auditLog.findFirst({
+            where: { organizationId },
+            orderBy: { createdAt: 'desc' },
+          });
         }
+
+        expect(auditLog).toBeTruthy();
 
         // Try to delete via raw query
         try {
           await prisma.$executeRawUnsafe(
             'DELETE FROM "AuditLog" WHERE "id" = $1',
-            auditLog.id
+            auditLog!.id
           );
           throw new Error('Audit log was deleted - trigger not working');
         } catch (error: any) {
@@ -396,7 +411,7 @@ describe('Admin & User Management APIs', () => {
       });
 
       test('should have scheduled retention job', () => {
-        const { jobScheduler } = require('../../src/workers/JobScheduler');
+        const { jobScheduler } = require('../../../src/workers/JobScheduler');
         expect(jobScheduler.hasJob('retention-policy')).toBe(true);
       });
     });

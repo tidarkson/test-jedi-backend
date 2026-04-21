@@ -8,6 +8,24 @@ const mailer_1 = require("../utils/mailer");
 const environment_1 = require("../config/environment");
 const errors_1 = require("../types/errors");
 const date_fns_1 = require("date-fns");
+// Helper function to normalize role input to uppercase UserRole enum
+function normalizeRole(role = 'ADMIN') {
+    if (!role)
+        return 'ADMIN';
+    const normalized = String(role).toUpperCase();
+    // Map lowercase role names to uppercase equivalents
+    if (normalized === 'ADMIN' || normalized === 'OWNER') {
+        return normalized;
+    }
+    if (normalized === 'MEMBER' || normalized === 'QA_ENGINEER' || normalized === 'MANAGER' || normalized === 'DEVELOPER' || normalized === 'TESTER') {
+        return normalized;
+    }
+    if (normalized === 'VIEWER') {
+        return 'VIEWER';
+    }
+    // Default to QA_ENGINEER for member-like roles
+    return 'QA_ENGINEER';
+}
 class AdminService {
     constructor() {
         this.prisma = (0, database_1.getPrisma)();
@@ -63,6 +81,8 @@ class AdminService {
      * Invite user to organization by email
      */
     async inviteUser(organizationId, inviterUserId, email, role = 'ADMIN') {
+        // Normalize role to uppercase
+        const normalizedRole = normalizeRole(role);
         // Verify organization exists
         const org = await this.prisma.organization.findUnique({
             where: { id: organizationId },
@@ -117,7 +137,7 @@ class AdminService {
                 organizationId,
                 email,
                 inviterUserId,
-                role,
+                role: normalizedRole,
                 token,
                 expiresAt,
                 status: 'PENDING',
@@ -190,6 +210,8 @@ class AdminService {
      * Update user role in organization
      */
     async updateUserRole(organizationId, userId, newRole, requestingUserId) {
+        // Normalize role to uppercase
+        const normalizedRole = normalizeRole(newRole);
         // Verify requesting user is ADMIN or OWNER
         const requestingMembership = await this.prisma.organizationMember.findUnique({
             where: {
@@ -226,7 +248,7 @@ class AdminService {
                     userId,
                 },
             },
-            data: { role: newRole },
+            data: { role: normalizedRole },
             include: { user: true },
         });
         // Send notification email
@@ -339,15 +361,46 @@ class AdminService {
             where: { organizationId },
             orderBy: { createdAt: 'desc' },
         });
-        return projects.map((project) => ({
-            id: project.id,
-            name: project.name,
-            slug: project.slug,
-            description: project.description,
-            settings: project.settings,
-            createdAt: project.createdAt,
-            updatedAt: project.updatedAt,
+        // Fetch metrics for each project
+        const projectsWithMetrics = await Promise.all(projects.map(async (project) => {
+            const [memberCount, testCaseCount, activeRunsCount, lastRun] = await Promise.all([
+                // Count project members
+                this.prisma.projectMember.count({
+                    where: { projectId: project.id },
+                }).catch(() => 0),
+                // Count test cases
+                this.prisma.testCase.count({
+                    where: { suite: { projectId: project.id } },
+                }).catch(() => 0),
+                // Count active runs
+                this.prisma.testRun.count({
+                    where: {
+                        projectId: project.id,
+                        status: 'IN_PROGRESS',
+                    },
+                }).catch(() => 0),
+                // Get last run date
+                this.prisma.testRun.findFirst({
+                    where: { projectId: project.id },
+                    orderBy: { createdAt: 'desc' },
+                    select: { createdAt: true },
+                }).catch(() => null),
+            ]);
+            return {
+                id: project.id,
+                name: project.name,
+                slug: project.slug,
+                description: project.description,
+                settings: project.settings,
+                memberCount,
+                testCaseCount,
+                activeRunsCount,
+                lastRunDate: lastRun?.createdAt ?? null,
+                createdAt: project.createdAt,
+                updatedAt: project.updatedAt,
+            };
         }));
+        return projectsWithMetrics;
     }
     /**
      * Get a single project in an organization

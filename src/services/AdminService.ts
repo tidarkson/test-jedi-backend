@@ -7,6 +7,29 @@ import { config } from '../config/environment';
 import { AppError, ErrorCodes } from '../types/errors';
 import { addDays, isPast } from 'date-fns';
 
+// Helper function to normalize role input to uppercase UserRole enum
+function normalizeRole(role: string | UserRole | undefined = 'ADMIN'): UserRole {
+  if (!role) return 'ADMIN' as UserRole;
+  
+  const normalized = String(role).toUpperCase();
+  
+  // Map lowercase role names to uppercase equivalents
+  if (normalized === 'ADMIN' || normalized === 'OWNER') {
+    return normalized as UserRole;
+  }
+  
+  if (normalized === 'MEMBER' || normalized === 'QA_ENGINEER' || normalized === 'MANAGER' || normalized === 'DEVELOPER' || normalized === 'TESTER') {
+    return normalized as UserRole;
+  }
+  
+  if (normalized === 'VIEWER') {
+    return 'VIEWER' as UserRole;
+  }
+  
+  // Default to QA_ENGINEER for member-like roles
+  return 'QA_ENGINEER' as UserRole;
+}
+
 export class AdminService {
   private prisma = getPrisma();
 
@@ -68,8 +91,11 @@ export class AdminService {
     organizationId: string,
     inviterUserId: string,
     email: string,
-    role: UserRole = 'ADMIN',
+    role: string | UserRole = 'ADMIN',
   ) {
+    // Normalize role to uppercase
+    const normalizedRole = normalizeRole(role as string);
+    
     // Verify organization exists
     const org = await this.prisma.organization.findUnique({
       where: { id: organizationId },
@@ -137,7 +163,7 @@ export class AdminService {
         organizationId,
         email,
         inviterUserId,
-        role,
+        role: normalizedRole,
         token,
         expiresAt,
         status: 'PENDING',
@@ -239,9 +265,12 @@ export class AdminService {
   async updateUserRole(
     organizationId: string,
     userId: string,
-    newRole: UserRole,
+    newRole: string | UserRole,
     requestingUserId: string,
   ) {
+    // Normalize role to uppercase
+    const normalizedRole = normalizeRole(newRole as string);
+    
     // Verify requesting user is ADMIN or OWNER
     const requestingMembership = await this.prisma.organizationMember.findUnique({
       where: {
@@ -287,7 +316,7 @@ export class AdminService {
           userId,
         },
       },
-      data: { role: newRole },
+      data: { role: normalizedRole },
       include: { user: true },
     });
 
@@ -449,15 +478,50 @@ export class AdminService {
       orderBy: { createdAt: 'desc' },
     });
 
-    return projects.map((project) => ({
-      id: project.id,
-      name: project.name,
-      slug: project.slug,
-      description: project.description,
-      settings: project.settings,
-      createdAt: project.createdAt,
-      updatedAt: project.updatedAt,
-    }));
+    // Fetch metrics for each project
+    const projectsWithMetrics = await Promise.all(
+      projects.map(async (project) => {
+        const [memberCount, testCaseCount, activeRunsCount, lastRun] = await Promise.all([
+          // Count project members
+          this.prisma.projectMember.count({
+            where: { projectId: project.id },
+          }).catch(() => 0),
+          // Count test cases
+          this.prisma.testCase.count({
+            where: { suite: { projectId: project.id } },
+          }).catch(() => 0),
+          // Count active runs
+          this.prisma.testRun.count({
+            where: {
+              projectId: project.id,
+              status: 'IN_PROGRESS',
+            },
+          }).catch(() => 0),
+          // Get last run date
+          this.prisma.testRun.findFirst({
+            where: { projectId: project.id },
+            orderBy: { createdAt: 'desc' },
+            select: { createdAt: true },
+          }).catch(() => null),
+        ]);
+
+        return {
+          id: project.id,
+          name: project.name,
+          slug: project.slug,
+          description: project.description,
+          settings: project.settings,
+          memberCount,
+          testCaseCount,
+          activeRunsCount,
+          lastRunDate: lastRun?.createdAt ?? null,
+          createdAt: project.createdAt,
+          updatedAt: project.updatedAt,
+        };
+      })
+    );
+
+    return projectsWithMetrics;
   }
 
   /**

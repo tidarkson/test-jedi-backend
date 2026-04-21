@@ -4124,3 +4124,114 @@
 [31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
 
 [31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-03-19 12:27:22:2722 [31merror[39m: [31mError listing runs: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.project.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\TestRunService.ts:406:49[39m
+
+[31m  403 ): Promise<PaginatedResponse<TestRunDTO>> {[39m
+[31m  404   try {[39m
+[31m  405     // Verify project exists[39m
+[31m→ 406     const project = await this.prisma.project.findUnique([39m
+[31mTimed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 5)[39m
+2026-03-19 12:27:22:2722 [31merror[39m: [31mError getting test cases: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.testCase.count()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\TestRepositoryService.ts:814:38[39m
+
+[31m  811 [39m
+[31m  812 const total = cursorData[39m
+[31m  813   ? 0[39m
+[31m→ 814   : await this.prisma.testCase.count([39m
+[31mTimed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 5)[39m
+2026-03-19 12:27:22:2722 [31merror[39m: [31mUnexpected error: [39m
+[31mInvalid `prisma.organizationMember.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\routes\admin.ts:115:56[39m
+
+[31m  112 [39m
+[31m  113 const prisma = require('../config/database').getPrisma();[39m
+[31m  114 [39m
+[31m→ 115 const membership = await prisma.organizationMember.findUnique([39m
+[31mTimed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 5)[39m
+2026-03-19 12:27:22:2722 [31merror[39m: [31mError getting suite tree: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.project.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\TestRepositoryService.ts:76:49[39m
+
+[31m  73 }[39m
+[31m  74 [39m
+[31m  75 // Verify project exists[39m
+[31m→ 76 const project = await this.prisma.project.findUnique([39m
+[31mTimed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 5)[39m
+2026-03-19 12:27:22:2722 [31merror[39m: [31mAnalytics endpoint error: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.project.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AnalyticsService.ts:77:47[39m
+
+[31m  74 private readonly cacheTtlSeconds = 300;[39m
+[31m  75 [39m
+[31m  76 private async ensureProject(projectId: string): Promise<void> {[39m
+[31m→ 77   const project = await this.prisma.project.findUnique([39m
+[31mTimed out fetching a new connection from the connection pool. More info: http://pris.ly/d/connection-pool (Current connection pool timeout: 10, connection limit: 5)[39m
+2026-03-19 12:27:22:2722 [31merror[39m: [31mError listing runs: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.project.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\TestRunService.ts:406:49[39m
+
+[31m  403 ): Promise<PaginatedResponse<TestRunDTO>> {[39m
+[31m  404   try {[39m
+[31m  405     // Verify project exists[39m
+[31m→ 406     const project = await this.prisma.project.findUnique([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-03-19 12:27:22:2722 [31merror[39m: [31mError getting test cases: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.testCase.count()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\TestRepositoryService.ts:814:38[39m
+
+[31m  811 [39m
+[31m  812 const total = cursorData[39m
+[31m  813   ? 0[39m
+[31m→ 814   : await this.prisma.testCase.count([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-03-19 12:27:22:2722 [31merror[39m: [31mUnexpected error: [39m
+[31mInvalid `prisma.organizationMember.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\routes\admin.ts:115:56[39m
+
+[31m  112 [39m
+[31m  113 const prisma = require('../config/database').getPrisma();[39m
+[31m  114 [39m
+[31m→ 115 const membership = await prisma.organizationMember.findUnique([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-03-19 12:27:22:2722 [31merror[39m: [31mError getting suite tree: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.project.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\TestRepositoryService.ts:76:49[39m
+
+[31m  73 }[39m
+[31m  74 [39m
+[31m  75 // Verify project exists[39m
+[31m→ 76 const project = await this.prisma.project.findUnique([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-03-19 12:27:22:2722 [31merror[39m: [31mAnalytics endpoint error: PrismaClientKnownRequestError: [39m
+[31mInvalid `this.prisma.project.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AnalyticsService.ts:77:47[39m
+
+[31m  74 private readonly cacheTtlSeconds = 300;[39m
+[31m  75 [39m
+[31m  76 private async ensureProject(projectId: string): Promise<void> {[39m
+[31m→ 77   const project = await this.prisma.project.findUnique([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
+2026-04-20 13:54:27:5427 [31merror[39m: [31mLogin database connectivity error: [39m
+[31mInvalid `this.prisma.user.findUnique()` invocation in[39m
+[31mC:\Users\tidar\Documents\Web Dev Projects\test-jedi-backend\src\services\AuthService.ts:117:41[39m
+
+[31m  114   password: string,[39m
+[31m  115 ): Promise<{ user: AuthUser; accessToken: string; refreshToken: string }> {[39m
+[31m  116   // Find user[39m
+[31m→ 117   const user = await this.prisma.user.findUnique([39m
+[31mCan't reach database server at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`[39m
+
+[31mPlease make sure your database server is running at `dpg-d6q713v5r7bs73c0s610-a.frankfurt-postgres.render.com:5432`.[39m
